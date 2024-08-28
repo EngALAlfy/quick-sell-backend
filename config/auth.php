@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'customer',
+        'guard' => 'web',
         'passwords' => 'users',
     ],
 
@@ -36,17 +36,9 @@ return [
     */
 
     'guards' => [
-        'customer' => [
+        'web' => [
             'driver' => 'session',
-            'provider' => 'customers',
-        ],
-        'tagger' => [
-            'driver' => 'session',
-            'provider' => 'toggar',
-        ],
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'users',
         ],
     ],
 
@@ -68,23 +60,10 @@ return [
     */
 
     'providers' => [
-        'customers' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Customer::class,
+            'model' => App\Models\User::class,
         ],
-        'toggar' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Tagger::class,
-        ],
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
@@ -107,14 +86,8 @@ return [
     */
 
     'passwords' => [
-        'customers' => [
-            'provider' => 'customers',
-            'table' => 'password_reset_tokens',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'toggar' => [
-            'provider' => 'toggar',
+        'users' => [
+            'provider' => 'users',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

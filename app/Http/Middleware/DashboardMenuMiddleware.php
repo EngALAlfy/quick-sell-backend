@@ -2,19 +2,18 @@
 
 namespace App\Http\Middleware;
 
-use App\Enums\StoreStatus;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Spatie\Menu\Laravel\Menu;
 use Spatie\Menu\Link;
 
-class AdminMenuMiddleware
+class DashboardMenuMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        $menu = $this->buildAdminMenu();
-        Menu::macro('admin', function () use ($menu) {
+        $menu = $this->buildMenu();
+        Menu::macro('dashboard', function () use ($menu) {
             return $menu;
         });
 
@@ -22,7 +21,7 @@ class AdminMenuMiddleware
     }
 
 
-    public function buildAdminMenu(): Menu
+    public function buildMenu(): Menu
     {
         $menu = Menu::new();
         $menu->addClass("menu-inner py-1 ps");
@@ -31,10 +30,7 @@ class AdminMenuMiddleware
         $menu->setActiveFromRequest();
 
         $this->addHomeMenu($menu);
-        $this->addStoresMenu($menu);
         $this->addUsersMenu($menu);
-        $this->addManageMenu($menu);
-        $this->addSupportMenu($menu);
         $this->addSettingsMenu($menu);
 
 
@@ -46,33 +42,6 @@ class AdminMenuMiddleware
         $this->addHtmlTitle($menu, __('Info and Statistics'));
 
         $this->addRouteLink($menu, route("admin.home.index"), __('Home'), asset("assets/admin/img/icons/store.png"));
-    }
-
-    private function addManageMenu(Menu $menu): void
-    {
-        $this->addHtmlTitle($menu, __('Admin Manage Area'));
-
-        $this->addRouteLink($menu, route("admin.plans.index"), __('Plans'), asset("assets/admin/img/icons/price-tag.png"));
-        $this->addRouteLink($menu, route("admin.payment-methods.index"), __('Payment methods'), asset("assets/admin/img/icons/payment.png"));
-    }
-
-    private function addStoresMenu(Menu $menu): void
-    {
-        $this->addHtmlTitle($menu, __('Stores Area'));
-
-        $this->addRouteLink($menu, route("admin.stores.index"), __('Stores'), asset("assets/admin/img/icons/store (1).png"));
-        $this->addRouteLink($menu, route("admin.stores.status", ['status' => StoreStatus::in_review->value]), __('In review stores'), asset("assets/admin/img/icons/inreview.png"));
-        $this->addRouteLink($menu, route("admin.stores.status", ['status' => StoreStatus::inactive->value]), __('Inactive stores'), asset("assets/admin/img/icons/inactive.png"));
-        $this->addRouteLink($menu, route("admin.stores.status", ['status' => StoreStatus::blocked->value]), __('Rejected stores'), asset("assets/admin/img/icons/rejected.png"));
-        $this->addRouteLink($menu, route("admin.wallet-transactions.index"), __('Wallet transactions'), asset("assets/admin/img/icons/wallet (1).png"));
-    }
-
-    private function addSupportMenu(Menu $menu): void
-    {
-        $this->addHtmlTitle($menu, __('Support Area'));
-
-        $this->addRouteLink($menu, route("admin.help-tickets.index"), __('Help tickets'), asset("assets/admin/img/icons/customer-service.png"));
-        $this->addRouteLink($menu, route("admin.notifications.index"), __('Notifications'), asset("assets/admin/img/icons/notification.png"));
     }
 
     private function addSettingsMenu(Menu $menu): void

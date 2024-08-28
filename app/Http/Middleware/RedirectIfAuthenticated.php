@@ -20,13 +20,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                if ($guard === "customer") {
-                    $route = "store-customer.home.index";
-                    return redirect()->route($route , $request->store);
-                } else {
-                    $route = "$guard.home.index";
-                    return redirect()->route($route);
-                }
+                return redirect()->route("dashboard.home");
             }
         }
 

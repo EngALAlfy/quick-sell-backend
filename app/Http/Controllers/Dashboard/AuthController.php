@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
@@ -24,7 +24,7 @@ class AuthController extends Controller
 
             AdminsServiceFacade::recordLoginData($request);
 
-            return redirect()->intended('/admin/home');
+            return redirect()->intended(route("dashboard.home"));
         }
 
         flash(__("auth.failed"))->error();

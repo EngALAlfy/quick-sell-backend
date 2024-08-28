@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Dashboard;
 
 use App\DataTables\Admin\RolesDataTable;
 use App\Enums\PermissionsGuard;

@@ -1,10 +1,7 @@
 <?php
 
-namespace App\DataTables\Admin;
+namespace App\DataTables;
 
-use App\Enums\TaggerStatus;
-use App\Models\Admin;
-use App\Models\Tagger;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;

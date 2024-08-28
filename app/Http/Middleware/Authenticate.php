@@ -16,15 +16,7 @@ class Authenticate extends Middleware
             return null;
         }
 
-        if($request->is("*admin*")){
-            return route("admin.login");
-        }
-
-        if($request->is("*tagger*")){
-            return route("tagger.login");
-        }
-
-        return route("store-customer.login" , $request->store);
+        return route("dashboard.login");
 
     }
 }
