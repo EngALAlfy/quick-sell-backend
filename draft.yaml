@@ -1,0 +1,260 @@
+models:
+  Customer:
+    name: required string:255 min:2
+    email: required email string:255 min:2
+    password: required string:400 min:6
+    login_method: required string:50 min:2 default:'password'
+    phone: required string:50 min:11 max:15
+    email_verified_at: nullable datetime
+    phone_verified_at: nullable datetime
+    last_login_datetime: nullable datetime
+    last_login_os: nullable string:50
+    last_login_ip: nullable ipaddress
+    last_login_useragent: nullable text
+    referral_code: nullable string:50
+    parent_referral_code: nullable string:50
+    status: required enum:active,blocked,inactive default:'active'
+    status_by: nullable unsignedBigInteger default:0
+    status_datetime: nullable datetime
+    status_reason: nullable json
+    timestamps: true
+    relationships:
+      belongsTo: Store
+      hasMany: Address,Order
+  Tagger:
+    name: required string:255 min:2
+    email: required unique email string:255 min:2
+    password: required string:400 min:6
+    login_method: required string:50 min:2 default:'password'
+    phone: required unique string:50 min:11 max:15
+    email_verified_at: nullable datetime
+    phone_verified_at: nullable datetime
+    last_login_datetime: nullable datetime
+    last_login_os: nullable string:50
+    last_login_ip: nullable ipaddress
+    last_login_useragent: nullable text
+    referral_code: nullable string:50
+    parent_referral_code: nullable string:50
+    status: required enum:active,blocked,inactive default:'active'
+    status_by: nullable unsignedBigInteger default:0
+    status_datetime: nullable datetime
+    status_reason: nullable json
+    timestamps: true
+    relationships:
+      belongsTo: Store
+  Admin:
+    name: required unique string:255 min:2
+    email: required unique email string:255 min:2
+    password: required string:400 min:6
+    login_method: required string:50 min:2 default:'password'
+    phone: required unique string:50 min:11 max:15
+    email_verified_at: nullable datetime
+    phone_verified_at: nullable datetime
+    last_login_datetime: nullable datetime
+    last_login_os: nullable string:50
+    last_login_ip: nullable ipaddress
+    last_login_useragent: nullable text
+    status: required enum:active,blocked,inactive default:'active'
+    status_by: nullable unsignedBigInteger default:0
+    status_datetime: nullable datetime
+    status_reason: nullable json
+    timestamps: true
+  Store:
+    name: required json
+    slug: required unique string:255 min:2
+    description: required json
+    status: required enum:active,blocked,inactive default:'active'
+    status_by: nullable unsignedBigInteger default:0
+    status_datetime: nullable datetime
+    contact_email: required email string:255 min:2
+    contact_phone: required string:255 min:11 max:15
+    contact_whatsapp: nullable string:255 min:11 max:15
+    contact_facebook: nullable string:255 min:2 url
+    contact_instagram: nullable string:255 min:2 url
+    contact_youtube: nullable string:255 min:2 url
+    contact_snapchat: nullable string:255 min:2 url
+    contact_twitter: nullable string:255 min:2 url
+    delivery_fee: nullable integer min:0 default:0
+    address: nullable string:255 min:2
+    city: nullable string:50 min:2
+    state: nullable string:50 min:2
+    country: nullable string:50 min:2
+    location: nullable json min:2
+    softDeletes: true
+    timestamps: true
+    relationships:
+      hasMany: Tagger:admins,Address,Customer,StoreSetting:settings,Product,Category,OrderTransaction,WalletTransaction,Cart,Order,Page
+      belongsTo: Plan
+  StoreSetting:
+    setting: required string:255 min:1
+    value: required text
+    options: nullable json
+    timestamps: true
+    relationships:
+      belongsTo: Store
+  Product:
+    name: required json
+    description: required  json
+    price: required  double min:1
+    quantity: required  integer min:0
+    max_quantity: nullable integer min:0 default:0
+    min_quantity: nullable integer min:0 default:0
+    discount_percentage: nullable integer min:0 max:100 default:0
+    softDeletes: true
+    timestamps: true
+    relationships:
+      belongsTo: Store,Category
+      belongsToMany: Cart
+  HelpTicket:
+    subject: required string:255
+    description: required text
+    type: required string:255
+    status: required enum:created,pending,solved,rejected
+    timestamps: true
+  ContactMessage:
+    subject: required string:255
+    message: required text
+    contact_email: required string:255 email
+    contact_phone: required string:50 min:11 max:15
+    timestamps: true
+  Address:
+    address: required string:255 min:2
+    city: required string:50 min:2
+    state: required string:50 min:2
+    country: required string:50 min:2
+    location: nullable json
+    softDeletes: true
+    timestamps: true
+    relationships:
+      belongsTo: Store, Customer
+      hasMany: Order
+  Category:
+    name: required json
+    description: nullable json
+    softDeletes: true
+    timestamps: true
+    relationships:
+      belongsTo: Store
+  Cart:
+    timestamps: true
+    relationships:
+      belongsTo: Store,Customer,Coupon
+      belongsToMany: Product
+  OrderTransaction:
+    name: required json
+    amount: required double
+    note: nullable string:500
+    options: nullable json
+    status: required enum:pending,successful,failed
+    timestamps: true
+    relationships:
+      belongsTo: Store,PaymentMethod
+      hasOne: Order
+  WalletTransaction:
+    name: required json
+    amount: required double
+    commission_percentage: required integer min:0 max:100
+    note: nullable string:500
+    options: nullable json
+    status: required enum:pending,successful,failed
+    timestamps: true
+    relationships:
+      belongsTo: Store
+      hasOne: Order
+  PaymentMethod:
+    name: required json
+    timestamps: true
+    relationships:
+      belongsToMany: Store
+      hasMany: Order
+  DevLog:
+    code: required string:50 #ref code like line number or id
+    name: required string:50
+    class: nullable string:50
+    function: nullable string:50
+    value: required text
+    note: nullable text
+    options: nullable json
+    data: nullable json
+    timestamps: true
+  StatusLog:
+    # morph (for item , by user)
+    status: required string:255
+    reason: nullable string:500
+    note: nullable string:500
+    timestamps: true
+  Order:
+    status: required enum:created,received,shipped,delivered,cancelled
+    is_delivery: required boolean
+    customer_ip: nullable ipaddress string:50 max:50
+    customer_os: nullable string:50 max:50
+    customer_useragent: nullable text
+    customer_contact_email: nullable email string:255 max:255
+    customer_contact_phone: nullable string:50 max:15 min:11
+    commission_percentage: required integer min:0 max:100 default:0
+    coupon_code: nullable string:50
+    timestamps: true
+    relationships:
+      belongsTo: Store,Customer,OrderTransaction,WalletTransaction,PaymentMethod,Address,Plan,Coupon
+      hasMany: OrderItem
+  OrderItem:
+    price: required double min:0
+    quantity: required int min:1
+    discount_percentage: nullable integer min:0 max:100 default:0
+    timestamps: true
+    relationships:
+      belongsTo: Store,Order,Customer,Product,Category
+  Plan:
+    name: required json
+    description: nullable json
+    commission_percentage: required integer min:0 max:100
+    timestamps: true
+    relationships:
+      hasMany: Store
+      belongsToMany: PlanFeature
+  PlanFeature:
+    slug: required string:255 min:1
+    name: required json
+    description: json
+    timestamps: true
+    relationships:
+      hasMany: Store
+      belongsToMany: Plan
+  Page:
+    name: string:255 index unique
+    slug: string:255 index unique
+    title: string:400
+    content: longtext
+    timestamps: true
+    relationships:
+      belongsTo: Store
+
+seeders: Product, Category,Plan,PaymentMethod,Address,Tagger,Admin,Customer,Store,Page
+
+controllers:
+    Product:
+      resource
+    Category:
+      resource
+    Order:
+      resource
+    Plan:
+      resource
+    OrderTransaction:
+      resource
+    WalletTransaction:
+      resource
+    PaymentMethod:
+      resource
+    StoreSetting:
+      resource
+    Address:
+      resource
+    Customer:
+      resource
+    Tagger:
+      resource
+    Admin:
+      resource
+    Store:
+      resource

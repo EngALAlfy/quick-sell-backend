@@ -1,0 +1,12 @@
+/node_modules
+/vendor
+/.idea
+composer.lock
+.env
+.env.backup
+.env.production
+# Project exclude paths
+/storage/app/
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
