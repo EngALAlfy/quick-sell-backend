@@ -12,14 +12,14 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
-    <title>@yield("title") | {{__('Admin Panel')}} - {{__('Toggar')}}</title>
+    <title>@yield("title") | {{__('Panel')}} - {{__(config("app.name"))}}</title>
 
     <meta name="description" content=""/>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{asset("favicon.ico")}}"/>
 
-    @include("admin.includes.styles")
+    @include("dashboard.includes.styles")
 </head>
 
 <body>
@@ -27,14 +27,14 @@
 <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
         <!-- Menu -->
-        @include("admin.includes.sidebar")
+        @include("dashboard.includes.sidebar")
         <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
             <!-- Navbar -->
 
-            @include("admin.includes.header")
+            @include("dashboard.includes.header")
 
             <!-- / Navbar -->
 
@@ -50,7 +50,7 @@
                 <!-- / Content -->
 
                 <!-- Footer -->
-                @include("admin.includes.footer")
+                @include("dashboard.includes.footer")
                 <!-- / Footer -->
 
                 <div class="content-backdrop fade"></div>
@@ -65,6 +65,6 @@
 </div>
 <!-- / Layout wrapper -->
 
-@include("admin.includes.scripts")
+@include("dashboard.includes.scripts")
 </body>
 </html>

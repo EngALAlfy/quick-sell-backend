@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Admin Routes
+| Dashboard Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register admin routes for your application. These
@@ -16,43 +15,35 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect("/", "/admin/home");
 
+
 Route::middleware("guest")->group(function () {
-    Route::view("/forget-password", "admin.auth.forget-password");
-    Route::view("/login", "admin.auth.login");
-    Route::post("/login", "App\Http\Controllers\Admin\AuthController@login")->name("login");
+    Route::view("/login", "store-customer.auth.login");
+    Route::post("/login", "App\Http\Controllers\Store\AuthController@login")->name("login");
+
+    Route::view("/forgot-password", "store-customer.auth.forget-password")->name("forget-password");
+    Route::post("/forgot-password", "App\Http\Controllers\Store\ForgetPasswordController@forget")->name("password.email");
+    Route::view('/forgot-password/{token}', "store-customer.auth.reset-password")->name('password.reset');
+    Route::post('/forgot-password/reset', "App\Http\Controllers\Store\ForgetPasswordController@reset")->name('password.update');
 });
 
-Route::middleware("auth:admin")->group(function () {
-    Route::post("/logout", "App\Http\Controllers\Admin\AuthController@logout")->name("logout");
+Route::middleware("auth")->group(function () {
+    Route::get("/logout", "App\Http\Controllers\Store\AuthController@logout")->name("logout");
 });
+
 
 /*
- * Admin Resources Area
+ * Resources Area
  */
 Route::middleware("auth:admin")->group(function () {
     Route::get("/home", "App\Http\Controllers\Admin\HomeController@index")->name("home.index");
 
-    Route::get("stores-{status}", [\App\Http\Controllers\Admin\StoreController::class, "index"])->name("stores.status");
-    Route::resource("stores", \App\Http\Controllers\Admin\StoreController::class);
-    Route::resource("taggers", \App\Http\Controllers\Admin\TaggerController::class);
-    Route::resource("plans", \App\Http\Controllers\Admin\PlanController::class);
-    Route::resource("admins", \App\Http\Controllers\Admin\AdminController::class);
-    Route::resource("notifications", \App\Http\Controllers\Admin\NotificationController::class);
-    Route::resource("payment-methods", \App\Http\Controllers\Admin\PaymentMethodController::class)->only("index", "show");
     Route::resource("wallet-transactions", \App\Http\Controllers\Admin\WalletTransactionController::class);
-
-    Route::get("taggers/status/{tagger}", "App\Http\Controllers\Admin\TaggerController@status")->name('taggers.status');
-    Route::PUT("taggers/status/{tagger}", "App\Http\Controllers\Admin\TaggerController@changeStatus")->name('taggers.status.change');
-
-    Route::resource("help-tickets", \App\Http\Controllers\Admin\HelpTicketController::class);
-    Route::get("/customer-reviews", [\App\Http\Controllers\Admin\CustomerReviewController::class, 'index'])->name('customer-reviews.index');
-    Route::delete("/customer-reviews/destroy/{customerReview}", [\App\Http\Controllers\Admin\CustomerReviewController::class, 'destroy'])->name('customer-reviews.destroy');
 });
 
 /*
- * Admin Special Area
+ *  Special Area
  */
-Route::middleware("auth:admin")->group(function () {
+Route::middleware("auth")->group(function () {
     Route::get("/profile", "App\Http\Controllers\UserController@profile")->name("profile.index");
     Route::get("/profile/edit", "App\Http\Controllers\UserController@editProfile")->name("profile.edit");
 
