@@ -1,0 +1,112 @@
+created:
+    - app/Http/Controllers/UserController.php
+    - app/Http/Controllers/ProductController.php
+    - app/Http/Controllers/CategoryController.php
+    - app/Http/Controllers/SaleController.php
+    - app/Http/Controllers/StockController.php
+    - app/Http/Controllers/SupplierController.php
+    - app/Http/Controllers/PurchaseOrderController.php
+    - app/Http/Controllers/TransactionController.php
+    - database/factories/UserFactory.php
+    - database/factories/ProductFactory.php
+    - database/factories/CategoryFactory.php
+    - database/factories/SaleFactory.php
+    - database/factories/SaleItemFactory.php
+    - database/factories/StockFactory.php
+    - database/factories/SupplierFactory.php
+    - database/factories/PurchaseOrderFactory.php
+    - database/factories/PurchaseOrderItemFactory.php
+    - database/factories/TransactionFactory.php
+    - database/migrations/2024_08_31_100636_create_users_table.php
+    - database/migrations/2024_08_31_100637_create_products_table.php
+    - database/migrations/2024_08_31_100638_create_categories_table.php
+    - database/migrations/2024_08_31_100639_create_sales_table.php
+    - database/migrations/2024_08_31_100640_create_sale_items_table.php
+    - database/migrations/2024_08_31_100641_create_stocks_table.php
+    - database/migrations/2024_08_31_100642_create_suppliers_table.php
+    - database/migrations/2024_08_31_100643_create_purchase_orders_table.php
+    - database/migrations/2024_08_31_100644_create_purchase_order_items_table.php
+    - database/migrations/2024_08_31_100645_create_transactions_table.php
+    - app/Models/User.php
+    - app/Models/Product.php
+    - app/Models/Category.php
+    - app/Models/Sale.php
+    - app/Models/SaleItem.php
+    - app/Models/Stock.php
+    - app/Models/Supplier.php
+    - app/Models/PurchaseOrder.php
+    - app/Models/PurchaseOrderItem.php
+    - app/Models/Transaction.php
+    - database/seeders/UserSeeder.php
+    - database/seeders/ProductSeeder.php
+    - database/seeders/CategorySeeder.php
+    - database/seeders/SupplierSeeder.php
+    - tests/Feature/Http/Controllers/UserControllerTest.php
+    - tests/Feature/Http/Controllers/ProductControllerTest.php
+    - tests/Feature/Http/Controllers/CategoryControllerTest.php
+    - tests/Feature/Http/Controllers/SaleControllerTest.php
+    - tests/Feature/Http/Controllers/StockControllerTest.php
+    - tests/Feature/Http/Controllers/SupplierControllerTest.php
+    - tests/Feature/Http/Controllers/PurchaseOrderControllerTest.php
+    - tests/Feature/Http/Controllers/TransactionControllerTest.php
+    - app/Http/Requests/UserStoreRequest.php
+    - app/Http/Requests/UserUpdateRequest.php
+    - app/Http/Requests/ProductStoreRequest.php
+    - app/Http/Requests/ProductUpdateRequest.php
+    - app/Http/Requests/CategoryStoreRequest.php
+    - app/Http/Requests/CategoryUpdateRequest.php
+    - app/Http/Requests/SaleStoreRequest.php
+    - app/Http/Requests/SaleUpdateRequest.php
+    - app/Http/Requests/StockStoreRequest.php
+    - app/Http/Requests/StockUpdateRequest.php
+    - app/Http/Requests/SupplierStoreRequest.php
+    - app/Http/Requests/SupplierUpdateRequest.php
+    - app/Http/Requests/PurchaseOrderStoreRequest.php
+    - app/Http/Requests/PurchaseOrderUpdateRequest.php
+    - app/Http/Requests/TransactionStoreRequest.php
+    - app/Http/Requests/TransactionUpdateRequest.php
+    - resources/views/user/index.blade.php
+    - resources/views/user/create.blade.php
+    - resources/views/user/show.blade.php
+    - resources/views/user/edit.blade.php
+    - resources/views/product/index.blade.php
+    - resources/views/product/create.blade.php
+    - resources/views/product/show.blade.php
+    - resources/views/product/edit.blade.php
+    - resources/views/category/index.blade.php
+    - resources/views/category/create.blade.php
+    - resources/views/category/show.blade.php
+    - resources/views/category/edit.blade.php
+    - resources/views/sale/index.blade.php
+    - resources/views/sale/create.blade.php
+    - resources/views/sale/show.blade.php
+    - resources/views/sale/edit.blade.php
+    - resources/views/stock/index.blade.php
+    - resources/views/stock/create.blade.php
+    - resources/views/stock/show.blade.php
+    - resources/views/stock/edit.blade.php
+    - resources/views/supplier/index.blade.php
+    - resources/views/supplier/create.blade.php
+    - resources/views/supplier/show.blade.php
+    - resources/views/supplier/edit.blade.php
+    - resources/views/purchaseOrder/index.blade.php
+    - resources/views/purchaseOrder/create.blade.php
+    - resources/views/purchaseOrder/show.blade.php
+    - resources/views/purchaseOrder/edit.blade.php
+    - resources/views/transaction/index.blade.php
+    - resources/views/transaction/create.blade.php
+    - resources/views/transaction/show.blade.php
+    - resources/views/transaction/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: 'required string:255 min:2', email: 'required unique email string:255 min:2', password: 'required string:400 min:6', email_verified_at: 'nullable datetime', last_login_datetime: 'nullable datetime', last_login_os: 'nullable string:50', last_login_ip: 'nullable ipaddress', last_login_useragent: 'nullable text', timestamps: timestamps }
+    Product: { name: 'required string:255 min:2', sku: 'required unique string:100', price: 'required decimal:8,2', stock_quantity: 'required integer min:0', description: 'nullable text', timestamps: timestamps, relationships: { belongsTo: Category } }
+    Category: { name: 'required string:255 min:2', description: 'nullable text', timestamps: timestamps, relationships: { hasMany: Product } }
+    Sale: { user_id: 'required foreignId:users', total_amount: 'required decimal:8,2', payment_method: 'required enum:cash,credit_card', created_at: 'nullable datetime', timestamps: timestamps, relationships: { hasMany: SaleItem, morphMany: Transaction } }
+    SaleItem: { sale_id: 'required foreignId:sales', product_id: 'required foreignId:products', quantity: 'required integer min:1', price: 'required decimal:8,2', total: 'required decimal:8,2', timestamps: timestamps }
+    Stock: { product_id: 'required foreignId:products', quantity: 'required integer', type: 'required enum:purchase,adjustment,return', created_at: 'nullable datetime', timestamps: timestamps, relationships: { morphMany: Transaction } }
+    Supplier: { name: 'required string:255', contact_information: 'required string:255', timestamps: timestamps }
+    PurchaseOrder: { supplier_id: 'required foreignId:suppliers', total_amount: 'required decimal:8,2', status: "required enum:pending,received,canceled default:'pending'", created_at: 'nullable datetime', timestamps: timestamps, relationships: { hasMany: PurchaseOrderItem, morphMany: Transaction } }
+    PurchaseOrderItem: { purchase_order_id: 'required foreignId:purchase_orders', product_id: 'required foreignId:products', quantity: 'required integer min:1', price: 'required decimal:8,2', total: 'required decimal:8,2', timestamps: timestamps }
+    Transaction: { transaction_type: 'required enum:sale,purchase,stock', user_id: 'required foreignId:users', transactable_id: 'required unsignedBigInteger', transactable_type: 'required string', amount: 'required decimal:8,2', details: 'nullable json', timestamps: timestamps, relationships: { morphTo: transactable } }

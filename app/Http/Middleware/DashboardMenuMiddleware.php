@@ -30,6 +30,9 @@ class DashboardMenuMiddleware
         $menu->setActiveFromRequest();
 
         $this->addHomeMenu($menu);
+        $this->addManageMenu($menu);
+        $this->addSalesMenu($menu);
+        $this->addReportsMenu($menu);
         $this->addUsersMenu($menu);
         $this->addSettingsMenu($menu);
 
@@ -41,20 +44,20 @@ class DashboardMenuMiddleware
     {
         $this->addHtmlTitle($menu, __('Info and Statistics'));
 
-        $this->addRouteLink($menu, route("admin.home.index"), __('Home'), asset("assets/admin/img/icons/store.png"));
+        $this->addRouteLink($menu, route("dashboard.home.index"), __('Home'), asset("assets/admin/img/icons/store.png"));
     }
 
     private function addSettingsMenu(Menu $menu): void
     {
         $this->addHtmlTitle($menu, __('Settings Area'));
 
-        $this->addRouteLink($menu, route("admin.settings.index"), __('Settings'), asset("assets/admin/img/icons/settings.png"));
-        $this->addRouteLink($menu, route("admin.roles.index"), __('Roles'), asset("assets/admin/img/icons/roles.png"));
-        $this->addRouteLink($menu, route("admin.settings.index"), __('Permissions Manager'), asset("assets/admin/img/icons/permissions.png"));
-        $this->addRouteLink($menu, route("admin.settings.index"), __('Error Log'), asset("assets/admin/img/icons/error.png"));
-        $this->addRouteLink($menu, route("admin.settings.index"), __('Dev Log'), asset("assets/admin/img/icons/code.png"));
-        $this->addRouteLink($menu, route("admin.settings.index"), __('Activity Log'), asset("assets/admin/img/icons/record.png"));
-        $this->addRouteLink($menu, route("admin.settings.index"), __('Activity Log 2'), asset("assets/admin/img/icons/recording.png"));
+        $this->addRouteLink($menu, route("dashboard.settings.index"), __('Settings'), asset("assets/admin/img/icons/settings.png"));
+        $this->addRouteLink($menu, route("dashboard.roles.index"), __('Roles'), asset("assets/admin/img/icons/roles.png"));
+        $this->addRouteLink($menu, route("dashboard.permissions.index"), __('Permissions Manager'), asset("assets/admin/img/icons/permissions.png"));
+        $this->addRouteLink($menu, "/error-log", __('Error Log'), asset("assets/admin/img/icons/error.png"));
+        $this->addRouteLink($menu, "/dev-log", __('Dev Log'), asset("assets/admin/img/icons/code.png"));
+        $this->addRouteLink($menu, route("dashboard.activity"), __('Activity Log'), asset("assets/admin/img/icons/record.png"));
+        $this->addRouteLink($menu, route("dashboard.activity-log"), __('Activity Log 2'), asset("assets/admin/img/icons/recording.png"));
     }
 
 
@@ -62,9 +65,7 @@ class DashboardMenuMiddleware
     {
         $this->addHtmlTitle($menu, __("Users Area"));
 
-        $this->addRouteLink($menu, route("admin.admins.index"), __('Admins List'), asset("assets/admin/img/icons/unauthorized-person.png"));
-        $this->addRouteLink($menu, route("admin.taggers.index"), __('Toggar List'), asset("assets/admin/img/icons/store-manager3.png"));
-        $this->addRouteLink($menu, route("admin.customer-reviews.index"), __('Customers Reviews'), asset("assets/admin/img/icons/team.png"));
+        $this->addRouteLink($menu, route("dashboard.users.index"), __('Users List'), asset("assets/admin/img/icons/unauthorized-person.png"));
     }
 
     private function addHtmlTitle(Menu $menu, $title): void

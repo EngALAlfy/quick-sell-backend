@@ -44,8 +44,8 @@ Route::middleware("auth:admin")->group(function () {
  *  Special Area
  */
 Route::middleware("auth")->group(function () {
-    Route::get("/profile", "App\Http\Controllers\UserController@profile")->name("profile.index");
-    Route::get("/profile/edit", "App\Http\Controllers\UserController@editProfile")->name("profile.edit");
+    Route::get("/profile", "App\Http\Controllers\Dashboard\UserController@profile")->name("profile.index");
+    Route::get("/profile/edit", "App\Http\Controllers\Dashboard\UserController@editProfile")->name("profile.edit");
 
     Route::get("/settings", "App\Http\Controllers\SettingsController@index")->name("settings.index");
     Route::post("/settings", "App\Http\Controllers\SettingsController@store")->name("settings.store");
@@ -60,14 +60,22 @@ Route::middleware("auth")->group(function () {
     Route::get('/settings/backup/{name}', "App\Http\Controllers\BackupController@show")->name('settings.backup-show');
     Route::delete('/settings/backup/{name}', "App\Http\Controllers\BackupController@destroy")->name('settings.backup-destroy');
 
-    Route::resource("dev-logs", \App\Http\Controllers\Admin\StoreController::class);
-    Route::resource("status-logs", \App\Http\Controllers\Admin\StoreController::class);
-    Route::resource("roles", \App\Http\Controllers\Admin\RoleController::class);
-    Route::resource("permissions", \App\Http\Controllers\Admin\PermissionController::class);
-    Route::resource("permission-groups", \App\Http\Controllers\Admin\PermissionGroupController::class);
+    Route::resource("roles", \App\Http\Controllers\Dashboard\RoleController::class);
+    Route::resource("permissions", \App\Http\Controllers\Dashboard\PermissionController::class);
+    Route::resource("permission-groups", \App\Http\Controllers\Dashboard\PermissionGroupController::class);
+
+    Route::resource('users', App\Http\Controllers\Dashboard\UserController::class);
+    Route::resource('products', App\Http\Controllers\Dashboard\ProductController::class);
+    Route::resource('categories', App\Http\Controllers\Dashboard\CategoryController::class);
+    Route::resource('sales', App\Http\Controllers\Dashboard\SaleController::class);
+    Route::resource('stocks', App\Http\Controllers\Dashboard\StockController::class);
+    Route::resource('suppliers', App\Http\Controllers\Dashboard\SupplierController::class);
+    Route::resource('purchase-orders', App\Http\Controllers\Dashboard\PurchaseOrderController::class);
+    Route::resource('transactions', App\Http\Controllers\Dashboard\TransactionController::class);
+
 });
 
-Route::group(['prefix' => 'activity', 'namespace' => 'jeremykenedy\LaravelLogger\App\Http\Controllers', 'middleware' => ['auth:admin', 'activity']], function () {
+Route::group(['prefix' => 'activity', 'namespace' => 'jeremykenedy\LaravelLogger\App\Http\Controllers', 'middleware' => ['auth', 'activity']], function () {
     // Dashboards
     Route::get('/', 'LaravelLoggerController@showAccessLog')->name('activity');
     Route::get('/cleared', ['uses' => 'LaravelLoggerController@showClearedActivityLog'])->name('cleared');
