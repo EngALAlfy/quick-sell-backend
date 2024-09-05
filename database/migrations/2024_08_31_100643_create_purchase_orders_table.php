@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('supplier_id');
             $table->decimal('total_amount', 8, 2);
             $table->enum('status', ["pending","received","canceled"])->default('pending');
-            $table->dateTime('created_at')->nullable();
             $table->timestamps();
         });
     }

@@ -42,7 +42,7 @@
     "required" => true,
     "has_new_item" => true,
     "new_item_attrs" => 'data-bs-dismiss="offcanvas"',
-    "new_item_route" => route("admin.permission-groups.create"),
+    "new_item_route" => route("dashboard.permission-groups.create"),
     "floating" => false,
     "options" => $groups,
     "col" => "12",

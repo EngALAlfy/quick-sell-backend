@@ -2,59 +2,103 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\DataTables\UserDataTable;
+use App\Enums\PermissionsGuard;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Laracasts\Flash\Flash;
 
 class UserController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(UserDataTable $dataTable)
     {
-        $users = User::all();
-
-        return view('user.index', compact('users'));
+        return $dataTable->render('dashboard.users.index');
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
-        return view('user.create');
+        $roles = Role::whereGuardName(PermissionsGuard::user)->pluck("title", "name");
+        return view('dashboard.users.create', compact("roles"));
     }
 
-    public function store(UserStoreRequest $request): Response
+    public function store(UserStoreRequest $request)
     {
-        $user = User::create($request->validated());
+        // todo:: move to service
+        DB::transaction(static function () use ($request){
+            $password = Hash::make($request->get("_password"));
+            $user = User::create([
+                "name" => $request->input('name'),
+                "email" => $request->input('email'),
+                "password" => $password,
+                "phone" => $request->input('phone'),
+                "status" => UserStatus::active,
+                "status_by" => auth("user")->id(),
+            ]);
 
-        $request->session()->flash('user.id', $user->id);
+            $role = $request->get("role");
+            $user->assignRole($role);
 
-        return redirect()->route('users.index');
+            if($request->has("avatar_storage_path")){
+                update_media($request->only("avatar_storage_path") , $user , "avatar_storage_path" , "avatar");
+            }
+
+            Flash::success(__("User $user->name has created successfully"));
+        });
+
+        return redirect()->route('dashboard.users.index');
     }
 
-    public function show(Request $request, User $user): Response
+    public function show(Request $request, User $user)
     {
-        return view('user.show', compact('user'));
+        return view('dashboard.users.show', compact('user'));
     }
 
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request, User $user)
     {
-        return view('user.edit', compact('user'));
+        $roles = Role::whereGuardName(PermissionsGuard::user)->pluck("title", "name");
+        return view('dashboard.users.edit', compact('user' , 'roles'));
     }
 
-    public function update(UserUpdateRequest $request, User $user): Response
+    public function update(UserUpdateRequest $request, User $user)
     {
-        $user->update($request->validated());
+        // todo:: move to service
+        DB::transaction(static function () use ($user , $request){
+            if($request->filled("_password")) {
+                $password = Hash::make($request->get("_password"));
+                $user->update([
+                    "password" => $password,
+                ]);
+            }
 
-        $request->session()->flash('user.id', $user->id);
+            $user->update([
+                "name" => $request->input('name'),
+                "email" => $request->input('email'),
+                "phone" => $request->input('phone'),
+            ]);
 
-        return redirect()->route('users.index');
+            $role = $request->get("role");
+            $user->syncRoles($role);
+
+            if($request->has("avatar_storage_path")){
+                update_media($request->only("avatar_storage_path") , $user , "avatar_storage_path" , "avatar");
+            }
+
+            Flash::success(__("User $user->name has updated successfully"));
+        });
+
+        return redirect()->route('dashboard.users.index');
     }
 
-    public function destroy(Request $request, User $user): Response
+    public function destroy(Request $request, User $user)
     {
         $user->delete();
-
-        return redirect()->route('users.index');
+        Flash::success(__("User $user->name has deleted successfully"));
+        return redirect()->route('dashboard.users.index');
     }
 }

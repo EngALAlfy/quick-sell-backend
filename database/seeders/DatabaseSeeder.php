@@ -23,22 +23,9 @@ class DatabaseSeeder extends Seeder
         DB::setEventDispatcher(new Dispatcher());
 
         $this->call([
-            AdminSeeder::class,
-            PaymentMethodSeeder::class,
-            PlanSeeder::class,
-            StoreSeeder::class,
-            TagSeeder::class,
-            TaggerSeeder::class,
-            CategorySeeder::class,
-            ProductSeeder::class,
-            CustomerSeeder::class,
-            HelpTicketSeeder::class,
-            PageSeeder::class,
-            OrderSeeder::class,
-            CustomerReviewSeeder::class,
-            StoreFeatureSeeder::class,
+            UserSeeder::class,
+
         ]);
 
-        $this->call(WalletTransactionSeeder::class);
     }
 }

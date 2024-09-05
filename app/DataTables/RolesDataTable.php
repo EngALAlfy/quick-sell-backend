@@ -26,7 +26,7 @@ class RolesDataTable extends DataTable
                 return $role->title;
             })
             ->editColumn("created_at", '{{Carbon\Carbon::parse($created_at)->format("Y-m-d h:i a")}}')
-            ->editColumn("action", "admin.roles.datatables_actions")
+            ->editColumn("action", "dashboard.roles.datatables_actions")
             ->rawColumns(["action"]);
     }
 

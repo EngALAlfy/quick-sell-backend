@@ -83,9 +83,9 @@
 
 {{-- DropZone Layout --}}
 <div class="dropzone d-flex flex-wrap justify-content-center {{ $class ?? '' }}" id="{{ $id ?? 'myDropzone' }}" data-field="dz" style="border: 2px dashed #d9dee3;">
-    <input type="hidden" id="uploaded_file_name" name="{{ $name ?? 'image' }}_name" value="{{ is_array($file_name) ? implode(',', $file_name ?? []) : ($file_name ?? "") }}">
-    <input type="hidden" id="uploaded_file_public_path" name="{{ $name ?? 'image' }}_public_path" value="{{ is_array($public_path) ? implode(',', $public_path ?? []) : ($public_path ?? "") }}">
-    <input type="hidden" id="uploaded_file_storage_path" name="{{ $name ?? 'image' }}_storage_path" value="{{ is_array($storage_path) ? implode(',', $storage_path ?? []) : ($storage_path ?? "") }}">
+    <input type="hidden" id="uploaded_file_name" name="{{ $name ?? 'image' }}_name" value="{{ is_array($file_name) ? implode(',', $file_name) : ($file_name ?? "") }}">
+    <input type="hidden" id="uploaded_file_public_path" name="{{ $name ?? 'image' }}_public_path" value="{{ is_array($public_path) ? implode(',', $public_path) : ($public_path ?? "") }}">
+    <input type="hidden" id="uploaded_file_storage_path" name="{{ $name ?? 'image' }}_storage_path" value="{{ is_array($storage_path) ? implode(',', $storage_path) : ($storage_path ?? "") }}">
 
     <div class="dz-message needsclick"
          style="color: #566a7f; margin: 4.5rem 0; font-weight: 500; text-align: center; font-size: 1.625rem; width:100%; text-align:center;">
@@ -248,7 +248,6 @@
 {{-- END LAYOUT --}}
 
 {{-- DropZone Script --}}
-@push("scripts")
     <script>
         $(document).ready(function () {
             var dz = $('#dz-preview-template').html();
@@ -460,5 +459,4 @@
 
         });
     </script>
-@endpush
 {{-- END SCRIPT --}}

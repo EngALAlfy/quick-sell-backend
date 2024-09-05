@@ -50,7 +50,7 @@
 <div class="col-12">
     <div class="d-flex justify-content-between">
         <h4>{{__('Role Permissions')}}</h4>
-        {!! ajax_button("<i class='fa fa-plus me-2'></i>" . __('Add new permission'), "btn btn-sm text-nowrap" , route("admin.permissions.create") , __('Add new permission')  , 'data-bs-dismiss="modal"' , "offcanvas") !!}
+        {!! ajax_button("<i class='fa fa-plus me-2'></i>" . __('Add new permission'), "btn btn-sm text-nowrap" , route("dashboard.permissions.create") , __('Add new permission')  , 'data-bs-dismiss="modal"' , "offcanvas") !!}
     </div>
     <!-- Permission table -->
     <div class="table-responsive">

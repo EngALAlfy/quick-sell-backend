@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
 
@@ -23,7 +24,7 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->safeEmail(),
-            'password' => $this->faker->password(),
+            'password' => Hash::make("123456"),
             'email_verified_at' => $this->faker->dateTime(),
             'last_login_datetime' => $this->faker->dateTime(),
             'last_login_os' => $this->faker->regexify('[A-Za-z0-9]{50}'),

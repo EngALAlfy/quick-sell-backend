@@ -26,7 +26,7 @@ class PlansDataTable extends DataTable
                 return $plan->name;
             })
             ->editColumn("created_at", '{{Carbon\Carbon::parse($created_at)->format("Y-m-d h:i a")}}')
-            ->editColumn("action", "admin.plans.datatables_actions")
+            ->editColumn("action", "dashboard.plans.datatables_actions")
             ->rawColumns(["action"]);
     }
 
@@ -156,7 +156,7 @@ class PlansDataTable extends DataTable
 
     private function getButtons(): array
     {
-        $userId = auth("admin")->id();
+        $userId = auth()->id();
         $ajax_action_type = settings("ajax_action_type_for_$userId", "modal");
         return [
             Button::make('collection')
@@ -175,7 +175,7 @@ class PlansDataTable extends DataTable
                 ->addClass("ajax-btn")
                 ->addClass("create-new btn btn-primary")
                 ->action("")
-                ->attr(["data-href" => route("admin.plans.create"), "data-html-type" => $ajax_action_type, "data-html-title" => __("Add new plan")])
+                ->attr(["data-href" => route("dashboard.plans.create"), "data-html-type" => $ajax_action_type, "data-html-title" => __("Add new plan")])
         ];
     }
 }

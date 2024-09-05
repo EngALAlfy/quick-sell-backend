@@ -2,7 +2,7 @@
     $userIdField = config('LaravelLogger.defaultUserIDField')
 @endphp
 
-<form action="{{route('admin.activity')}}" method="get">
+<form action="{{route('dashboard.activity')}}" method="get">
     <div class="row mb-3">
         @if(in_array('description',explode(',', config('LaravelLogger.searchFields'))))
             <div class="col-12 col-sm-4 col-lg-2 mb-2">

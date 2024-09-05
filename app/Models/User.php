@@ -50,4 +50,11 @@ class User extends Authenticatable implements HasMedia
     protected $casts = [
         'id' => 'integer',
     ];
+
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('avatar')
+            ->useFallbackUrl(asset("assets/admin/img/user.png"));
+    }
 }

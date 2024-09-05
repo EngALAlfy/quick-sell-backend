@@ -47,6 +47,34 @@ class DashboardMenuMiddleware
         $this->addRouteLink($menu, route("dashboard.home.index"), __('Home'), asset("assets/admin/img/icons/store.png"));
     }
 
+    private function addManageMenu(Menu $menu): void
+    {
+        $this->addHtmlTitle($menu, __('Manage Area'));
+
+        $this->addRouteLink($menu, route("dashboard.products.index"), __('Products'), asset("assets/admin/img/icons/product.png"));
+        $this->addRouteLink($menu, route("dashboard.categories.index"), __('Categories'), asset("assets/admin/img/icons/category.png"));
+        $this->addRouteLink($menu, route("dashboard.stocks.index"), __('Stocks'), asset("assets/admin/img/icons/shopping-cart-1.png"));
+        $this->addRouteLink($menu, route("dashboard.suppliers.index"), __('Suppliers'), asset("assets/admin/img/icons/store-manager2.png"));
+    }
+
+    private function addReportsMenu(Menu $menu): void
+    {
+        $this->addHtmlTitle($menu, __('Reports Area'));
+
+        $this->addRouteLink($menu, route("dashboard.transactions.index"), __('Transactions'), asset("assets/admin/img/icons/cash-flow.png"));
+        $this->addRouteLink($menu,  "/soon", __('Sales report'), asset("assets/admin/img/icons/invoice.png"));
+        $this->addRouteLink($menu,  "/soon", __('Purchase report'), asset("assets/admin/img/icons/bill.png"));
+        $this->addRouteLink($menu, "/soon" , __('Stock report'), asset("assets/admin/img/icons/shopping-cart.png"));
+    }
+
+    private function addSalesMenu(Menu $menu): void
+    {
+        $this->addHtmlTitle($menu, __('Sales Area'));
+
+        $this->addRouteLink($menu, route("dashboard.sales.index"), __('Sales'), asset("assets/admin/img/icons/order.png"));
+        $this->addRouteLink($menu, route("dashboard.sales.create"), __('New sale'), asset("assets/admin/img/icons/add-to-cart.png"));
+    }
+
     private function addSettingsMenu(Menu $menu): void
     {
         $this->addHtmlTitle($menu, __('Settings Area'));
@@ -57,7 +85,7 @@ class DashboardMenuMiddleware
         $this->addRouteLink($menu, "/error-log", __('Error Log'), asset("assets/admin/img/icons/error.png"));
         $this->addRouteLink($menu, "/dev-log", __('Dev Log'), asset("assets/admin/img/icons/code.png"));
         $this->addRouteLink($menu, route("dashboard.activity"), __('Activity Log'), asset("assets/admin/img/icons/record.png"));
-        $this->addRouteLink($menu, route("dashboard.activity-log"), __('Activity Log 2'), asset("assets/admin/img/icons/recording.png"));
+        $this->addRouteLink($menu, route("dashboard.settings.activity-log"), __('Activity Log 2'), asset("assets/admin/img/icons/recording.png"));
     }
 
 

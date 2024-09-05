@@ -6,9 +6,7 @@ use Illuminate\Support\Str;
 
 enum PermissionsGuard: string
 {
-    case admin = "admin";
-    case tagger = "tagger";
-    case customer = "customer";
+    case user = "user";
 
     public static function values()
     {

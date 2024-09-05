@@ -41,7 +41,7 @@ class BackupController extends Controller
         // reverse the backups, so the newest one would be on top
         $backups = array_reverse($backups);
 
-        return view('admin.settings.backup.index', compact('backups'));
+        return view('dashboard.settings.backup.index', compact('backups'));
     }
 
     /**
@@ -56,7 +56,7 @@ class BackupController extends Controller
 
         Flash::info($output);
 
-        return redirect()->route('admin.settings.backup');
+        return redirect()->route('dashboard.settings.backup');
     }
 
     /**
@@ -95,7 +95,7 @@ class BackupController extends Controller
 
             Flash::info($output);
 
-            return redirect()->route('admin.settings.backup');
+            return redirect()->route('dashboard.settings.backup');
         }
 
         abort(404);

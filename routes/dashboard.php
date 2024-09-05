@@ -13,31 +13,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect("/", "/admin/home");
+Route::redirect("/", "/dashboard/home");
 
 
 Route::middleware("guest")->group(function () {
-    Route::view("/login", "store-customer.auth.login");
-    Route::post("/login", "App\Http\Controllers\Store\AuthController@login")->name("login");
+    Route::view("/login", "dashboard.auth.login");
+    Route::post("/login", "App\Http\Controllers\Dashboard\AuthController@login")->name("login");
 
-    Route::view("/forgot-password", "store-customer.auth.forget-password")->name("forget-password");
-    Route::post("/forgot-password", "App\Http\Controllers\Store\ForgetPasswordController@forget")->name("password.email");
-    Route::view('/forgot-password/{token}', "store-customer.auth.reset-password")->name('password.reset');
-    Route::post('/forgot-password/reset', "App\Http\Controllers\Store\ForgetPasswordController@reset")->name('password.update');
+    Route::view("/forgot-password", "dashboard.auth.forget-password")->name("forget-password");
+    Route::post("/forgot-password", "App\Http\Controllers\Dashboard\ForgetPasswordController@forget")->name("password.email");
+    Route::view('/forgot-password/{token}', "dashboard.auth.reset-password")->name('password.reset');
+    Route::post('/forgot-password/reset', "App\Http\Controllers\Dashboard\ForgetPasswordController@reset")->name('password.update');
 });
 
 Route::middleware("auth")->group(function () {
-    Route::get("/logout", "App\Http\Controllers\Store\AuthController@logout")->name("logout");
+    Route::get("/logout", "App\Http\Controllers\Dashboard\AuthController@logout")->name("logout");
 });
 
 
 /*
  * Resources Area
  */
-Route::middleware("auth:admin")->group(function () {
-    Route::get("/home", "App\Http\Controllers\Admin\HomeController@index")->name("home.index");
+Route::middleware("auth")->group(function () {
+    Route::get("/home", "App\Http\Controllers\Dashboard\HomeController@index")->name("home.index");
+    Route::resource("roles", \App\Http\Controllers\Dashboard\RoleController::class);
+    Route::resource("permissions", \App\Http\Controllers\Dashboard\PermissionController::class);
+    Route::resource("permission-groups", \App\Http\Controllers\Dashboard\PermissionGroupController::class);
 
-    Route::resource("wallet-transactions", \App\Http\Controllers\Admin\WalletTransactionController::class);
+    Route::resource('users', App\Http\Controllers\Dashboard\UserController::class);
+    Route::resource('products', App\Http\Controllers\Dashboard\ProductController::class);
+    Route::resource('categories', App\Http\Controllers\Dashboard\CategoryController::class);
+    Route::resource('sales', App\Http\Controllers\Dashboard\SaleController::class);
+    Route::resource('stocks', App\Http\Controllers\Dashboard\StockController::class);
+    Route::resource('suppliers', App\Http\Controllers\Dashboard\SupplierController::class);
+    Route::resource('purchase-orders', App\Http\Controllers\Dashboard\PurchaseOrderController::class);
+    Route::resource('transactions', App\Http\Controllers\Dashboard\TransactionController::class);
 });
 
 /*
@@ -59,20 +69,6 @@ Route::middleware("auth")->group(function () {
     Route::get('/settings/backup/create', "App\Http\Controllers\BackupController@create")->name('settings.backup-create');
     Route::get('/settings/backup/{name}', "App\Http\Controllers\BackupController@show")->name('settings.backup-show');
     Route::delete('/settings/backup/{name}', "App\Http\Controllers\BackupController@destroy")->name('settings.backup-destroy');
-
-    Route::resource("roles", \App\Http\Controllers\Dashboard\RoleController::class);
-    Route::resource("permissions", \App\Http\Controllers\Dashboard\PermissionController::class);
-    Route::resource("permission-groups", \App\Http\Controllers\Dashboard\PermissionGroupController::class);
-
-    Route::resource('users', App\Http\Controllers\Dashboard\UserController::class);
-    Route::resource('products', App\Http\Controllers\Dashboard\ProductController::class);
-    Route::resource('categories', App\Http\Controllers\Dashboard\CategoryController::class);
-    Route::resource('sales', App\Http\Controllers\Dashboard\SaleController::class);
-    Route::resource('stocks', App\Http\Controllers\Dashboard\StockController::class);
-    Route::resource('suppliers', App\Http\Controllers\Dashboard\SupplierController::class);
-    Route::resource('purchase-orders', App\Http\Controllers\Dashboard\PurchaseOrderController::class);
-    Route::resource('transactions', App\Http\Controllers\Dashboard\TransactionController::class);
-
 });
 
 Route::group(['prefix' => 'activity', 'namespace' => 'jeremykenedy\LaravelLogger\App\Http\Controllers', 'middleware' => ['auth', 'activity']], function () {

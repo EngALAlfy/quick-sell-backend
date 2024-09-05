@@ -10,7 +10,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
-    <title>{{__('Login')}} | {{__('Admin Panel')}} - {{__('Toggar')}}</title>
+    <title>{{__('Login')}} | {{__('Dashboard')}} - {{__(config("app.name"))}}</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{asset("favicon.ico")}}"/>
@@ -63,20 +63,20 @@
                 <div class="card-body">
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
-                        <a href="{{route("admin.login")}}" class="app-brand-link gap-2">
+                        <a href="{{route("dashboard.login")}}" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
                                 <img src="{{asset("assets/admin/sneat/img/logo.png")}}" width="50" height="50">
                             </span>
-                            <span class="app-brand-text demo text-body fw-bold">{{__('Toggar')}}</span>
+                            <span class="app-brand-text demo text-body fw-bold">{{__(config("app.name"))}}</span>
                         </a>
                     </div>
                     <!-- /Logo -->
 
-                    <h4 class="mb-2">{{__('Toggar Admin Area!')}} 👋</h4>
-                    <p class="mb-4">Please sign-in to your account</p>
+                    <h4 class="mb-2">{{__(config("app.name"))}} {{__('Dashboard!')}} 👋</h4>
+                    <p class="mb-4">{{__('Please sign-in to your account')}}</p>
 
                     @include("includes.status")
-                    {{html()->form()->route("admin.login")->id("formAuthentication")->class("mb-3")->open()}}
+                    {{html()->form()->route("dashboard.login")->id("formAuthentication")->class("mb-3")->open()}}
                         <div class="mb-3">
                             <label for="email" class="form-label">{{__('Email')}}</label>
                             <input
@@ -115,12 +115,6 @@
                             <button class="btn btn-primary d-grid w-100" type="submit">{{__('Sign in')}}</button>
                         </div>
                     {{html()->form()->close()}}
-                    <p class="text-center">
-                        <span>{{__('Not Admin?')}}</span>
-                        <a href="{{route("tagger.login")}}">
-                            <span>{{__('Try Tagger panel')}}</span>
-                        </a>
-                    </p>
                 </div>
             </div>
             <!-- /Register -->

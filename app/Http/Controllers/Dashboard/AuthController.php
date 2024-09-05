@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use App\Services\AdminsService;
-use App\Services\Facades\AdminsServiceFacade;
+use App\Services\Facades\UsersServiceFacade;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,12 +18,12 @@ class AuthController extends Controller
             abort_unless(app()->isLocal(), 403);
         }
 
-        if (Auth::guard("admin")->attempt($credentials, $request->filled('remember'))) {
+        if (Auth::guard()->attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
 
-            AdminsServiceFacade::recordLoginData($request);
+            UsersServiceFacade::recordLoginData($request);
 
-            return redirect()->intended(route("dashboard.home"));
+            return redirect()->intended(route("dashboard.home.index"));
         }
 
         flash(__("auth.failed"))->error();
@@ -34,8 +33,8 @@ class AuthController extends Controller
 
     public function logout(): RedirectResponse
     {
-        Auth::guard("admin")->logout();
-        return redirect()->route('admin.login');
+        Auth::guard()->logout();
+        return redirect()->route('dashboard.login');
     }
 
 }

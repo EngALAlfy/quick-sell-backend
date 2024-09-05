@@ -1,4 +1,4 @@
-@extends("layouts.admin")
+@extends("layouts.dashboard")
 
 @section("title" , __('Admin roles List'))
 @section("description" , __('Show system admin roles List'))
@@ -26,9 +26,9 @@
                         <div class="d-flex justify-content-between align-items-end">
                             <div class="role-heading">
                                 <h4 class="mb-1">{{$role->title}}</h4>
-                                {!! ajax_button('<i class="bx bx-edit me-2"></i> '. __("Edit role") , "text-primary btn btn-link" , route("admin.roles.edit" , $role) , __('Edit role')) !!}
+                                {!! ajax_button('<i class="bx bx-edit me-2"></i> '. __("Edit role") , "text-primary btn btn-link" , route("dashboard.roles.edit" , $role) , __('Edit role')) !!}
                             </div>
-                            {{html()->form()->method("post")->route("admin.roles.destroy" , $role)->open()}}
+                            {{html()->form()->method("post")->route("dashboard.roles.destroy" , $role)->open()}}
                             @method('DELETE')
                             <a href="javascript:void(0);" class="text-muted delete-button"><i
                                         class="bx bx-trash"></i></a>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-sm-7">
                         <div class="card-body text-sm-end text-center ps-sm-0">
-                            {!! ajax_button(__('Add new admin role'), "btn btn-primary mb-3 text-nowrap add-new-role" , route("admin.roles.create") , __('Add new admin role')) !!}
+                            {!! ajax_button(__('Add new admin role'), "btn btn-primary mb-3 text-nowrap add-new-role" , route("dashboard.roles.create") , __('Add new admin role')) !!}
                             <p class="mb-0">{{__('Add role, if it does not exist')}}</p>
                         </div>
                     </div>

@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->enum('transaction_type', ["sale","purchase","stock"]);
             $table->string('user_id');
-            $table->unsignedBigInteger('transactable_id');
-            $table->string('transactable_type');
             $table->decimal('amount', 8, 2);
             $table->json('details')->nullable();
             $table->morphs('transactable');

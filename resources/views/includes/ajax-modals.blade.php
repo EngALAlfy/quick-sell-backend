@@ -1,6 +1,6 @@
 <script>
     $(function () {
-        document.querySelector('li.active.selected').scrollIntoView({
+        document.querySelector('li.active').scrollIntoView({
             behavior: 'smooth'
         });
     });
@@ -55,7 +55,46 @@
 
 <script>
     function onAjaxActionModalShow() {
-        initFormHelpers();
+        // Selectors
+        var selectpicker = $(".selectpicker");
+        var select2 = $(".select2");
+        var select2Icons = $(".select2-icons");
+
+        // Custom template function
+        function formatOption(option) {
+            if (option.id) {
+                var icon = $(option.element).data("icon");
+                return "<i class='" + icon + " me-2'></i>" + option.text;
+            }
+            return option.text;
+        }
+
+        // Initialize selectpicker
+        if (selectpicker.length) {
+            selectpicker.selectpicker();
+        }
+
+        // Initialize select2
+        if (select2.length) {
+            select2.each(function () {
+                var select = $(this);
+                select.select2({
+                    dropdownParent: select.parent(),
+                });
+            });
+        }
+
+        // Initialize select2 with icons
+        if (select2Icons.length) {
+            select2Icons.select2({
+                dropdownParent: select2Icons.parent(),
+                templateResult: formatOption,
+                templateSelection: formatOption,
+                escapeMarkup: function (markup) {
+                    return markup;
+                }
+            });
+        }
         // Init BS Tooltip
         const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
         tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -64,6 +103,46 @@
     }
 
     function onAjaxActionOffcanvasShow() {
+        // Selectors
+        var selectpicker = $(".selectpicker");
+        var select2 = $(".select2");
+        var select2Icons = $(".select2-icons");
+
+        // Custom template function
+        function formatOption(option) {
+            if (option.id) {
+                var icon = $(option.element).data("icon");
+                return "<i class='" + icon + " me-2'></i>" + option.text;
+            }
+            return option.text;
+        }
+
+        // Initialize selectpicker
+        if (selectpicker.length) {
+            selectpicker.selectpicker();
+        }
+
+        // Initialize select2
+        if (select2.length) {
+            select2.each(function () {
+                var select = $(this);
+                select.select2({
+                    dropdownParent: select.parent(),
+                });
+            });
+        }
+
+        // Initialize select2 with icons
+        if (select2Icons.length) {
+            select2Icons.select2({
+                dropdownParent: select2Icons.parent(),
+                templateResult: formatOption,
+                templateSelection: formatOption,
+                escapeMarkup: function (markup) {
+                    return markup;
+                }
+            });
+        }
         // Init BS Tooltip
         const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
         tooltipTriggerList.map(function (tooltipTriggerEl) {

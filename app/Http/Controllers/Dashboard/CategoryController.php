@@ -2,59 +2,63 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Laracasts\Flash\Flash;
 
 class CategoryController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(CategoryDataTable $dataTable)
     {
-        $categories = Category::all();
-
-        return view('category.index', compact('categories'));
+        return $dataTable->render('dashboard.categories.index');
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
-        return view('category.create');
+        return view('dashboard.categories.create');
     }
 
-    public function store(CategoryStoreRequest $request): Response
+    public function store(CategoryStoreRequest $request)
     {
-        $category = Category::create($request->validated());
+        DB::transaction(function () use ($request) {
+            $category = Category::create($request->validated());
 
-        $request->session()->flash('category.id', $category->id);
+            Flash::success(__("Category $category->name has been created successfully"));
+        });
 
-        return redirect()->route('categories.index');
+        return redirect()->route('dashboard.categories.index');
     }
 
-    public function show(Request $request, Category $category): Response
+    public function show(Request $request, Category $category)
     {
-        return view('category.show', compact('category'));
+        return view('dashboard.categories.show', compact('category'));
     }
 
-    public function edit(Request $request, Category $category): Response
+    public function edit(Request $request, Category $category)
     {
-        return view('category.edit', compact('category'));
+        return view('dashboard.categories.edit', compact('category'));
     }
 
-    public function update(CategoryUpdateRequest $request, Category $category): Response
+    public function update(CategoryUpdateRequest $request, Category $category)
     {
-        $category->update($request->validated());
+        DB::transaction(function () use ($request, $category) {
+            $category->update($request->validated());
 
-        $request->session()->flash('category.id', $category->id);
+            Flash::success(__("Category $category->name has been updated successfully"));
+        });
 
-        return redirect()->route('categories.index');
+        return redirect()->route('dashboard.categories.index');
     }
 
-    public function destroy(Request $request, Category $category): Response
+    public function destroy(Request $request, Category $category)
     {
         $category->delete();
-
-        return redirect()->route('categories.index');
+        Flash::success(__("Category $category->name has been deleted successfully"));
+        return redirect()->route('dashboard.categories.index');
     }
 }

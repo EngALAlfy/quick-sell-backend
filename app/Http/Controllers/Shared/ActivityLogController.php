@@ -11,7 +11,7 @@ class ActivityLogController extends Controller
     function index()
     {
         $activityLogs = Activity::latest()->paginate(25);
-        return view("admin.settings.activity-log.index" , compact("activityLogs"));
+        return view("dashboard.settings.activity-log.index" , compact("activityLogs"));
     }
 
     function clearAll()
@@ -23,6 +23,6 @@ class ActivityLogController extends Controller
     function show($log)
     {
         $activity = Activity::where("id" , $log)->first();
-        return view("admin.settings.activity-log.show" , compact("activity"));
+        return view("dashboard.settings.activity-log.show" , compact("activity"));
     }
 }

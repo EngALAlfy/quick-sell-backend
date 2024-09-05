@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('product_id');
             $table->integer('quantity');
             $table->enum('type', ["purchase","adjustment","return"]);
-            $table->dateTime('created_at')->nullable();
             $table->timestamps();
         });
     }

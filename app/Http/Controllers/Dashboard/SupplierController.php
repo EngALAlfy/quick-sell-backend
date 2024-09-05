@@ -2,59 +2,63 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\DataTables\SupplierDataTable;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\SupplierStoreRequest;
 use App\Http\Requests\SupplierUpdateRequest;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Laracasts\Flash\Flash;
 
 class SupplierController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(SupplierDataTable $dataTable)
     {
-        $suppliers = Supplier::all();
-
-        return view('supplier.index', compact('suppliers'));
+        return $dataTable->render('dashboard.suppliers.index');
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
-        return view('supplier.create');
+        return view('dashboard.suppliers.create');
     }
 
-    public function store(SupplierStoreRequest $request): Response
+    public function store(SupplierStoreRequest $request)
     {
-        $supplier = Supplier::create($request->validated());
+        DB::transaction(function () use ($request) {
+            $supplier = Supplier::create($request->validated());
 
-        $request->session()->flash('supplier.id', $supplier->id);
+            Flash::success(__("Supplier $supplier->name has been created successfully"));
+        });
 
-        return redirect()->route('suppliers.index');
+        return redirect()->route('dashboard.suppliers.index');
     }
 
-    public function show(Request $request, Supplier $supplier): Response
+    public function show(Request $request, Supplier $supplier)
     {
-        return view('supplier.show', compact('supplier'));
+        return view('dashboard.suppliers.show', compact('supplier'));
     }
 
-    public function edit(Request $request, Supplier $supplier): Response
+    public function edit(Request $request, Supplier $supplier)
     {
-        return view('supplier.edit', compact('supplier'));
+        return view('dashboard.suppliers.edit', compact('supplier'));
     }
 
-    public function update(SupplierUpdateRequest $request, Supplier $supplier): Response
+    public function update(SupplierUpdateRequest $request, Supplier $supplier)
     {
-        $supplier->update($request->validated());
+        DB::transaction(function () use ($request, $supplier) {
+            $supplier->update($request->validated());
 
-        $request->session()->flash('supplier.id', $supplier->id);
+            Flash::success(__("Supplier $supplier->name has been updated successfully"));
+        });
 
-        return redirect()->route('suppliers.index');
+        return redirect()->route('dashboard.suppliers.index');
     }
 
-    public function destroy(Request $request, Supplier $supplier): Response
+    public function destroy(Request $request, Supplier $supplier)
     {
         $supplier->delete();
-
-        return redirect()->route('suppliers.index');
+        Flash::success(__("Supplier $supplier->name has been deleted successfully"));
+        return redirect()->route('dashboard.suppliers.index');
     }
 }

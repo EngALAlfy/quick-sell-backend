@@ -98,7 +98,7 @@
                                 @if(config('LaravelLogger.bootstapVersion') == '4')
                                 <div class="dropdown-menu dropdown-menu-right">
                                     @include('LaravelLogger::forms.clear-activity-log')
-                                    <a href="{{route('admin.cleared')}}" class="dropdown-item">
+                                    <a href="{{route('dashboard.cleared')}}" class="dropdown-item">
                                         <i class="fa fa-fw fa-history" aria-hidden="true"></i>
                                         {!! trans('LaravelLogger::laravel-logger.dashboard.menu.show') !!}
                                     </a>
@@ -109,7 +109,7 @@
                                         @include('LaravelLogger::forms.clear-activity-log')
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="{{route('admin.cleared')}}">
+                                        <a href="{{route('dashboard.cleared')}}">
                                             <i class="fa fa-fw fa-history" aria-hidden="true"></i>
                                             {!! trans('LaravelLogger::laravel-logger.dashboard.menu.show') !!}
                                         </a>

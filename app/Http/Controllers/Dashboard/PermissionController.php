@@ -19,7 +19,7 @@ class PermissionController extends Controller
     public function create()
     {
         $groups = PermissionGroup::pluck("name" , "id");
-        return view("admin.permissions.create" , compact("groups"));
+        return view("dashboard.permissions.create" , compact("groups"));
     }
 
     public function store(Request $request)

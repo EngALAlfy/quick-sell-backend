@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SaleItem extends Model
 {
@@ -19,17 +19,15 @@ class SaleItem extends Model
         'product_id',
         'quantity',
         'price',
-        'total',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id' => 'integer',
-        'price' => 'decimal:2',
-        'total' => 'decimal:2',
-    ];
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    protected function getProductNameAttribute()
+    {
+        return $this->product?->name;
+    }
 }

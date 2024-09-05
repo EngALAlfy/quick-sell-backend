@@ -16,7 +16,7 @@ class PermissionGroupController extends Controller
 
     public function create()
     {
-        return view("admin.permission-groups.create");
+        return view("dashboard.permission-groups.create");
     }
 
     public function store(Request $request)

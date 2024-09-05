@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="{{route("admin.home.index")}}" class="app-brand-link">
+        <a href="{{route("dashboard.home.index")}}" class="app-brand-link">
               <span class="app-brand-logo demo">
                   <img height="50" width="50" src="{{asset("assets/admin/sneat/img/logo.png")}}" alt="{{__("Toggar")}}">
               </span>
@@ -14,6 +14,6 @@
 
     <div class="menu-inner-shadow"></div>
 
-    {!! Menu::admin() !!}
+    {!! Menu::dashboard() !!}
 
 </aside>

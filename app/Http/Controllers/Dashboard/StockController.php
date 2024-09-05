@@ -2,59 +2,72 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\DataTables\StockDataTable;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\StockStoreRequest;
 use App\Http\Requests\StockUpdateRequest;
+use App\Models\Product;
 use App\Models\Stock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Laracasts\Flash\Flash;
 
 class StockController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(StockDataTable $dataTable)
     {
-        $stocks = Stock::all();
-
-        return view('stock.index', compact('stocks'));
+        return $dataTable->render('dashboard.stocks.index');
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
-        return view('stock.create');
+        $products = Product::pluck('name', 'id');
+        return view('dashboard.stocks.create', compact('products'));
     }
 
-    public function store(StockStoreRequest $request): Response
+    public function store(StockStoreRequest $request)
     {
-        $stock = Stock::create($request->validated());
+        DB::transaction(function () use ($request) {
+            $stock = Stock::create($request->validated());
 
-        $request->session()->flash('stock.id', $stock->id);
+            // Here you might want to create a related transaction
+            // $stock->transactions()->create([...]);
 
-        return redirect()->route('stocks.index');
+            Flash::success(__("Stock for product $stock->product_id has been created successfully"));
+        });
+
+        return redirect()->route('dashboard.stocks.index');
     }
 
-    public function show(Request $request, Stock $stock): Response
+    public function show(Request $request, Stock $stock)
     {
-        return view('stock.show', compact('stock'));
+        return view('dashboard.stocks.show', compact('stock'));
     }
 
-    public function edit(Request $request, Stock $stock): Response
+    public function edit(Request $request, Stock $stock)
     {
-        return view('stock.edit', compact('stock'));
+        $products = Product::pluck('name', 'id');
+        return view('dashboard.stocks.edit', compact('stock', 'products'));
     }
 
-    public function update(StockUpdateRequest $request, Stock $stock): Response
+    public function update(StockUpdateRequest $request, Stock $stock)
     {
-        $stock->update($request->validated());
+        DB::transaction(function () use ($request, $stock) {
+            $stock->update($request->validated());
 
-        $request->session()->flash('stock.id', $stock->id);
+            // Here you might want to update a related transaction
+            // $stock->transactions()->update([...]);
 
-        return redirect()->route('stocks.index');
+            Flash::success(__("Stock for product $stock->product_id has been updated successfully"));
+        });
+
+        return redirect()->route('dashboard.stocks.index');
     }
 
-    public function destroy(Request $request, Stock $stock): Response
+    public function destroy(Request $request, Stock $stock)
     {
         $stock->delete();
-
-        return redirect()->route('stocks.index');
+        Flash::success(__("Stock for product $stock->product_id has been deleted successfully"));
+        return redirect()->route('dashboard.stocks.index');
     }
 }

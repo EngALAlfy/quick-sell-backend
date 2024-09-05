@@ -16,14 +16,14 @@ class RoleController extends Controller
 {
     public function index(RolesDataTable $dataTable)
     {
-        $adminRoles = Role::whereGuardName(PermissionsGuard::admin)->with("users")->withCount("users")->with("permissions")->get();
-        return $dataTable->render('admin.roles.index', compact("adminRoles"));
+        $adminRoles = Role::whereGuardName(PermissionsGuard::user)->with("users")->withCount("users")->with("permissions")->get();
+        return $dataTable->render('dashboard.roles.index', compact("adminRoles"));
     }
 
     public function create(Request $request)
     {
         $groups = PermissionGroup::get();
-        return view('admin.roles.create', compact("groups"));
+        return view('dashboard.roles.create', compact("groups"));
     }
 
     public function store(RoleStoreRequest $request)
@@ -48,7 +48,7 @@ class RoleController extends Controller
     {
         $groups = PermissionGroup::get();
         $role->load("permissions");
-        return view('admin.roles.edit', compact("groups" , "role"));
+        return view('dashboard.roles.edit', compact("groups" , "role"));
     }
 
     public function update(RoleStoreRequest $request, Role $role)
@@ -71,7 +71,7 @@ class RoleController extends Controller
 
     public function show(Request $request, Role $role)
     {
-        return view('admin.roles.show', compact('role'));
+        return view('dashboard.roles.show', compact('role'));
     }
 
     public function destroy(Request $request, Role $role)

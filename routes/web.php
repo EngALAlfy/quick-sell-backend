@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware("guest")->group(function () {
-    Route::redirect("/" , "/store/login");
+    Route::redirect("/" , "/dashboard/login");
 });
 
 \Livewire\Livewire::setUpdateRoute(function ($handle) {

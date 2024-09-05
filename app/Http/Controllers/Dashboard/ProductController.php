@@ -2,59 +2,70 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\DataTables\ProductDataTable;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Laracasts\Flash\Flash;
 
 class ProductController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(ProductDataTable $dataTable)
     {
-        $products = Product::all();
-
-        return view('product.index', compact('products'));
+        return $dataTable->render('dashboard.products.index');
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
-        return view('product.create');
+        $categories = Category::pluck('name', 'id');
+        return view('dashboard.products.create', compact('categories'));
     }
 
-    public function store(ProductStoreRequest $request): Response
+    public function store(ProductStoreRequest $request)
     {
-        $product = Product::create($request->validated());
+        DB::transaction(function () use ($request) {
+            $product = Product::create($request->validated());
+            if($request->has("image_storage_path")){
+                update_media($request->only("image_storage_path") , $product , "image_storage_path" , "image");
+            }
+            Flash::success(__("Product $product->name has been created successfully"));
+        });
 
-        $request->session()->flash('product.id', $product->id);
-
-        return redirect()->route('products.index');
+        return redirect()->route('dashboard.products.index');
     }
 
-    public function show(Request $request, Product $product): Response
+    public function show(Request $request, Product $product)
     {
-        return view('product.show', compact('product'));
+        return view('dashboard.products.show', compact('product'));
     }
 
-    public function edit(Request $request, Product $product): Response
+    public function edit(Request $request, Product $product)
     {
-        return view('product.edit', compact('product'));
+        $categories = Category::pluck('name', 'id');
+        return view('dashboard.products.edit', compact('product', 'categories'));
     }
 
-    public function update(ProductUpdateRequest $request, Product $product): Response
+    public function update(ProductUpdateRequest $request, Product $product)
     {
-        $product->update($request->validated());
+        DB::transaction(function () use ($request, $product) {
+            $product->update($request->validated());
+            if($request->has("image_storage_path")){
+                update_media($request->only("image_storage_path") , $product , "image_storage_path" , "image");
+            }
+            Flash::success(__("Product $product->name has been updated successfully"));
+        });
 
-        $request->session()->flash('product.id', $product->id);
-
-        return redirect()->route('products.index');
+        return redirect()->route('dashboard.products.index');
     }
 
-    public function destroy(Request $request, Product $product): Response
+    public function destroy(Request $request, Product $product)
     {
         $product->delete();
-
-        return redirect()->route('products.index');
+        Flash::success(__("Product $product->name has been deleted successfully"));
+        return redirect()->route('dashboard.products.index');
     }
 }

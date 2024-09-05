@@ -2,59 +2,29 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\DataTables\SaleDataTable;
 use App\Http\Controllers\Controller;
-
-use App\Http\Requests\SaleStoreRequest;
-use App\Http\Requests\SaleUpdateRequest;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(SaleDataTable $dataTable)
     {
-        $sales = Sale::all();
-
-        return view('sale.index', compact('sales'));
+        return $dataTable->render('dashboard.sales.index');
     }
 
-    public function create(Request $request): Response
+    public function show(Request $request, Sale $sale)
     {
-        return view('sale.create');
+        return view('dashboard.sales.show', compact('sale'));
     }
 
-    public function store(SaleStoreRequest $request): Response
+    public function create(Request $request)
     {
-        $sale = Sale::create($request->validated());
-
-        $request->session()->flash('sale.id', $sale->id);
-
-        return redirect()->route('sales.index');
-    }
-
-    public function show(Request $request, Sale $sale): Response
-    {
-        return view('sale.show', compact('sale'));
-    }
-
-    public function edit(Request $request, Sale $sale): Response
-    {
-        return view('sale.edit', compact('sale'));
-    }
-
-    public function update(SaleUpdateRequest $request, Sale $sale): Response
-    {
-        $sale->update($request->validated());
-
-        $request->session()->flash('sale.id', $sale->id);
-
-        return redirect()->route('sales.index');
-    }
-
-    public function destroy(Request $request, Sale $sale): Response
-    {
-        $sale->delete();
-
-        return redirect()->route('sales.index');
+        $categories = Category::get();
+        $products = Product::get();
+        return view('dashboard.sales.create', compact("categories", "products"));
     }
 }
