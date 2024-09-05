@@ -1,4 +1,9 @@
 <div class="col-md-6">
+    <div class="input-group input-group-merge mb-3">
+        <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+        <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon-search31">
+    </div>
+
     <div class="order-summary">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h5>{{__('Current Order')}}</h5>
@@ -34,6 +39,11 @@
 
         @include("dashboard.sales.sections.payment-method")
 
-        <button class="btn place-order-btn w-100 mt-4">{{__('Place Order')}}</button>
+        <button wire:click.prevent="placeOrder()" class="btn place-order-btn w-100 mt-4">
+            <div wire:loading wire:target="placeOrder" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <span wire:loading.remove wire:target="placeOrder" >{{__('Place Order')}}</span>
+        </button>
     </div>
 </div>

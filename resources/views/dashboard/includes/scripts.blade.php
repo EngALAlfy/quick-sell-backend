@@ -30,6 +30,7 @@
 <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 @stack("scripts")
 
@@ -39,6 +40,16 @@
     $(document).ajaxStart(function () {
         Pace.restart();
     });
+</script>
+
+<script>
+    toastr.options.onShown = function() { console.log('hello'); }
+    toastr.options.closeButton = true;
+    toastr.options.progressBar = true;
+    toastr.options.positionClass = "toast-bottom-right"
+    @if (\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getCurrentLocaleDirection() === 'rtl')
+        toastr.options.rtl = true;
+    @endif
 </script>
 
 <script>
