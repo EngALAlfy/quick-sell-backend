@@ -33,7 +33,7 @@
                     <span class="app-brand-logo demo">
                         <img src="{{asset("assets/admin/sneat/img/logo.png")}}" width="50" height="50">
                     </span>
-                    <span class="app-brand-text demo text-body fw-bold">{{__('Toggar')}}</span>
+                    <span class="app-brand-text demo text-body fw-bold">{{__(config('app.name'))}}</span>
                 </a>
             </div>
         </div>
@@ -48,11 +48,11 @@
                         <span class="app-brand-logo demo">
                             <img src="{{asset("assets/admin/sneat/img/logo.png")}}" width="50" height="50">
                         </span>
-                        <span class="app-brand-text demo text-body fw-bold">{{__('Toggar')}}</span>
+                        <span class="app-brand-text demo text-body fw-bold">{{__(config('app.name'))}}</span>
                     </a>
                 </div>
                 <!-- /Logo -->
-                <h4 class="mb-2">{{__('Toggar Customer Area!')}} 👋</h4>
+                <h4 class="mb-2">{{__(config('app.name'))}} 👋</h4>
                 <p class="mb-4">Please enter your new password</p>
 
                 @include("includes.status")

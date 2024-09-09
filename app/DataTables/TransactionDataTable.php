@@ -27,7 +27,7 @@ class TransactionDataTable extends DataTable
                 return $transaction->transaction_type;
             })
             ->editColumn('user_id', function (Transaction $transaction) {
-                return $transaction->user_id;
+                return $transaction->user->name;
             })
             ->editColumn('amount', function (Transaction $transaction) {
                 return number_format($transaction->amount, 2);
@@ -49,7 +49,7 @@ class TransactionDataTable extends DataTable
      */
     public function query(Transaction $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->with("user")->newQuery();
     }
 
     /**

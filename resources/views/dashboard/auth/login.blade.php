@@ -90,7 +90,7 @@
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
                                 <label class="form-label" for="password">{{__('Password')}}</label>
-                                <a href="auth-forgot-password-basic.html">
+                                <a href="{{route("dashboard.forget-password")}}">
                                     <small>{{__('Forgot Password ?')}}</small>
                                 </a>
                             </div>
@@ -113,6 +113,9 @@
                         </div>
                         <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">{{__('Sign in')}}</button>
+                        </div>
+                        <div class="mb-3">
+                            <a class="btn btn-warning d-grid w-100" href="{{route("dashboard.demoLogin")}}">{{__('Try demo')}}</a>
                         </div>
                     {{html()->form()->close()}}
                 </div>

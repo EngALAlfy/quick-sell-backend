@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->string('product_id');
+            $table->foreignIdFor(\App\Models\Product::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('quantity');
             $table->enum('type', ["purchase","adjustment","return"]);
+            $table->foreignIdFor(User::class , "created_by_user_id")->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }

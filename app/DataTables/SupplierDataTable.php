@@ -150,7 +150,7 @@ class SupplierDataTable extends DataTable
                 ->addClass("ajax-btn")
                 ->addClass("create-new btn btn-primary")
                 ->action("")
-                ->attr(["data-href" => route("dashboard.suppliers.create"), "data-html-type" => $ajax_action_type, "data-html-title" => __("Add new supplier")])
+                ->attr(["data-href" => route("dashboard.suppliers.create"),"data-html-classes" => "modal-sm" , "data-html-type" => $ajax_action_type, "data-html-title" => __("Add new supplier")])
         ];
     }
 

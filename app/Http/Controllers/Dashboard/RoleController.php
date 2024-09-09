@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\DataTables\Admin\RolesDataTable;
+use App\DataTables\RolesDataTable;
 use App\Enums\PermissionsGuard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleStoreRequest;

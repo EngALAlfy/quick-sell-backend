@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-sm-7">
                         <div class="card-body text-sm-end text-center ps-sm-0">
-                            {!! ajax_button(__('Add new admin role'), "btn btn-primary mb-3 text-nowrap add-new-role" , route("dashboard.roles.create") , __('Add new admin role')) !!}
+                            {!! ajax_button(__('Add new admin role'), "btn btn-primary mb-3 text-nowrap add-new-role" , route("dashboard.roles.create") , __('Add new admin role') , html_classes: "modal-xl") !!}
                             <p class="mb-0">{{__('Add role, if it does not exist')}}</p>
                         </div>
                     </div>

@@ -16,6 +16,7 @@ if (!function_exists('ajax_actions_init')) {
                 let url =  $(this).data('href') ?? $(this).attr('href');
                 let type =  $(this).data('html-type') ?? "modal";
                 let title =  $(this).data('html-title');
+                let classes =  $(this).data('html-classes');
                 $.ajax({
                     url: url,
                     dataType: 'html',
@@ -23,7 +24,7 @@ if (!function_exists('ajax_actions_init')) {
                         if(type === "modal") {
                             $('#html-modal-title').html(title);
                             $('#html-modal-body').html(result);
-                            $('#html-modal').modal("show");
+                            $('#html-modal').addClass(classes).modal("show");
                         }else if(type === "offcanvas") {
                             $('#html-offcanvas-title').html(title);
                             $('#html-offcanvas-body').html(result);
@@ -64,9 +65,9 @@ if (!function_exists('ajax_actions_modal')) {
     {
         return <<<HTML
         <!-- modal -->
-        <div id="html-modal" class="modal modal-lg fade" role="dialog"
+        <div id="html-modal" class="modal fade" role="dialog"
              aria-labelledby="html-modal-title" aria-hidden="true">
-            <div class="modal-dialog  modal-dialog-centered modal-md" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="html-modal-title"></h5>
@@ -111,15 +112,16 @@ if (!function_exists('ajax_button')) {
      * @param string $classes
      * @param string $route
      * @param string $title
-     * @param string $type
      * @param string $attr
+     * @param string $html_classes
+     * @param string $type
      * @return string
      */
-    function ajax_button($child , string $classes , string $route , string $title , string $attr = '' , string $type = "modal" ): string
+    function ajax_button($child , string $classes , string $route , string $title , string $attr = '' , string $html_classes = "modal-lg" , string $type = "modal" ): string
     {
         return <<<HTML
         <!-- ajax btn -->
-        <button data-href="$route" $attr data-html-type="$type" class="$classes ajax-btn" data-html-title="$title">
+        <button data-href="$route" $attr data-html-classes="$html_classes" data-html-type="$type" class="$classes ajax-btn" data-html-title="$title">
             $child
         </button>
         HTML;

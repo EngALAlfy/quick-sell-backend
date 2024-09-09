@@ -1,6 +1,6 @@
 @extends("layouts.dashboard")
 
-@section("title" , __('Suppliers List'))
+@section("title" , __('Stocks List'))
 
 @section("content")
     <div class="row gutters">
@@ -19,7 +19,7 @@
 
     <script>
         function test() {
-            console.log(window.LaravelDataTables["suppliers-table"].rows({selected: true}).data());
+            console.log(window.LaravelDataTables["stocks-table"].rows({selected: true}).data());
         }
     </script>
 @endpush

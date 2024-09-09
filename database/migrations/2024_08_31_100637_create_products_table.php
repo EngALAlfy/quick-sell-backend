@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name', 255);
             $table->string('sku', 100)->unique();
             $table->decimal('price', 8, 2);
-            $table->integer('stock_quantity');
             $table->text('description')->nullable();
-            $table->foreignId('category_id');
+            $table->foreignIdFor(\App\Models\Category::class);
+            $table->foreignIdFor(User::class , "created_by_user_id")->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }

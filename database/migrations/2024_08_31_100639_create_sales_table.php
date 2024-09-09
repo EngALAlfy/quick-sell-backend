@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->foreignIdFor(User::class , "created_by_user_id")->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->decimal('total_amount', 8, 2);
             $table->enum('payment_method', ["cash","credit_card"]);
             $table->timestamps();

@@ -23,18 +23,10 @@ class ProductDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->editColumn('id', '{{$id}}')
-            ->editColumn('name', function (Product $product) {
-                return $product->name;
-            })
-            ->editColumn('sku', function (Product $product) {
-                return $product->sku;
-            })
             ->editColumn('price', function (Product $product) {
                 return number_format($product->price, 2);
             })
-            ->editColumn('stock_quantity', function (Product $product) {
-                return $product->stock_quantity;
-            })
+
             ->editColumn('category', function (Product $product) {
                 return $product->category->name;
             })
@@ -52,7 +44,7 @@ class ProductDataTable extends DataTable
      */
     public function query(Product $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->with("category")->newQuery();
     }
 
     /**

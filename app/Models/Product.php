@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\StockType;use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -22,9 +23,12 @@ class Product extends Model implements HasMedia
         'name',
         'sku',
         'price',
-        'stock_quantity',
         'description',
         'category_id',
+    ];
+
+    protected $appends = [
+        "stock_quantity",
     ];
 
     /**
@@ -42,6 +46,26 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function stocks(): HasMany
+    {
+        return $this->hasMany(Stock::class, 'product_id');
+    }
+
+    public function getStockQuantityAttribute(): int
+    {
+        // Sum the stock quantity based on the type of transaction
+        return $this->stocks
+            ->sum(function ($stock) {
+                // Adjust stock quantity based on type
+                return match ($stock->type) {
+                    StockType::purchase,StockType::adjustment => $stock->quantity,
+                    StockType::return => -$stock->quantity,
+                    default => 0,
+                };
+            });
+    }
+
 
     public function registerMediaCollections(): void
     {

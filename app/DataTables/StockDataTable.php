@@ -24,7 +24,7 @@ class StockDataTable extends DataTable
             ->setRowId('id')
             ->editColumn('id', '{{$id}}')
             ->editColumn('product_id', function (Stock $stock) {
-                return $stock->product_id;
+                return $stock->product->name;
             })
             ->editColumn('quantity', function (Stock $stock) {
                 return $stock->quantity;
@@ -46,7 +46,7 @@ class StockDataTable extends DataTable
      */
     public function query(Stock $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->with("product")->newQuery();
     }
 
     /**
@@ -157,7 +157,7 @@ class StockDataTable extends DataTable
                 ->addClass("ajax-btn")
                 ->addClass("create-new btn btn-primary")
                 ->action("")
-                ->attr(["data-href" => route("dashboard.stocks.create"), "data-html-type" => $ajax_action_type, "data-html-title" => __("Add new stock")])
+                ->attr(["data-href" => route("dashboard.stocks.create"),"data-html-classes" => "modal-sm" , "data-html-type" => $ajax_action_type, "data-html-title" => __("Add new stock")])
         ];
     }
 

@@ -19,6 +19,7 @@ Route::redirect("/", "/dashboard/home");
 Route::middleware("guest")->group(function () {
     Route::view("/login", "dashboard.auth.login");
     Route::post("/login", "App\Http\Controllers\Dashboard\AuthController@login")->name("login");
+    Route::get("/login/demo", "App\Http\Controllers\Dashboard\AuthController@demoLogin")->name("demoLogin");
 
     Route::view("/forgot-password", "dashboard.auth.forget-password")->name("forget-password");
     Route::post("/forgot-password", "App\Http\Controllers\Dashboard\ForgetPasswordController@forget")->name("password.email");
@@ -27,7 +28,7 @@ Route::middleware("guest")->group(function () {
 });
 
 Route::middleware("auth")->group(function () {
-    Route::get("/logout", "App\Http\Controllers\Dashboard\AuthController@logout")->name("logout");
+    Route::post("/logout", "App\Http\Controllers\Dashboard\AuthController@logout")->name("logout");
 });
 
 

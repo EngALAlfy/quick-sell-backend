@@ -150,7 +150,7 @@ class CategoryDataTable extends DataTable
                 ->addClass("ajax-btn")
                 ->addClass("create-new btn btn-primary")
                 ->action("")
-                ->attr(["data-href" => route("dashboard.categories.create"), "data-html-type" => $ajax_action_type, "data-html-title" => __("Add new category")])
+                ->attr(["data-href" => route("dashboard.categories.create"), "data-html-classes" => "modal-sm" , "data-html-type" => $ajax_action_type, "data-html-title" => __("Add new category")])
         ];
     }
 

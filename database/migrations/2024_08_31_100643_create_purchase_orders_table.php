@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('purchase_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('supplier_id');
+            $table->foreignIdFor(\App\Models\Supplier::class);
             $table->decimal('total_amount', 8, 2);
             $table->enum('status', ["pending","received","canceled"])->default('pending');
+            $table->foreignIdFor(User::class , "created_by_user_id")->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\DataTables\ProductDataTable;
+use App\Enums\StockType;
+use App\Enums\TransactionType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Laracasts\Flash\Flash;
@@ -28,9 +31,19 @@ class ProductController extends Controller
     public function store(ProductStoreRequest $request)
     {
         DB::transaction(function () use ($request) {
-            $product = Product::create($request->validated());
-            if($request->has("image_storage_path")){
-                update_media($request->only("image_storage_path") , $product , "image_storage_path" , "image");
+            $data = $request->except("stock_quantity");
+            $product = Product::create($data);
+            $stock = $product->stocks()->create([
+                "quantity" => $request->get("stock_quantity"),
+                "type" => StockType::adjustment->value,
+            ]);
+            $stock->transactions()->create([
+                "amount" => $stock->quantity,
+                "transaction_type" => TransactionType::stock->value,
+                "user_id" => auth()->id(),
+            ]);
+            if ($request->has("image_storage_path")) {
+                update_media($request->only("image_storage_path"), $product, "image_storage_path", "image");
             }
             Flash::success(__("Product $product->name has been created successfully"));
         });
@@ -53,8 +66,8 @@ class ProductController extends Controller
     {
         DB::transaction(function () use ($request, $product) {
             $product->update($request->validated());
-            if($request->has("image_storage_path")){
-                update_media($request->only("image_storage_path") , $product , "image_storage_path" , "image");
+            if ($request->has("image_storage_path")) {
+                update_media($request->only("image_storage_path"), $product, "image_storage_path", "image");
             }
             Flash::success(__("Product $product->name has been updated successfully"));
         });

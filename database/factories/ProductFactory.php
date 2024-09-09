@@ -25,7 +25,6 @@ class ProductFactory extends Factory
             'name' => $this->faker->name(),
             'sku' => $this->faker->regexify('[A-Za-z0-9]{100}'),
             'price' => $this->faker->randomFloat(2, 0, 999999.99),
-            'stock_quantity' => $this->faker->numberBetween(-10000, 10000),
             'description' => $this->faker->text(),
             'category_id' => Category::factory(),
         ];

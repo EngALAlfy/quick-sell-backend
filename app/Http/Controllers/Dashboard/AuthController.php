@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\User;
 use App\Services\Facades\UsersServiceFacade;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,7 @@ class AuthController extends Controller
     {
         $credentials = $request->validated();
 
-        if ($credentials["email"] === "demo") {
+        if ($credentials["email"] === "demo@mail.com") {
             abort_unless(app()->isLocal(), 403);
         }
 
@@ -29,6 +30,21 @@ class AuthController extends Controller
         flash(__("auth.failed"))->error();
 
         return back()->withInput();
+    }
+
+    function demoLogin()
+    {
+        abort_unless(app()->isLocal(), 403);
+
+        $user = User::where('email', 'demo@mail.com')->first();
+        if ($user) {
+            Auth::login($user);
+            return redirect()->intended(route("dashboard.home.index"));
+        }
+
+        flash(__("There is no demo available"))->error();
+
+        return back();
     }
 
     public function logout(): RedirectResponse

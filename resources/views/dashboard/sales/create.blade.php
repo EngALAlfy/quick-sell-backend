@@ -53,6 +53,28 @@
             font-weight: bold;
             color: #28a745;
         }
+
+        /* Ensure table text breaks into new lines if too long */
+        .table th, .table td {
+            word-wrap: break-word;
+            white-space: normal;
+        }
+
+        /* Optionally, you can set a min-height for the table rows for a consistent look */
+        .table td {
+            min-height: 50px; /* Adjust based on your design */
+        }
+
+        /* If needed, you can enforce horizontal scrolling on small screens */
+        .table {
+            table-layout: fixed; /* Ensures the table uses the specified column widths */
+        }
+
+        /* Customize each column width based on your layout */
+        .table th, .table td {
+            overflow: hidden; /* Prevents overflow of content outside of the table */
+            text-overflow: ellipsis; /* Optionally truncate text with ellipsis */
+        }
     </style>
 @endpush
 @section("content")

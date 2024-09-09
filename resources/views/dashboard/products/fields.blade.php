@@ -29,15 +29,17 @@
     ])
 </div>
 
-<div class="row my-3">
-    @include('includes.input', [
-        'name' => 'stock_quantity',
-        'title' => __('Stock quantity'),
-        'type' => 'number',
-        'required' => true,
-        'col' => '12',
-    ])
-</div>
+@if(!isset($product))
+    <div class="row my-3">
+        @include('includes.input', [
+            'name' => 'stock_quantity',
+            'title' => __('Stock quantity'),
+            'type' => 'number',
+            'required' => true,
+            'col' => '12',
+        ])
+    </div>
+@endif
 
 <div class="row my-3">
     @include('includes.input', [

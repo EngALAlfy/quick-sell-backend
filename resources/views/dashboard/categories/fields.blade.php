@@ -4,7 +4,6 @@
         'title' => __('Name'),
         'required' => true,
         'col' => '12',
-        'value' => old('name', isset($category) ? $category->name : ''),
     ])
 </div>
 
@@ -14,7 +13,6 @@
         'title' => __('Description'),
         'required' => false,
         'col' => '12',
-        'value' => old('description', isset($category) ? $category->description : ''),
     ])
 </div>
 

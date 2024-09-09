@@ -1,6 +1,6 @@
 <div class="row gutters">
     <div class="col-12">
-        {!! html()->modelForm($admin , 'PUT')->acceptsFiles()->route("dashboard.categories.update" , $admin)->open() !!}
+        {!! html()->modelForm($category , 'PUT')->acceptsFiles()->route("dashboard.categories.update" , $category)->open() !!}
         @include("dashboard.categories.fields")
         {!! html()->closeModelForm() !!}
 

@@ -13,7 +13,6 @@
         ->class($classes . " form-control form-select")
         ->addClass($errors->has($name) ? "is-invalid" : "")
         ->options($options ?? [])
-        ->value($value ?? null)
         ->attributes($attrs??[])->id($name);
         @endphp
 
@@ -21,6 +20,10 @@
             @php($select = $select->multiple())
         @else
             @php($select = $select->placeholder($placeholder?? __('Please select') . " $title"))
+        @endif
+
+        @if(isset($value))
+            @php($select = $select->value($value))
         @endif
 
         {!! $select !!}
