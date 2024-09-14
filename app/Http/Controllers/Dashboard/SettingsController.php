@@ -22,14 +22,6 @@ class SettingsController extends Controller
             "logo_path_public_path" => 'required',
             "title" => 'required|max:200',
             "description" => 'required|max:500',
-            "followers_cheap_api_key" => 'required',
-            "social_bar_enabled" => 'required',
-            "social_bar_facebook" => 'nullable',
-            "social_bar_youtube" => 'nullable',
-            "social_bar_messenger" => 'nullable',
-            "social_bar_whatsapp" => 'nullable',
-            "social_bar_instagram" => 'nullable',
-            "social_bar_telegram" => 'nullable',
         ]);
 
         settings($input);

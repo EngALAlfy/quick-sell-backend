@@ -1,6 +1,5 @@
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
-<script src="{{asset("assets/admin/sneat/vendor/libs/jquery/jquery.js")}}"></script>
 <script src="{{asset("assets/admin/sneat/vendor/libs/popper/popper.js")}}"></script>
 <script src="{{asset("assets/admin/sneat/vendor/js/bootstrap.js")}}"></script>
 <script src="{{asset("assets/admin/sneat/vendor/libs/perfect-scrollbar/perfect-scrollbar.js")}}"></script>
@@ -27,7 +26,6 @@
 <script src="https://cdn.datatables.net/responsive/3.0.0/js/responsive.bootstrap5.js"></script>
 
 
-<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

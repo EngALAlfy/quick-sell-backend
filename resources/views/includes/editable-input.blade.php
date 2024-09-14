@@ -1,4 +1,12 @@
 <div class="form-group my-2 col-md-{{$col??12}}">
+    <style>
+        input[readonly] {
+            background-color: #e9ecef;
+            color: #6c757d;
+            border-color: #ced4da;
+            cursor: not-allowed;
+        }
+    </style>
     <div class="input-group">
         <div class="form-floating col">
             @php

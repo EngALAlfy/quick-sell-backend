@@ -10,10 +10,10 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
-    <title>{{__('Forget Password')}} | {{__('Dashboard')}} - {{__(config("app.name"))}}</title>
+    <title>{{__('Forget Password')}} | {{__('Dashboard')}} - {{settings("title" , config("app.name"))}}</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{asset("favicon.ico")}}"/>
+    <link rel="icon" type="image/x-icon" href="{{settings("logo_path_public_path" , asset("favicon.ico"))}}"/>
 
     @include("store-customer.includes.styles")
 
@@ -31,9 +31,9 @@
             <div class="w-100 d-flex justify-content-center">
                 <a href="{{route("store-customer.login", $store)}}" class="app-brand-link gap-2">
                     <span class="app-brand-logo demo">
-                        <img src="{{asset("assets/admin/sneat/img/logo.png")}}" width="50" height="50">
+                        <img src="{{settings("logo_path_public_path" , asset("assets/admin/sneat/img/logo.png"))}}" width="50" height="50">
                     </span>
-                    <span class="app-brand-text demo text-body fw-bold">{{__(config('app.name'))}}</span>
+                    <span class="app-brand-text demo text-body fw-bold">{{__(settings("title" , config("app.name")))}}</span>
                 </a>
             </div>
         </div>
@@ -46,13 +46,13 @@
                 <div class="app-brand mb-5">
                     <a href="{{route("store-customer.login", $store)}}" class="app-brand-link gap-2">
                         <span class="app-brand-logo demo">
-                            <img src="{{asset("assets/admin/sneat/img/logo.png")}}" width="50" height="50">
+                            <img src="{{settings("logo_path_public_path" , asset("assets/admin/sneat/img/logo.png"))}}" width="50" height="50">
                         </span>
-                        <span class="app-brand-text demo text-body fw-bold">{{__(config('app.name'))}}</span>
+                        <span class="app-brand-text demo text-body fw-bold">{{__(settings("title" , config("app.name")))}}</span>
                     </a>
                 </div>
                 <!-- /Logo -->
-                <h4 class="mb-2">{{__(config('app.name'))}} 👋</h4>
+                <h4 class="mb-2">{{__(settings("title" , config("app.name")))}} 👋</h4>
                 <p class="mb-4">Please enter your new password</p>
 
                 @include("includes.status")

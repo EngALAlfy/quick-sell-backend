@@ -12,12 +12,12 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
-    <title>@yield("title") | {{__(config("app.name"))}}</title>
+    <title>@yield("title") | {{settings("title" , config("app.name"))}}</title>
 
     <meta name="description" content=""/>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{asset("favicon.ico")}}"/>
+    <link rel="icon" type="image/x-icon" href="{{settings("logo_path_public_path" , asset("favicon.ico"))}}"/>
 
     @include("dashboard.includes.styles")
 </head>

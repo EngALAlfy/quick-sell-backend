@@ -62,8 +62,8 @@ Route::middleware(["auth" , "ActiveUser"])->group(function () {
     Route::get("/profile", "App\Http\Controllers\Dashboard\UserController@profile")->name("profile.index");
     Route::get("/profile/edit", "App\Http\Controllers\Dashboard\UserController@editProfile")->name("profile.edit");
 
-    Route::get("/settings", "App\Http\Controllers\SettingsController@index")->name("settings.index");
-    Route::post("/settings", "App\Http\Controllers\SettingsController@store")->name("settings.store");
+    Route::get("/settings", "App\Http\Controllers\Dashboard\SettingsController@index")->name("settings.index");
+    Route::post("/settings", "App\Http\Controllers\Dashboard\SettingsController@store")->name("settings.store");
 
     Route::get("/settings/activity-log", "App\Http\Controllers\Shared\ActivityLogController@index")->name("settings.activity-log");
     Route::get("/settings/activity-log/clear-all", "App\Http\Controllers\Shared\ActivityLogController@clearAll")->name("settings.activity-log.clear-all");

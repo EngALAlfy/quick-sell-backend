@@ -12,12 +12,14 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
-    <title>@yield("title") | {{__('Dashboard')}} - {{__(config("app.name"))}}</title>
+    <title>@yield("title") | {{__('Dashboard')}} - {{settings("title" , config("app.name"))}}</title>
 
     <meta name="description" content=""/>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{asset("favicon.ico")}}"/>
+    <link rel="icon" type="image/x-icon" href="{{settings("logo_path_public_path" , asset("favicon.ico"))}}"/>
+    <script src="{{asset("assets/admin/sneat/vendor/libs/jquery/jquery.js")}}"></script>
+    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
 
     @include("dashboard.includes.styles")
 </head>

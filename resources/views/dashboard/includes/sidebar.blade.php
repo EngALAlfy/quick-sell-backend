@@ -2,9 +2,9 @@
     <div class="app-brand demo">
         <a href="{{route("dashboard.home.index")}}" class="app-brand-link">
               <span class="app-brand-logo demo">
-                  <img height="50" width="50" src="{{asset("assets/admin/sneat/img/logo.png")}}" alt="{{__(config('app.name'))}}">
+                  <img height="50" width="50" src="{{settings("logo_path_public_path" , asset("assets/admin/sneat/img/logo.png"))}}" alt="{{__(settings("title" , config("app.name")))}}">
               </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2">{{__(config('app.name'))}}</span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2">{{__(settings("title" , config("app.name")))}}</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

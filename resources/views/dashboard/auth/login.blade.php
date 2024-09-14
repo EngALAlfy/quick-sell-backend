@@ -10,10 +10,10 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
-    <title>{{__('Login')}} | {{__('Dashboard')}} - {{__(config("app.name"))}}</title>
+    <title>{{__('Login')}} | {{__('Dashboard')}} - {{settings("title" , config("app.name"))}}</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{asset("favicon.ico")}}"/>
+    <link rel="icon" type="image/x-icon" href="{{settings("logo_path_public_path" , asset("favicon.ico"))}}"/>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,14 +65,14 @@
                     <div class="app-brand justify-content-center">
                         <a href="{{route("dashboard.login")}}" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
-                                <img src="{{asset("assets/admin/sneat/img/logo.png")}}" width="50" height="50">
+                                <img src="{{settings("logo_path_public_path" , asset("assets/admin/sneat/img/logo.png"))}}" width="50" height="50">
                             </span>
-                            <span class="app-brand-text demo text-body fw-bold">{{__(config("app.name"))}}</span>
+                            <span class="app-brand-text demo text-body fw-bold">{{settings("title" , config("app.name"))}}</span>
                         </a>
                     </div>
                     <!-- /Logo -->
 
-                    <h4 class="mb-2">{{__(config("app.name"))}} {{__('Dashboard!')}} 👋</h4>
+                    <h4 class="mb-2">{{settings("title" , config("app.name"))}} {{__('Dashboard!')}} 👋</h4>
                     <p class="mb-4">{{__('Please sign-in to your account')}}</p>
 
                     @include("includes.status")
