@@ -31,6 +31,9 @@ class User extends Authenticatable implements HasMedia
         'last_login_os',
         'last_login_ip',
         'last_login_useragent',
+        'status',
+        'status_by',
+        'status_datetime',
     ];
 
     /**

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(User::class)->nullable()->constrained("users" , "created_by_user_id")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignIdFor(\App\Models\User::class , "created_by_user_id")->nullable()->constrained("users")->cascadeOnUpdate()->nullOnDelete();
             $table->enum('transaction_type', ["sale","purchase","stock"]);
             $table->decimal('amount', 8, 2);
             $table->json('details')->nullable();

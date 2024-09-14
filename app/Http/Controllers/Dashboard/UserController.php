@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\DataTables\UserDataTable;
 use App\Enums\PermissionsGuard;
+use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\Tagger;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -39,6 +41,7 @@ class UserController extends Controller
                 "phone" => $request->input('phone'),
                 "status" => UserStatus::active,
                 "status_by" => auth("user")->id(),
+                "status_datetime" => now(),
             ]);
 
             $role = $request->get("role");
@@ -90,6 +93,30 @@ class UserController extends Controller
             }
 
             Flash::success(__("User $user->name has updated successfully"));
+        });
+
+        return redirect()->route('dashboard.users.index');
+    }
+
+    public function status(Request $request, User $user)
+    {
+        return view('dashboard.users.status', compact('user'));
+    }
+
+    public function changeStatus(Request $request, User $user): \Illuminate\Http\RedirectResponse
+    {
+        $validated_inputs = $request->validate([
+            'status' => ['required', 'in:' . implode(",", array_keys(UserStatus::values()))],
+        ]);
+
+        DB::transaction(static function () use ($user , $validated_inputs){
+            $user->update([
+                "status" => $validated_inputs['status'],
+                "status_by" => auth("admin")->id(),
+                "status_datetime" => now(),
+            ]);
+
+            Flash::success(__("User $user->name change  successfully"));
         });
 
         return redirect()->route('dashboard.users.index');

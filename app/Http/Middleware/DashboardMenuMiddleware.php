@@ -28,6 +28,8 @@ class DashboardMenuMiddleware
         $menu->addItemClass("menu-link");
         $menu->addItemParentClass("menu-item");
         $menu->setActiveFromRequest();
+        $menu->setActiveClass("active-parent");
+        $menu->setExactActiveClass("active");
 
         $this->addHomeMenu($menu);
         $this->addManageMenu($menu);
@@ -83,9 +85,10 @@ class DashboardMenuMiddleware
         $this->addRouteLink($menu, route("dashboard.roles.index"), __('Roles'), asset("assets/admin/img/icons/roles.png"));
         $this->addRouteLink($menu, route("dashboard.permissions.index"), __('Permissions Manager'), asset("assets/admin/img/icons/permissions.png"));
         $this->addRouteLink($menu, "/error-log", __('Error Log'), asset("assets/admin/img/icons/error.png"));
-        $this->addRouteLink($menu, "/dev-log", __('Dev Log'), asset("assets/admin/img/icons/code.png"));
+        $this->addRouteLink($menu, route("dashboard.settings.backup"), __('Backup'), asset("assets/admin/img/icons/backup.png"));
         $this->addRouteLink($menu, route("dashboard.activity"), __('Activity Log'), asset("assets/admin/img/icons/record.png"));
         $this->addRouteLink($menu, route("dashboard.settings.activity-log"), __('Activity Log 2'), asset("assets/admin/img/icons/recording.png"));
+
     }
 
 

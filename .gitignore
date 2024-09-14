@@ -10,3 +10,4 @@ composer.lock
 /storage/framework/cache/*
 /storage/framework/sessions/*
 /storage/framework/views/*
+/public/storage/

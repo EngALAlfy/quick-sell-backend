@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Laracasts\Flash\Flash;
 use ZipArchive;
 
@@ -54,7 +55,7 @@ class BackupController extends Controller
         Artisan::call('backup:run --only-db');
         $output = Artisan::output();
 
-        Flash::info($output);
+        Flash::info(Str::replace(".." , "..</br>" , $output));
 
         return redirect()->route('dashboard.settings.backup');
     }

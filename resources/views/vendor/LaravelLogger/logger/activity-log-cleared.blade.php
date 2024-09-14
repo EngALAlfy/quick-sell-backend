@@ -36,7 +36,7 @@
 @endif
 
 
-@section('template_title')
+@section('title')
     {{ trans('LaravelLogger::laravel-logger.dashboardCleared.title') }}
 @endsection
 

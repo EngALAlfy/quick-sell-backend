@@ -2,7 +2,6 @@
 
 namespace App\Listeners;
 
-use App\Events\NewCustomerEvent;
 
 class NewCustomerEventListener
 {

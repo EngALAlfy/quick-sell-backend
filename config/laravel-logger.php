@@ -1,7 +1,6 @@
 <?php
 
 use jeremykenedy\LaravelLogger\App\Models\Activity;
-use App\Models\Customer;
 
 return [
 
@@ -50,7 +49,7 @@ return [
     | Laravel Logger Search Enable/Disable
     |--------------------------------------------------------------------------
     */
-    'enableSearch'      => env('LARAVEL_LOGGER_ENABLE_SEARCH', 'false'),
+    'enableSearch'      => env('LARAVEL_LOGGER_ENABLE_SEARCH', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +66,7 @@ return [
     */
 
     'defaultActivityModel' => env('LARAVEL_LOGGER_ACTIVITY_MODEL', Activity::class),
-    'defaultUserModel'     => env('LARAVEL_LOGGER_USER_MODEL', Customer::class),
+    'defaultUserModel'     => env('LARAVEL_LOGGER_USER_MODEL', \App\Models\User::class),
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +175,6 @@ return [
     'fontAwesomeCDN'            => env('LARAVEL_LOGGER_FONT_AWESOME_CDN_URL', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'),
 
     // LiveSearch for scalability
-    'enableLiveSearch'          => env('LARAVEL_LOGGER_LIVE_SEARCH_ENABLED', true),
+    'enableLiveSearch'          => env('LARAVEL_LOGGER_LIVE_SEARCH_ENABLED', false),
 
 ];

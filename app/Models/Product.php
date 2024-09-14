@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-use App\Enums\StockType;use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\StockType;
+use App\Traits\HasCreatedByTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,7 +15,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class Product extends Model implements HasMedia
 {
     use HasFactory , InteractsWithMedia;
-
+    use HasCreatedByTrait;
     /**
      * The attributes that are mass assignable.
      *

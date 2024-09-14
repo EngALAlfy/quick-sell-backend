@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Product::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('quantity');
             $table->enum('type', ["purchase","adjustment","return"]);
-            $table->foreignIdFor(User::class , "created_by_user_id")->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignIdFor(\App\Models\User::class , "created_by_user_id")->nullable()->constrained("users")->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }

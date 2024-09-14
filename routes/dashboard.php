@@ -35,11 +35,15 @@ Route::middleware("auth")->group(function () {
 /*
  * Resources Area
  */
-Route::middleware("auth")->group(function () {
+Route::middleware(["auth" , "ActiveUser"])->group(function () {
     Route::get("/home", "App\Http\Controllers\Dashboard\HomeController@index")->name("home.index");
     Route::resource("roles", \App\Http\Controllers\Dashboard\RoleController::class);
     Route::resource("permissions", \App\Http\Controllers\Dashboard\PermissionController::class);
     Route::resource("permission-groups", \App\Http\Controllers\Dashboard\PermissionGroupController::class);
+
+    Route::get("users/status/{user}", "App\Http\Controllers\Dashboard\UserController@status")->name('users.status');
+    Route::PUT("users/status/{user}", "App\Http\Controllers\Dashboard\UserController@changeStatus")->name('users.status.change');
+
 
     Route::resource('users', App\Http\Controllers\Dashboard\UserController::class);
     Route::resource('products', App\Http\Controllers\Dashboard\ProductController::class);
@@ -54,25 +58,25 @@ Route::middleware("auth")->group(function () {
 /*
  *  Special Area
  */
-Route::middleware("auth")->group(function () {
+Route::middleware(["auth" , "ActiveUser"])->group(function () {
     Route::get("/profile", "App\Http\Controllers\Dashboard\UserController@profile")->name("profile.index");
     Route::get("/profile/edit", "App\Http\Controllers\Dashboard\UserController@editProfile")->name("profile.edit");
 
     Route::get("/settings", "App\Http\Controllers\SettingsController@index")->name("settings.index");
     Route::post("/settings", "App\Http\Controllers\SettingsController@store")->name("settings.store");
 
-    Route::get("/settings/activity-log", "App\Http\Controllers\ActivityLogController@index")->name("settings.activity-log");
-    Route::get("/settings/activity-log/clear-all", "App\Http\Controllers\ActivityLogController@clearAll")->name("settings.activity-log.clear-all");
-    Route::get("/settings/activity-log/{log}", "App\Http\Controllers\ActivityLogController@show")->name("settings.activity-log.show");
+    Route::get("/settings/activity-log", "App\Http\Controllers\Shared\ActivityLogController@index")->name("settings.activity-log");
+    Route::get("/settings/activity-log/clear-all", "App\Http\Controllers\Shared\ActivityLogController@clearAll")->name("settings.activity-log.clear-all");
+    Route::get("/settings/activity-log/{log}", "App\Http\Controllers\Shared\ActivityLogController@show")->name("settings.activity-log.show");
 
-    Route::get("/settings/backup", "App\Http\Controllers\BackupController@index")->name("settings.backup");
-    Route::get('/settings/backup/restore/{name}', "App\Http\Controllers\BackupController@restore")->name('settings.backup-restore');
-    Route::get('/settings/backup/create', "App\Http\Controllers\BackupController@create")->name('settings.backup-create');
-    Route::get('/settings/backup/{name}', "App\Http\Controllers\BackupController@show")->name('settings.backup-show');
-    Route::delete('/settings/backup/{name}', "App\Http\Controllers\BackupController@destroy")->name('settings.backup-destroy');
+    Route::get("/settings/backup", "App\Http\Controllers\Shared\BackupController@index")->name("settings.backup");
+    Route::get('/settings/backup/restore/{name}', "App\Http\Controllers\Shared\BackupController@restore")->name('settings.backup-restore');
+    Route::get('/settings/backup/create', "App\Http\Controllers\Shared\BackupController@create")->name('settings.backup-create');
+    Route::get('/settings/backup/{name}', "App\Http\Controllers\Shared\BackupController@show")->name('settings.backup-show');
+    Route::delete('/settings/backup/{name}', "App\Http\Controllers\Shared\BackupController@destroy")->name('settings.backup-destroy');
 });
 
-Route::group(['prefix' => 'activity', 'namespace' => 'jeremykenedy\LaravelLogger\App\Http\Controllers', 'middleware' => ['auth', 'activity']], function () {
+Route::group(['prefix' => 'activity', 'namespace' => 'jeremykenedy\LaravelLogger\App\Http\Controllers', 'middleware' => ['auth', 'activity'  , "ActiveUser"]], function () {
     // Dashboards
     Route::get('/', 'LaravelLoggerController@showAccessLog')->name('activity');
     Route::get('/cleared', ['uses' => 'LaravelLoggerController@showClearedActivityLog'])->name('cleared');

@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('last_login_os', 50)->nullable();
             $table->ipAddress('last_login_ip')->nullable();
             $table->text('last_login_useragent')->nullable();
+            $table->enum('status', ["active","blocked","inactive"])->default('active');
+            $table->unsignedBigInteger('status_by')->nullable()->default(0);
+            $table->dateTime('status_datetime')->nullable();
             $table->timestamps();
         });
     }

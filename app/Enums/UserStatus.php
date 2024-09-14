@@ -4,9 +4,12 @@ namespace App\Enums;
 
 use Illuminate\Support\Str;
 
-enum PermissionsGuard: string
+enum UserStatus: string
 {
-    case user = "user";
+    case active = "active";
+    case blocked = "blocked";
+    case inactive = "inactive";
+
 
     public static function values()
     {

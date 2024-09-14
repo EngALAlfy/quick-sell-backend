@@ -14,7 +14,14 @@ enum OrderStatus: string
 
     public static function values()
     {
-        return array_column(self::cases() , "name" , "value");
+        $values = self::cases();
+
+        $formattedValues = [];
+        foreach ($values as $case) {
+            $formattedValues[$case->value] = $case->getName();
+        }
+
+        return $formattedValues;
     }
 
     public function getName()

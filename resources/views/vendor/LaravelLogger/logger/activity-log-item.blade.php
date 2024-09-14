@@ -32,7 +32,7 @@
     @endpush
 @endif
 
-@section('template_title')
+@section('title')
     {{ trans('LaravelLogger::laravel-logger.drilldown.title', ['id' => $activity->id]) }}
 @endsection
 

@@ -10,9 +10,16 @@ enum StockType: string
     case return = "return";
     case adjustment = "adjustment";
 
-    public static function values(): array
+    public static function values()
     {
-        return array_column(self::cases() , "name" , "value");
+        $values = self::cases();
+
+        $formattedValues = [];
+        foreach ($values as $case) {
+            $formattedValues[$case->value] = $case->getName();
+        }
+
+        return $formattedValues;
     }
 
     public function getName(): string

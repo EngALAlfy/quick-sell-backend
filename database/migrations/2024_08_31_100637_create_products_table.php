@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('price', 8, 2);
             $table->text('description')->nullable();
             $table->foreignIdFor(\App\Models\Category::class);
-            $table->foreignIdFor(User::class , "created_by_user_id")->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignIdFor(\App\Models\User::class , "created_by_user_id")->nullable()->constrained("users")->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }
