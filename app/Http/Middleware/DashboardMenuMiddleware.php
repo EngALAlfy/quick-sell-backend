@@ -65,9 +65,9 @@ class DashboardMenuMiddleware
         $this->addHtmlTitle($menu, __('Reports Area'));
 
         $this->addRouteLink($menu, route("dashboard.transactions.index"), __('Transactions'), asset("assets/admin/img/icons/cash-flow.png"));
-        $this->addRouteLink($menu,  "/soon", __('Sales report'), asset("assets/admin/img/icons/invoice.png"));
-        $this->addRouteLink($menu,  "/soon", __('Purchase report'), asset("assets/admin/img/icons/bill.png"));
-        $this->addRouteLink($menu, "/soon" , __('Stock report'), asset("assets/admin/img/icons/shopping-cart.png"));
+        $this->addRouteLink($menu,  route("dashboard.reports.sales"), __('Sales report'), asset("assets/admin/img/icons/invoice.png"));
+        $this->addRouteLink($menu,  route("dashboard.reports.purchase"), __('Purchase report'), asset("assets/admin/img/icons/bill.png"));
+        $this->addRouteLink($menu, route("dashboard.reports.stock") , __('Stock report'), asset("assets/admin/img/icons/shopping-cart.png"));
     }
 
     private function addSalesMenu(Menu $menu): void

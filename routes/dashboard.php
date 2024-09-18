@@ -54,6 +54,12 @@ Route::middleware(["auth" , "ActiveUser"])->group(function () {
     Route::resource('clients', App\Http\Controllers\Dashboard\ClientController::class);
     Route::resource('purchase-orders', App\Http\Controllers\Dashboard\PurchaseOrderController::class);
     Route::resource('transactions', App\Http\Controllers\Dashboard\TransactionController::class);
+
+    Route::prefix('reports')->as("reports.")->controller(\App\Http\Controllers\Dashboard\ReportsController::class)->group(function (){
+        Route::get("sales" , "sales")->name("sales");
+        Route::get("stock" , "stock")->name("stock");
+        Route::get("purchase" , "purchase")->name("purchase");
+    });
 });
 
 /*
