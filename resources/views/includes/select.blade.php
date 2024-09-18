@@ -16,6 +16,13 @@
         ->attributes($attrs??[])->id($name);
         @endphp
 
+        @if($has_new_item ?? false)
+            @php($select = $select->attribute("has_new_item" , $has_new_item))
+            @php($select = $select->attribute("new_item_attrs" , $new_item_attrs ?? ''))
+            @php($select = $select->attribute("new_item_route" , $new_item_route))
+            @php($select = $select->attribute("data-html-title" , __("Add new ") . $title))
+        @endif
+
         @if($multi ?? false)
             @php($select = $select->multiple())
         @else
@@ -27,14 +34,6 @@
         @endif
 
         {!! $select !!}
-
-        @if($has_new_item ?? false)
-            <div>
-                {!! ajax_button('<i class="fa fa-plus"></i>' , "btn btn-outline-primary h-100 ms-2" , $new_item_route , __("Add new ") . $title ,'data-bs-toggle="tooltip" data-bs-placement="top"
-                        aria-label="'.__("Add new ") . $title.'"
-                        data-bs-original-title="'.__("Add new ") . $title.'" '. $new_item_attrs) !!}
-            </div>
-        @endif
     </div>
     @error($name)
     <small class="invalid-feedback">{{ $message }}</small>

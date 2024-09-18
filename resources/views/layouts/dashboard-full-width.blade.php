@@ -18,6 +18,8 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{settings("logo_path_public_path" , asset("favicon.ico"))}}"/>
+    <script src="{{asset("assets/admin/sneat/vendor/libs/jquery/jquery.js")}}"></script>
+    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
 
     @include("dashboard.includes.styles")
 </head>

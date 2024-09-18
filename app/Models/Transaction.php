@@ -19,11 +19,12 @@ class Transaction extends Model
      * @var array
      */
     protected $fillable = [
-        'transaction_type',
-        'user_id',
+        'type',
         'transactable_id',
         'transactable_type',
         'amount',
+        'product_id',
+        'quantity',
         'details',
     ];
 
@@ -33,8 +34,6 @@ class Transaction extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'transactable_id' => 'integer',
         'amount' => 'decimal:2',
         'details' => 'array',
     ];
@@ -44,8 +43,8 @@ class Transaction extends Model
         return $this->morphTo();
     }
 
-    public function user(): BelongsTo
+    public function product(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Product::class);
     }
 }

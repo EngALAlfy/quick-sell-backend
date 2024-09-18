@@ -20,7 +20,6 @@ class SaleUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['required', 'string'],
             'total_amount' => ['required', 'numeric', 'between:-999999.99,999999.99'],
             'payment_method' => ['required', 'in:cash,credit_card'],
             'created_at' => ['nullable'],

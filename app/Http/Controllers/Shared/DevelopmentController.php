@@ -69,7 +69,16 @@ class DevelopmentController extends Controller
 
     public function migrateRefresh(): RedirectResponse
     {
-        Artisan::call('migrate:refresh');
+        Artisan::call('migrate:fresh');
+        $output = Artisan::output();
+        Flash::info($output);
+
+        return redirect(route("deploy.result" , ["output" => $output , "operation" => __FUNCTION__]));
+    }
+
+    public function migrateRefreshSeed(): RedirectResponse
+    {
+        Artisan::call('migrate:fresh --seed');
         $output = Artisan::output();
         Flash::info($output);
 

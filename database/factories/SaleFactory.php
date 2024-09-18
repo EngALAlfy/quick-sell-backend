@@ -21,7 +21,6 @@ class SaleFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => $this->faker->word(),
             'total_amount' => $this->faker->randomFloat(2, 0, 999999.99),
             'payment_method' => $this->faker->randomElement(["cash","credit_card"]),
             'created_at' => $this->faker->dateTime(),

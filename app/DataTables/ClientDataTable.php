@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Product;
+use App\Models\Client;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -11,7 +11,7 @@ use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class StockDataTable extends DataTable
+class ClientDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -23,31 +23,24 @@ class StockDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->editColumn('id', '{{$id}}')
-            ->editColumn('enable_stock', function (Product $product) {
-                return getBooleanColumn($product , "enable_stock");
+            ->editColumn('name', function (Client $client) {
+                return $client->name;
             })
-            ->editColumn('alert_quantity', function (Product $product) {
-                if($product->alert_quantity > 0){
-                    return $product->alert_quantity;
-                }
-
-                return getBadgeColumn(__('Unlimited') , "dark");
-            })
-            ->editColumn('created_at', function (Product $product) {
+            ->editColumn('created_at', function (Client $client) {
                 return
-                    '<span class="text-truncate d-flex lh-1">' . Carbon::parse($product->created_at)->toFormattedDateString() . '</span>
-                    <small class="text-muted">' . Carbon::parse($product->created_at)->toTimeString() . '</small>';
+                    '<span class="text-truncate d-flex lh-1">' . Carbon::parse($client->created_at)->toFormattedDateString() . '</span>
+                    <small class="text-muted">' . Carbon::parse($client->created_at)->toTimeString() . '</small>';
             })
-            ->editColumn('action', 'dashboard.stocks.datatables_actions')
-            ->rawColumns(['enable_stock' , 'alert_quantity' , 'action', 'created_at']);
+            ->editColumn('action', 'dashboard.clients.datatables_actions')
+            ->rawColumns(['action', 'created_at']);
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(Product $model): QueryBuilder
+    public function query(Client $model): QueryBuilder
     {
-        return $model->with("transactions")->newQuery();
+        return $model->newQuery();
     }
 
     /**
@@ -56,7 +49,7 @@ class StockDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('stocks-table')
+            ->setTableId('clients-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->stateSave()
@@ -101,9 +94,7 @@ class StockDataTable extends DataTable
                 ->render('`<input type="checkbox" class="dt-checkboxes form-check-input">`'),
             Column::make('id'),
             Column::make('name'),
-            Column::make('enable_stock'),
-            Column::make('stock_quantity'),
-            Column::make('alert_quantity'),
+            Column::make('contact_information'),
             Column::make('created_at'),
         ];
     }
@@ -113,7 +104,7 @@ class StockDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'stocks_' . date('YmdHis');
+        return 'clients_' . date('YmdHis');
     }
 
     private function getResponsiveOptions(): string
@@ -123,7 +114,7 @@ class StockDataTable extends DataTable
                             details: {
                                 display: $.fn.dataTable.Responsive.display.modal({
                                     header: function (e) {
-                                        return "Details of Stock ID " + e.data().id
+                                        return "Details of Client ID " + e.data().id
                                     }
                                 }),
                                 type: "column",
@@ -155,11 +146,11 @@ class StockDataTable extends DataTable
                 ->className("btn btn-label-secondary me-2"),
 
             Button::make("create")
-                ->text('<i class="bx bx-plus me-sm-1"></i> <span class="d-none d-sm-inline-block">Add New Stock</span>')
+                ->text('<i class="bx bx-plus me-sm-1"></i> <span class="d-none d-sm-inline-block">Add New Client</span>')
                 ->addClass("ajax-btn")
                 ->addClass("create-new btn btn-primary")
                 ->action("")
-                ->attr(["data-href" => route("dashboard.stocks.create"),"data-html-classes" => "modal-sm" , "data-html-type" => $ajax_action_type, "data-html-title" => __("Add new stock")])
+                ->attr(["data-href" => route("dashboard.clients.create"),"data-html-classes" => "modal-sm" , "data-html-type" => $ajax_action_type, "data-html-title" => __("Add new client")])
         ];
     }
 

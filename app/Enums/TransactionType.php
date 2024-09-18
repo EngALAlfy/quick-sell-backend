@@ -6,9 +6,12 @@ use Illuminate\Support\Str;
 
 enum TransactionType: string
 {
-    case stock = "stock";
+    case open_stock = "open_stock";
     case purchase = "purchase";
-    case sale = "sale";
+    case sell = "sell";
+    case sell_return = "sell_return";
+    case purchase_return = "purchase_return";
+    case adjustment = "adjustment";
 
     public static function values()
     {

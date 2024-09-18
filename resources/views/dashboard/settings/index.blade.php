@@ -100,6 +100,11 @@
                         </div>
                         <div class="col-md-6 my-2">
                             <a class="btn d-block btn-warning" href="{{ route('deploy.migrateRefresh') }}">
+                                <i class="icon-refresh mr-2"></i> {{ __('Migrate Fresh') }}
+                            </a>
+                        </div>
+                        <div class="col-md-6 my-2">
+                            <a class="btn d-block btn-danger" href="{{ route('deploy.migrateRefreshSeed') }}">
                                 <i class="icon-refresh mr-2"></i> {{ __('Migrate Refresh') }}
                             </a>
                         </div>

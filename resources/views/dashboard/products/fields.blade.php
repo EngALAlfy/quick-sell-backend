@@ -18,14 +18,25 @@
 
 <div class="row my-3">
     @include('includes.input', [
-        'name' => 'price',
-        'title' => __('Price'),
+        'name' => 'purchase_price',
+        'title' => __('Purchase price'),
         'type' => 'number',
         'required' => true,
         'attrs' => [
             'step' => '0.01',
         ],
-        'col' => '12',
+        'col' => '6',
+    ])
+
+    @include('includes.input', [
+        'name' => 'sell_price',
+        'title' => __('Sell price'),
+        'type' => 'number',
+        'required' => true,
+        'attrs' => [
+            'step' => '0.01',
+        ],
+        'col' => '6',
     ])
 </div>
 

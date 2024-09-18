@@ -57,6 +57,7 @@ class DashboardMenuMiddleware
         $this->addRouteLink($menu, route("dashboard.categories.index"), __('Categories'), asset("assets/admin/img/icons/category.png"));
         $this->addRouteLink($menu, route("dashboard.stocks.index"), __('Stocks'), asset("assets/admin/img/icons/shopping-cart-1.png"));
         $this->addRouteLink($menu, route("dashboard.suppliers.index"), __('Suppliers'), asset("assets/admin/img/icons/store-manager2.png"));
+        $this->addRouteLink($menu, route("dashboard.clients.index"), __('Clients'), asset("assets/admin/img/icons/store-manager.png"));
     }
 
     private function addReportsMenu(Menu $menu): void
@@ -75,6 +76,8 @@ class DashboardMenuMiddleware
 
         $this->addRouteLink($menu, route("dashboard.sales.index"), __('Sales'), asset("assets/admin/img/icons/order.png"));
         $this->addRouteLink($menu, route("dashboard.sales.create"), __('New sale'), asset("assets/admin/img/icons/add-to-cart.png"));
+        $this->addRouteLink($menu, route("dashboard.purchase-orders.index"), __('Purchase orders'), asset("assets/admin/img/icons/online-shopping.png"));
+        $this->addRouteLink($menu, route("dashboard.purchase-orders.create"), __('New purchase'), asset("assets/admin/img/icons/payment.png"));
     }
 
     private function addSettingsMenu(Menu $menu): void

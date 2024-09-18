@@ -15,7 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->string('sku', 100)->unique();
-            $table->decimal('price', 8, 2);
+            $table->decimal('purchase_price', 8, 2);
+            $table->decimal('sell_price', 8, 2);
+
+            $table->boolean('enable_stock')->default(true);
+            $table->integer('alert_quantity')->nullable();
+            $table->integer('stock_quantity')->nullable();
+            $table->string('status')->default("active");
+
             $table->text('description')->nullable();
             $table->foreignIdFor(\App\Models\Category::class);
             $table->foreignIdFor(\App\Models\User::class , "created_by_user_id")->nullable()->constrained("users")->cascadeOnUpdate()->nullOnDelete();

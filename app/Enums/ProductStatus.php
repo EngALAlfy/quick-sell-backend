@@ -4,11 +4,11 @@ namespace App\Enums;
 
 use Illuminate\Support\Str;
 
-enum StockType: string
+enum ProductStatus: string
 {
-    case purchase = "purchase";
-    case return = "return";
-    case adjustment = "adjustment";
+    case active = "active";
+    case inactive = "inactive";
+
 
     public static function values()
     {
@@ -22,7 +22,7 @@ enum StockType: string
         return $formattedValues;
     }
 
-    public function getName(): string
+    public function getName()
     {
         return Str::headline(strtolower($this->name));
     }

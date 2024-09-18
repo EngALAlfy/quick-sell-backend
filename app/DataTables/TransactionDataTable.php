@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Enums\TransactionType;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
@@ -23,11 +24,23 @@ class TransactionDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->editColumn('id', '{{$id}}')
-            ->editColumn('transaction_type', function (Transaction $transaction) {
-                return $transaction->transaction_type;
+            ->editColumn('type', function (Transaction $transaction) {
+                $type = match ($transaction->type) {
+                    TransactionType::purchase->value,
+                    TransactionType::sell->value,
+                    TransactionType::adjustment->value => "success",
+
+                    TransactionType::sell_return->value,
+                    TransactionType::purchase_return->value => "danger",
+
+                    default => "dark",
+                };
+
+
+                return getBadgeColumn(TransactionType::from($transaction->type)->getName() , $type);
             })
-            ->editColumn('user_id', function (Transaction $transaction) {
-                return $transaction->user->name;
+            ->editColumn('created_by_user_id', function (Transaction $transaction) {
+                return $transaction->createdByUser->name;
             })
             ->editColumn('amount', function (Transaction $transaction) {
                 return number_format($transaction->amount, 2);
@@ -41,7 +54,7 @@ class TransactionDataTable extends DataTable
                     <small class="text-muted">' . Carbon::parse($transaction->created_at)->toTimeString() . '</small>';
             })
             ->editColumn('action', 'dashboard.transactions.datatables_actions')
-            ->rawColumns(['action', 'created_at']);
+            ->rawColumns(['type' , 'action', 'created_at']);
     }
 
     /**
@@ -49,7 +62,7 @@ class TransactionDataTable extends DataTable
      */
     public function query(Transaction $model): QueryBuilder
     {
-        return $model->with("user")->newQuery();
+        return $model->with("createdByUser")->newQuery();
     }
 
     /**
@@ -102,8 +115,9 @@ class TransactionDataTable extends DataTable
                 ->printable(false)
                 ->render('`<input type="checkbox" class="dt-checkboxes form-check-input">`'),
             Column::make('id'),
-            Column::make('transaction_type'),
-            Column::make('user_id'),
+            Column::make('type'),
+            Column::make('created_by_user_id')->title(__("Created By")),
+            Column::make('quantity'),
             Column::make('amount'),
             Column::make('details'),
             Column::make('created_at'),

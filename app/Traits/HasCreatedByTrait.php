@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * Class HasCreatedByTrait
  * @package App\Traits
- * @property mixed $status
+ * @property mixed $created_by_user_id
  */
 trait HasCreatedByTrait
 {

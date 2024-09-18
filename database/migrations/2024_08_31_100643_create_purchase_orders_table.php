@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\Supplier::class);
             $table->decimal('total_amount', 8, 2);
-            $table->enum('status', ["pending","received","canceled"])->default('pending');
+            $table->string('status')->default('pending');
             $table->foreignIdFor(\App\Models\User::class , "created_by_user_id")->nullable()->constrained("users")->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });

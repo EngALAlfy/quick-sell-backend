@@ -23,8 +23,14 @@ class ProductDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->editColumn('id', '{{$id}}')
-            ->editColumn('price', function (Product $product) {
-                return number_format($product->price, 2);
+            ->editColumn('name', function (Product $product) {
+                return view("dashboard.products.datatables_name" , compact("product"));
+            })
+            ->editColumn('purchase_price', function (Product $product) {
+                return number_format($product->purchase_price, 2);
+            })
+            ->editColumn('sell_price', function (Product $product) {
+                return number_format($product->sell_price, 2);
             })
 
             ->editColumn('category', function (Product $product) {
@@ -99,7 +105,8 @@ class ProductDataTable extends DataTable
             Column::make('id'),
             Column::make('name'),
             Column::make('sku'),
-            Column::make('price'),
+            Column::make('purchase_price'),
+            Column::make('sell_price'),
             Column::make('stock_quantity'),
             Column::make('category'),
             Column::make('created_at'),

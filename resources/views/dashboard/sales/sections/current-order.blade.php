@@ -22,7 +22,7 @@
         <div class="dropdown-menu show" style="width:97%;max-height: 250px; overflow-y: auto;">
             @foreach($searchResults as $result)
                 <a href="#" class="dropdown-item" wire:click.prevent="selectProduct({{ $result->id }})">
-                    {{ $result->name }} (SKU: {{ $result->sku }}) - ${{ $result->price }}
+                    {{ $result->name }} (SKU: {{ $result->sku }}) - ${{ $result->sell_price }}
                 </a>
             @endforeach
         </div>
@@ -70,8 +70,21 @@
         <!-- Payment Method Section -->
         @include("dashboard.sales.sections.payment-method")
 
+        @include("includes.select",
+            [
+            "name" => "client_id" ,
+            "title" => __('Client') ,
+            "placeholder" => __('Select permission group') ,
+            "required" => true,
+            "has_new_item" => true,
+            "new_item_route" => route("dashboard.clients.create"),
+            "floating" => false,
+            "options" => $clients,
+            "col" => "12",
+            "classes" => "select2 mb-4 fv-plugins-icon-container",
+          ])
         <!-- Place Order Button -->
-        <button wire:click.prevent="placeOrder()" class="btn place-order-btn w-100 mt-4">
+        <button wire:click.prevent="placeOrder()" class="btn btn-label-dark place-order-btn w-100 mt-4">
             <div wire:loading wire:target="placeOrder" class="spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>

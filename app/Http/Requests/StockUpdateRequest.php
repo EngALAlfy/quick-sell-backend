@@ -20,10 +20,8 @@ class StockUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_id' => ['required', 'string'],
+            'product_id' => ['required', 'exists:products,id'],
             'quantity' => ['required', 'integer'],
-            'type' => ['required', 'in:purchase,adjustment,return'],
-            'created_at' => ['nullable'],
         ];
     }
 }

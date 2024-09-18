@@ -22,7 +22,8 @@ class ProductStoreRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'sku' => ['required', 'string', 'max:100', 'unique:products,sku'],
-            'price' => ['required', 'numeric', 'between:-999999.99,999999.99'],
+            'sell_price' => ['required', 'numeric', 'min:1'],
+            'purchase_price' => ['required', 'numeric', 'min:1'],
             'stock_quantity' => ['required', 'integer'],
             'description' => ['nullable', 'string'],
             'category_id' => ['required', 'integer', 'exists:categories,id'],

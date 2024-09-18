@@ -19,7 +19,6 @@ class Sale extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
         'total_amount',
         'payment_method',
     ];
@@ -42,11 +41,6 @@ class Sale extends Model
 
     public function transactions(): MorphMany
     {
-        return $this->morphMany(Transaction::class, 'transactionable');
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
+        return $this->morphMany(Transaction::class, 'transactable');
     }
 }

@@ -49,8 +49,9 @@ Route::middleware(["auth" , "ActiveUser"])->group(function () {
     Route::resource('products', App\Http\Controllers\Dashboard\ProductController::class);
     Route::resource('categories', App\Http\Controllers\Dashboard\CategoryController::class);
     Route::resource('sales', App\Http\Controllers\Dashboard\SaleController::class);
-    Route::resource('stocks', App\Http\Controllers\Dashboard\StockController::class);
+    Route::resource('stocks', App\Http\Controllers\Dashboard\StockController::class)->only(["index" , "create" , "store"]);
     Route::resource('suppliers', App\Http\Controllers\Dashboard\SupplierController::class);
+    Route::resource('clients', App\Http\Controllers\Dashboard\ClientController::class);
     Route::resource('purchase-orders', App\Http\Controllers\Dashboard\PurchaseOrderController::class);
     Route::resource('transactions', App\Http\Controllers\Dashboard\TransactionController::class);
 });

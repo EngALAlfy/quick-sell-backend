@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\DataTables\SaleDataTable;
+use App\Enums\StockType;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Sale;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
@@ -23,8 +25,6 @@ class SaleController extends Controller
 
     public function create(Request $request)
     {
-        $categories = Category::get();
-        $products = Product::get();
-        return view('dashboard.sales.create', compact("categories", "products"));
+        return view('dashboard.sales.create');
     }
 }

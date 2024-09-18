@@ -11,21 +11,6 @@
 <div class="row my-3">
     @include("includes.select",
     [
-        "name" => "type" ,
-        "title" => __('Stock type') ,
-        "hint_icon" => __('Choose the type of stock') ,
-        "placeholder" => __('Please select the type') ,
-        "required" => true,
-        "floating" => false,
-        "options" => \App\Enums\StockType::values(),
-        "col" => "12",
-        "classes" => "select2 mb-4 fv-plugins-icon-container",
-      ])
-</div>
-
-<div class="row my-3">
-    @include("includes.select",
-    [
         "name" => "product_id" ,
         "title" => __('Product') ,
         "hint_icon" => __('Choose the product to add stock') ,
@@ -37,4 +22,4 @@
         "classes" => "select2 mb-4 fv-plugins-icon-container",
   ])
 </div>
-<button type="submit" class="btn btn-primary"><i class="fa fa-save me-2"></i>{{ __('Save Stock') }}</button>
+<button type="submit" class="btn btn-primary"><i class="fa fa-save me-2"></i>{{ __('Update Stock') }}</button>

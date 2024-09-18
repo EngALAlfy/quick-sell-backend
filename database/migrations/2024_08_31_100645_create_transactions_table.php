@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\User::class , "created_by_user_id")->nullable()->constrained("users")->cascadeOnUpdate()->nullOnDelete();
-            $table->enum('transaction_type', ["sale","purchase","stock"]);
+            $table->string('type');
             $table->decimal('amount', 8, 2);
+            $table->integer('quantity');
             $table->json('details')->nullable();
-            $table->morphs('transactable');
+            $table->foreignIdFor(\App\Models\Product::class);
+            $table->nullableMorphs('transactable');
             $table->timestamps();
         });
     }

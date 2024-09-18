@@ -31,17 +31,9 @@ class ProductController extends Controller
     public function store(ProductStoreRequest $request)
     {
         DB::transaction(function () use ($request) {
-            $data = $request->except("stock_quantity");
+            $data = $request->validated();
             $product = Product::create($data);
-            $stock = $product->stocks()->create([
-                "quantity" => $request->get("stock_quantity"),
-                "type" => StockType::adjustment->value,
-            ]);
-            $stock->transactions()->create([
-                "amount" => $stock->quantity,
-                "transaction_type" => TransactionType::stock->value,
-                "user_id" => auth()->id(),
-            ]);
+
             if ($request->has("image_storage_path")) {
                 update_media($request->only("image_storage_path"), $product, "image_storage_path", "image");
             }

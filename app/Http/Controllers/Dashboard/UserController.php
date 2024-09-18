@@ -112,7 +112,7 @@ class UserController extends Controller
         DB::transaction(static function () use ($user , $validated_inputs){
             $user->update([
                 "status" => $validated_inputs['status'],
-                "status_by" => auth("admin")->id(),
+                "status_by" => auth()->id(),
                 "status_datetime" => now(),
             ]);
 

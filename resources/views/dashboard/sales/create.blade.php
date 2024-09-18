@@ -37,8 +37,6 @@
             border-radius: 10px;
         }
         .place-order-btn {
-            background-color: #007bff;
-            color: white;
             border-radius: 10px;
             padding: 10px;
             font-size: 18px;

@@ -21,7 +21,6 @@ class TransactionStoreRequest extends FormRequest
     {
         return [
             'transaction_type' => ['required', 'in:sale,purchase,stock'],
-            'user_id' => ['required', 'string'],
             'transactable_id' => ['required', 'integer', 'gt:0'],
             'transactable_type' => ['required', 'string'],
             'amount' => ['required', 'numeric', 'between:-999999.99,999999.99'],

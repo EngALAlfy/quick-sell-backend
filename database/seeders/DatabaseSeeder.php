@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,7 +25,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
+            CategorySeeder::class,
+            ProductSeeder::class,
         ]);
+
 
     }
 }
