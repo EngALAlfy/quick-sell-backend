@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserStoreRequest extends FormRequest
@@ -16,18 +17,16 @@ class UserStoreRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'password', 'max:400'],
-            'email_verified_at' => ['nullable'],
-            'last_login_datetime' => ['nullable'],
-            'last_login_os' => ['nullable', 'string', 'max:50'],
-            'last_login_ip' => ['nullable'],
-            'last_login_useragent' => ['nullable', 'string'],
+            'email' => ['required', 'email', 'max:255'],
+            '_password' => ['required', 'max:255'],
+            'photo_storage_path' => ['nullable'],
         ];
     }
 }
