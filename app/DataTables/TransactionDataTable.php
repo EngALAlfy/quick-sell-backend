@@ -40,7 +40,7 @@ class TransactionDataTable extends DataTable
                 return getBadgeColumn(TransactionType::from($transaction->type)->getName() , $type);
             })
             ->editColumn('created_by_user_id', function (Transaction $transaction) {
-                return $transaction->createdByUser->name;
+                return $transaction->createdByUser?->name;
             })
             ->editColumn('amount', function (Transaction $transaction) {
                 return number_format($transaction->amount, 2);
