@@ -123,3 +123,32 @@
 }
 
 
+.light-style .report-list .report-list-item {
+  background-color: rgba(34,48,62,.06)
+}
+
+.light-style .report-list .report-list-icon {
+  background-color: #fff;
+  border-radius: .375rem
+}
+
+.light-style .vehicles-progress-labels .vehicles-progress-label::after {
+  background-color: #e4e6e8
+}
+
+.light-style .vehicles-overview-progress .snackbar {
+  background-color: #22303e
+}
+
+.light-style #shipmentStatisticsChart .apexcharts-legend-series,.light-style #carrierPerformance .apexcharts-legend-series {
+  border: 1px solid #e4e6e8
+}
+
+.dark-style .report-list .report-list-item {
+  background-color: rgba(230,230,241,.06)
+}
+
+.dark-style .report-list .report-list-icon {
+  background-color: #2b2c40;
+  border-radius: .375rem
+}
