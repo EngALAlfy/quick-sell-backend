@@ -152,3 +152,9 @@
   background-color: #2b2c40;
   border-radius: .375rem
 }
+
+#reportType:focus{
+  box-shadow: none !important;
+}
+
+
