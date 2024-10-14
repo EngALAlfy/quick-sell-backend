@@ -21,6 +21,7 @@
         "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "^1.8",
         "mews/captcha": "^3.3",
+        "nativephp/electron": "^0.7.3",
         "nebed/laravel-ua-parser": "^1.0",
         "opcodesio/log-viewer": "^3.1",
         "rawilk/laravel-settings": "^3.3",
