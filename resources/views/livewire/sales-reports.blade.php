@@ -52,7 +52,7 @@
     </div>
 
     <div class="row mb-4">
-        <div class="col-xxl-4 col-md-2 col-4 mb-6">
+        <div class="col-xxl-4 col-md-4 col-4 mb-6">
             <div class="card" style="min-height: 100%;">
                 <div class="card-body">
                     <div class="align-items-center d-flex flex-column flex-sm-row gap-4 justify-content-between" style="position: relative;">
@@ -291,7 +291,7 @@
                     </div>
                   </li>
                   <li class="align-items-center d-flex mb-2">
-                    
+
                     <div class="avatar flex-shrink-0 me-4">
                       <span class="avatar-initial rounded bg-label-danger"><i class='bx bxs-wallet'></i></span>
                     </div>
@@ -340,7 +340,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <div class="row">
@@ -403,7 +403,7 @@
             orientation: "auto right"
         });
 
-        Livewire.on('updateDateRange', (values) => {                
+        Livewire.on('updateDateRange', (values) => {
             if (values.startRange) {
                 $("#dateRangeStart").val(values.startRange).datepicker('update');
             }
@@ -412,7 +412,7 @@
             }
         });
 
-        Livewire.on('updateData', (data) => { 
+        Livewire.on('updateData', (data) => {
             salesChart(data.data['salesCard']['chartData']);
             purchasesChart(data.data['purchaseCard']['chartData']);
             profitChart(data.data['profitCard']['chartData']);
@@ -428,11 +428,11 @@
                 growthChart(data.data['clientStats']['growth']['value'], "Growth", config.colors.warning)
             }
             console.log(data.data['salesGraph']['chartDataCurrent'], data.data['salesGraph']['chartDataPrevious'], data.data['salesGraph']['x-axis'], data.data['salesGraph']['period']);
-            
+
             salesDetailsChart(data.data['salesGraph']['chartDataCurrent'], data.data['salesGraph']['chartDataPrevious'], data.data['salesGraph']['x-axis'], data.data['salesGraph']['period']);
         });
 
-        
+
 
 
 
@@ -492,7 +492,7 @@
                     enabled: false
                 }
             }
-            
+
             if($("#salesChart").children().length > 0)
             {
                 salesChartElement.updateSeries([{
@@ -731,7 +731,7 @@
                         const goals =
                         opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex]
                             .goals
-                        
+
                         if (goals && goals.length) {
                             return `${val} EGP`
                         }
