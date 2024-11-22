@@ -42,7 +42,7 @@ class StockController extends Controller
 
     public function show(Request $request, $id)
     {
-        $stock = DB::table('stocks') // Fetching stock with related product data
+        $stock = DB::table('stocks')
         ->join('products', 'stocks.product_id', '=', 'products.id')
             ->select('stocks.*', 'products.name as product_name')
             ->where('stocks.id', $id)
