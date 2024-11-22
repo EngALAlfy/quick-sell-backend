@@ -20,6 +20,7 @@ class SaleController extends Controller
 
     public function show(Request $request, Sale $sale)
     {
+        $sale->load(['product.category', 'user']);
         return view('dashboard.sales.show', compact('sale'));
     }
 

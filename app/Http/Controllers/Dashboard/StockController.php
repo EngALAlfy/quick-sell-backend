@@ -40,4 +40,20 @@ class StockController extends Controller
         return redirect()->route('dashboard.stocks.index');
     }
 
+    public function show(Request $request, $id)
+    {
+        $stock = DB::table('stocks') // Fetching stock with related product data
+        ->join('products', 'stocks.product_id', '=', 'products.id')
+            ->select('stocks.*', 'products.name as product_name')
+            ->where('stocks.id', $id)
+            ->first();
+
+        if (!$stock) {
+            abort(404, __("Stock not found"));
+        }
+
+        return view('dashboard.stocks.show', compact('stock'));
+    }
+
+
 }
