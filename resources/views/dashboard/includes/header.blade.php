@@ -30,7 +30,6 @@
                             <a class="dropdown-item active" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" data-language="{{$localeCode}}" data-text-direction="ltr">
                                 <span class="align-middle">{{ $properties['native'] }}</span>
                             </a>
-                            @dd($properties)
                         </li>
                     @endforeach
                 </ul>
