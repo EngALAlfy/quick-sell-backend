@@ -19,9 +19,10 @@ class SaleController extends Controller
     }
 
     public function show(Request $request, Sale $sale)
-    {
-        return view('dashboard.sales.show', compact('sale'));
-    }
+{
+    return view('dashboard.sales.show', compact('sale'));
+}
+
 
     public function create(Request $request)
     {

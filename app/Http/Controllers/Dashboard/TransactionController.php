@@ -12,7 +12,7 @@ class TransactionController extends Controller
     /**
      * Display a listing of the transactions.
      *
-     * @param Request $request
+     * @param TransactionDataTable $dataTable
      * @return \Illuminate\View\View
      */
     public function index(TransactionDataTable $dataTable)

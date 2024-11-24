@@ -7,6 +7,7 @@ use App\Enums\TransactionType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StockUpdateRequest;
 use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Laracasts\Flash\Flash;
@@ -39,5 +40,4 @@ class StockController extends Controller
 
         return redirect()->route('dashboard.stocks.index');
     }
-
 }
