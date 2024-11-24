@@ -25,26 +25,14 @@
                     <i class="bx bx-globe bx-sm"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                        <a class="dropdown-item active" href="javascript:void(0);" data-language="en" data-text-direction="ltr">
-                            <span class="align-middle">English</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="fr" data-text-direction="ltr">
-                            <span class="align-middle">French</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="ar" data-text-direction="rtl">
-                            <span class="align-middle">Arabic</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="de" data-text-direction="ltr">
-                            <span class="align-middle">German</span>
-                        </a>
-                    </li>
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li>
+                            <a class="dropdown-item active" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" data-language="{{$localeCode}}" data-text-direction="ltr">
+                                <span class="align-middle">{{ $properties['native'] }}</span>
+                            </a>
+                            @dd($properties)
+                        </li>
+                    @endforeach
                 </ul>
             </li>
             <!-- /Language -->
