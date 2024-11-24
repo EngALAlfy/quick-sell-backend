@@ -12,7 +12,7 @@
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
                 <i class="bx bx-search bx-md"></i>
-                <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2" placeholder="Search..." aria-label="Search...">
+                <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2" placeholder="{{__('Search...')}}" aria-label="Search...">
             </div>
         </div>
         <!-- /Search -->
@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <span class="fw-medium d-block">{{auth()->user()->name}}</span>
-                                    <small class="text-muted">Admin</small>
+                                    <small class="text-muted">{{auth()->user()->getRoleNames()->first()}}</small>
                                 </div>
                             </div>
                         </a>
@@ -64,15 +64,15 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="pages-profile-user.html">
+                        <a class="dropdown-item" href="{{route("dashboard.profile.index")}}">
                             <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">{{__('My Profile')}}</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="pages-account-settings-account.html">
+                        <a class="dropdown-item" href="{{route("dashboard.settings.index")}}">
                             <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
+                            <span class="align-middle">{{__('Settings')}}</span>
                         </a>
                     </li>
                     <li>
