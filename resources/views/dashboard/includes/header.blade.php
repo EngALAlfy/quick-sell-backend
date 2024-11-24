@@ -27,7 +27,7 @@
                 <ul class="dropdown-menu dropdown-menu-end">
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <li>
-                            <a class="dropdown-item active" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" data-language="{{$localeCode}}" data-text-direction="ltr">
+                            <a class="dropdown-item" @class(["active" => app()->getLocale() == $localeCode]) hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" data-language="{{$localeCode}}" data-text-direction="ltr">
                                 <span class="align-middle">{{ $properties['native'] }}</span>
                             </a>
                         </li>
