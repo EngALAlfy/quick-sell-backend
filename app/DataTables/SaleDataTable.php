@@ -149,11 +149,10 @@ class SaleDataTable extends DataTable
 
             Button::make("create")
                 ->text('<i class="bx bx-plus me-sm-1"></i> <span class="d-none d-sm-inline-block">Add New Sale</span>')
-                ->addClass("ajax-btn")
                 ->addClass("create-new btn btn-primary")
                 ->action("")
-                ->attr(["data-href" => route("dashboard.sales.create"), "data-html-type" => $ajax_action_type, "data-html-title" => __("Add new sale")])
-        ];
+                ->attr(["href" => route("dashboard.sales.create")]),
+            ];
     }
 
     private function getExportBtns(): array
