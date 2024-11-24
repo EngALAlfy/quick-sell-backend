@@ -10,11 +10,9 @@
                 wire:keydown="fetchProducts">
 
         @if(!empty($results))
-            <div class="dropdown-menu show mt-1 w-100" style="max-height: 300px; overflow-y: auto;top: 55px">
+            <div class="dropdown-menu show mt-1" style="max-height: 300px; overflow-y: auto;top: 55px">
                 @foreach($results as $result)
-                    <a href="#" class="dropdown-item">
-                        {{ $result->name }} (SKU: {{ $result->sku }}) - {{ $result->sell_price }} {{__('EGP')}}
-                    </a>
+                    {!! ajax_button("$result->name (SKU: $result->sku) - $result->sell_price " . __('EGP'), "dropdown-item" , route("dashboard.products.show" , $result) , __("Show search result")) !!}
                 @endforeach
             </div>
         @endif
