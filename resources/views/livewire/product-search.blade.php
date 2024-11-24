@@ -10,7 +10,7 @@
                 wire:keydown="fetchProducts">
 
         @if(!empty($results))
-            <div class="dropdown-menu show mt-1 w-100" style="max-height: 300px; overflow-y: auto;">
+            <div class="dropdown-menu show mt-1 w-100" style="max-height: 300px; overflow-y: auto;top: 55px">
                 @foreach($results as $result)
                     <a href="#" class="dropdown-item">
                         {{ $result->name }} (SKU: {{ $result->sku }}) - {{ $result->sell_price }} {{__('EGP')}}
