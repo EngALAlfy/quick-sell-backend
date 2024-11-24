@@ -44,7 +44,7 @@ return [
     |
     */
 
-    'back_to_system_url' => "/admin/settings",
+    'back_to_system_url' => "/dashboard/settings",
 
     'back_to_system_label' => null, // Displayed by default: "Back to {{ app.name }}"
 
