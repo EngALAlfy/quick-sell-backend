@@ -146,12 +146,11 @@ class SaleDataTable extends DataTable
             Button::make('colvis')
                 ->text("<i class='fa fa-eye'></i> " . __('Show/Hide'))
                 ->className("btn btn-label-secondary me-2"),
-
             Button::make("create")
                 ->text('<i class="bx bx-plus me-sm-1"></i> <span class="d-none d-sm-inline-block">Add New Sale</span>')
                 ->addClass("create-new btn btn-primary")
-                ->action("")
-                ->attr(["href" => route("dashboard.sales.create")]),
+                ->action("window.location.href = '" . route("dashboard.sales.create") . "'")
+
             ];
     }
 
