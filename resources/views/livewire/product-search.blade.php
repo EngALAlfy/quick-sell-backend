@@ -6,7 +6,8 @@
                 class="form-control border-0 shadow-none ps-1 ps-sm-2"
                 placeholder="{{ __('Search...') }}"
                 aria-label="Search..."
-                wire:model.debounce.300ms="query">
+                wire:model.lazy="query"
+                wire:keydown="fetchProducts">
 
         @if(!empty($results))
             <div class="dropdown-menu show mt-1 w-100" style="max-height: 300px; overflow-y: auto;">

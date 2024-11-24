@@ -10,12 +10,16 @@ class ProductSearch extends Component
     public $query = '';
     public $results = [];
 
-    public function updatedQuery()
+    public function fetchProducts(): void
     {
-        $this->results = Product::where('name', 'like', '%' . $this->query . '%')
-            ->orWhere('sku', 'like', '%' . $this->query . '%')
-            ->limit(10)
-            ->get();
+        if (!empty($this->query)) {
+            $this->results = Product::where('sku', 'like', "%{$this->query}%")
+                ->orWhere('name', 'like', "%{$this->query}%")
+                ->limit(10)
+                ->get();
+        } else {
+            $this->results = collect([]);
+        }
     }
 
     public function render()
