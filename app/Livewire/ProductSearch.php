@@ -18,13 +18,6 @@ class ProductSearch extends Component
             ->get();
     }
 
-    public function selectProduct($productId)
-    {
-        $this->emit('productSelected', $productId);
-        $this->query = '';
-        $this->results = [];
-    }
-
     public function render()
     {
         return view('livewire.product-search');
