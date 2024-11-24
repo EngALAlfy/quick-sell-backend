@@ -22,7 +22,7 @@
         <div class="dropdown-menu show" style="width:97%;max-height: 250px; overflow-y: auto;">
             @foreach($searchResults as $result)
                 <a href="#" class="dropdown-item" wire:click.prevent="selectProduct({{ $result->id }})">
-                    {{ $result->name }} (SKU: {{ $result->sku }}) - ${{ $result->sell_price }}
+                    {{ $result->name }} (SKU: {{ $result->sku }}) - {{ $result->sell_price }} {{__('EGP')}}
                 </a>
             @endforeach
         </div>

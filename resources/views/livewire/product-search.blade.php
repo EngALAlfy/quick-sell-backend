@@ -12,8 +12,8 @@
         @if(!empty($results))
             <div class="dropdown-menu show mt-1 w-100" style="max-height: 300px; overflow-y: auto;">
                 @foreach($results as $result)
-                    <a href="#" class="dropdown-item" wire:click.prevent="selectProduct({{ $result->id }})">
-                        {{ $result->name }} (SKU: {{ $result->sku }}) - ${{ $result->sell_price }}
+                    <a href="#" class="dropdown-item">
+                        {{ $result->name }} (SKU: {{ $result->sku }}) - {{ $result->sell_price }} {{__('EGP')}}
                     </a>
                 @endforeach
             </div>
