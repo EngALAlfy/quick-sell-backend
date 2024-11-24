@@ -86,7 +86,6 @@ class DashboardMenuMiddleware
 
         $this->addRouteLink($menu, route("dashboard.settings.index"), __('Settings'), asset("assets/admin/img/icons/settings.png"));
         $this->addRouteLink($menu, route("dashboard.roles.index"), __('Roles'), asset("assets/admin/img/icons/roles.png"));
-        $this->addRouteLink($menu, route("dashboard.permissions.index"), __('Permissions Manager'), asset("assets/admin/img/icons/permissions.png"));
         $this->addRouteLink($menu, "/error-log", __('Error Log'), asset("assets/admin/img/icons/error.png"));
         $this->addRouteLink($menu, route("dashboard.settings.backup"), __('Backup'), asset("assets/admin/img/icons/backup.png"));
         $this->addRouteLink($menu, route("dashboard.activity"), __('Activity Log'), asset("assets/admin/img/icons/record.png"));
