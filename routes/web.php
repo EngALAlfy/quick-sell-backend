@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware("guest")->group(function () {
-    Route::redirect("/" , "/dashboard/login");
-});
+Route::view("/" , "landing-page.index");
 
 \Livewire\Livewire::setUpdateRoute(function ($handle) {
     return Route::post('/custom/livewire/update', $handle);
