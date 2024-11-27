@@ -1,77 +1,49 @@
 <footer id="footer" class="footer">
-
     <div class="container footer-top">
         <div class="row gy-4">
-            <div class="col-lg-4 col-md-6 footer-about">
-                <a href="index.html" class="logo d-flex align-items-center">
-                    <span class="sitename">iLanding</span>
+            <div class="col-lg-8 col-md-8 footer-about">
+                <a href="{{url("/")}}" class="logo d-flex align-items-center">
+                    <span class="sitename">{{ __(config('app.name')) }}</span>
                 </a>
                 <div class="footer-contact pt-3">
-                    <p>A108 Adam Street</p>
-                    <p>New York, NY 535022</p>
-                    <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                    <p><strong>Email:</strong> <span>info@example.com</span></p>
+                    <p>{{ __('New Cairo') }}</p>
+                    <p>{{ __('Cairo, Egypt') }}</p>
+                    <p class="mt-3"><strong>{{ __('Phone:') }}</strong> <span>+201153263994</span></p>
+                    <p><strong>{{ __('Email:') }}</strong> <span>islam@alalfy.com</span></p>
                 </div>
                 <div class="social-links d-flex mt-4">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.facebook.com/yotech.org"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.linkedin.com/company/yotechorg"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Useful Links</h4>
+            <div class="col-lg-4 col-md-4 footer-links">
+                <h4>{{ __('Useful Links') }}</h4>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#hero">{{ __('Home') }}</a></li>
+                    <li><a href="#about">{{ __('About us') }}</a></li>
+                    <li><a href="#services">{{ __('Services') }}</a></li>
+                    <li><a href="#">{{ __('Terms of service') }}</a></li>
+                    <li><a href="#">{{ __('Privacy policy') }}</a></li>
                 </ul>
             </div>
 
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Our Services</h4>
+            <div class="col-lg-4 col-md-4 footer-links">
+                <h4>{{ __('Our Services') }}</h4>
                 <ul>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Web Development</a></li>
-                    <li><a href="#">Product Management</a></li>
-                    <li><a href="#">Marketing</a></li>
-                    <li><a href="#">Graphic Design</a></li>
+                    <li><a href="https://yotech.org">{{ __('Web Design') }}</a></li>
+                    <li><a href="https://alalfy.com">{{ __('Web Development') }}</a></li>
+                    <li><a href="https://yotech.org">{{ __('Mobile Development') }}</a></li>
+                    <li><a href="https://alalfy.com">{{ __('Server Management') }}</a></li>
                 </ul>
             </div>
-
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Hic solutasetp</h4>
-                <ul>
-                    <li><a href="#">Molestiae accusamus iure</a></li>
-                    <li><a href="#">Excepturi dignissimos</a></li>
-                    <li><a href="#">Suscipit distinctio</a></li>
-                    <li><a href="#">Dilecta</a></li>
-                    <li><a href="#">Sit quas consectetur</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Nobis illum</h4>
-                <ul>
-                    <li><a href="#">Ipsam</a></li>
-                    <li><a href="#">Laudantium dolorum</a></li>
-                    <li><a href="#">Dinera</a></li>
-                    <li><a href="#">Trodelas</a></li>
-                    <li><a href="#">Flexo</a></li>
-                </ul>
-            </div>
-
         </div>
     </div>
 
     <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">iLanding</strong> <span>All Rights Reserved</span></p>
+        <p>© <span>{{ __('Copyright') }}</span> <strong class="px-1 sitename">{{ __(config('app.name')) }}</strong> <span>{{ __('All Rights Reserved') }}</span></p>
         <div class="credits">
-            Designed by <a href="https://yotech.org/">YoTech</a>
+            {{ __('Designed by') }} <a href="https://yotech.org/">{{__('YoTech')}}</a>
         </div>
     </div>
-
 </footer>
