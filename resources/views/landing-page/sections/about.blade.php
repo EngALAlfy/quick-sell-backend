@@ -34,7 +34,7 @@
                                 <img src="https://alalfy.com/storage/uploads/profile_1.jpeg" alt="{{ __('CEO Profile') }}" class="profile-image">
                                 <div>
                                     <h4 class="profile-name">{{ __('Islam Alalfy') }}</h4>
-                                    <p class="profile-position">{{ __('CEO &amp; Founder') }}</p>
+                                    <p class="profile-position">{!!  __('CEO &amp; Founder')  !!}</p>
                                 </div>
                             </div>
                         </div>
