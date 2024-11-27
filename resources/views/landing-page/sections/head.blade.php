@@ -16,11 +16,41 @@
     rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link href="{{ asset('assets/landing-page/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+@if (\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getCurrentLocaleDirection() === 'rtl')
+    <link href="{{ asset('assets/landing-page/vendor/bootstrap/css/bootstrap.rtl.min.css') }}" rel="stylesheet">
+@else
+    <link href="{{ asset('assets/landing-page/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+@endif
+
 <link href="{{ asset('assets/landing-page/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/landing-page/vendor/aos/aos.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/landing-page/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/landing-page/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
+@if (\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getCurrentLocaleDirection() === 'rtl')
+    <style>
+        /* Fonts */
+        @font-face {
+            font-family: 'GEDinarOneMedium';
+            src: url('{{asset("assets/landing-page/fonts/GE Dinar One Medium.otf")}}') format('opentype');
+        }
+
+        :root {
+            --default-font: "GEDinarOneMedium", "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --heading-font: "GEDinarOneMedium", "Nunito", sans-serif;
+            --nav-font: "GEDinarOneMedium", "Inter", sans-serif;
+        }
+    </style>
+@else
+    <style>
+        /* Fonts */
+        :root {
+            --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --heading-font: "Nunito", sans-serif;
+            --nav-font: "Inter", sans-serif;
+        }
+    </style>
+@endif
+
 <!-- Main CSS File -->
-<link href="{{ asset('assets/landing-page/css/main.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/landing-page/css/main.css') }}?v=1" rel="stylesheet">
