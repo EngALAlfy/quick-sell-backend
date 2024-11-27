@@ -1,4 +1,3 @@
-
 <!-- Features Cards Section -->
 <section id="features-cards" class="features-cards section">
 
@@ -6,37 +5,41 @@
 
         <div class="row gy-4">
 
+            <!-- No Limits Feature -->
             <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
                 <div class="feature-box orange">
-                    <i class="bi bi-award"></i>
-                    <h4>Corporis voluptates</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                    <i class="bi bi-infinity"></i> <!-- You can change the icon here if you want -->
+                    <h4>{{ __('No Limits') }}</h4>
+                    <p>{{ __('Experience unlimited potential with our system—no restrictions on your growth and expansion.') }}</p>
                 </div>
-            </div><!-- End Feature Borx-->
+            </div><!-- End Feature Box-->
 
+            <!-- Self Hosting Feature -->
             <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
                 <div class="feature-box blue">
-                    <i class="bi bi-patch-check"></i>
-                    <h4>Explicabo consectetur</h4>
-                    <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
+                    <i class="bi bi-cloud"></i> <!-- You can change the icon here if you want -->
+                    <h4>{{ __('Self Hosting - Managed') }}</h4>
+                    <p>{{ __('Fully managed hosting. No need to worry about domains or server maintenance.') }}</p>
                 </div>
-            </div><!-- End Feature Borx-->
+            </div><!-- End Feature Box-->
 
+            <!-- Offline Solutions Feature -->
             <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
                 <div class="feature-box green">
-                    <i class="bi bi-sunrise"></i>
-                    <h4>Ullamco laboris</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                    <i class="bi bi-laptop"></i> <!-- You can change the icon here if you want -->
+                    <h4>{{ __('Offline Solutions for Windows and PCs') }}</h4>
+                    <p>{{ __('Our system works offline on both Windows and PCs, ensuring that you are never left without access.') }}</p>
                 </div>
-            </div><!-- End Feature Borx-->
+            </div><!-- End Feature Box-->
 
+            <!-- Backup and Security Feature -->
             <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
                 <div class="feature-box red">
-                    <i class="bi bi-shield-check"></i>
-                    <h4>Labore consequatur</h4>
-                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                    <i class="bi bi-shield-lock"></i> <!-- You can change the icon here if you want -->
+                    <h4>{{ __('Backup and Security') }}</h4>
+                    <p>{{ __('Robust backup solutions and top-tier security features to protect your data and ensure reliability.') }}</p>
                 </div>
-            </div><!-- End Feature Borx-->
+            </div><!-- End Feature Box-->
 
         </div>
 
