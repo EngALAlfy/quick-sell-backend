@@ -5,10 +5,9 @@
 
         <div class="row content justify-content-center align-items-center position-relative">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="display-4 mb-4">Maecenas tempus tellus eget condimentum</h2>
-                <p class="mb-4">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                    Curae; Donec velit neque, auctor sit amet aliquam vel</p>
-                <a href="#" class="btn btn-cta">Call To Action</a>
+                <h2 class="display-4 mb-4">{{ __('Ready to Optimize Your Business Operations?') }}</h2>
+                <p class="mb-4">{{ __('Get started with our all-in-one platform for sales, inventory, and customer management. Our system helps you streamline your processes, increase efficiency, and scale your business.') }}</p>
+                <a href="#contact" class="btn btn-cta">{{ __('Contact Us') }}</a>
             </div>
 
             <!-- Abstract Background Elements -->

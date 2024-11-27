@@ -8,7 +8,7 @@
             <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
                 <span class="about-meta">{{ __('MORE ABOUT US') }}</span>
                 <h2 class="about-title">{{ __('Transforming Your Business with Technology') }}</h2>
-                <p class="about-description">{{ __('Our platform is designed to help businesses streamline their operations, manage inventory, handle sales, and improve customer experiences. With over 15 years of expertise, we have developed a comprehensive solution that scales with your business.') }}</p>
+                <p class="about-description">{{ __('Our platform is designed to help businesses streamline their operations, manage inventory, handle sales, and improve customer experiences. With over 8 years of expertise, we have developed a comprehensive solution that scales with your business.') }}</p>
 
                 <div class="row feature-list-wrapper">
                     <div class="col-md-6">
@@ -58,7 +58,7 @@
                         <img src="{{asset("assets/landing-page/img/about-2.webp")}}" alt="{{ __('Team Discussion') }}" class="img-fluid small-image rounded-4">
                     </div>
                     <div class="experience-badge floating">
-                        <h3>15+ <span>{{ __('Years') }}</span></h3>
+                        <h3>8+ <span>{{ __('Years') }}</span></h3>
                         <p>{{ __('Of experience in business service') }}</p>
                     </div>
                 </div>
