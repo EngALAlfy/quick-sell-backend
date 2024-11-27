@@ -52,8 +52,6 @@
 
     @include("landing-page.sections.stats")
 
-    @include("landing-page.sections.services")
-
     @include("landing-page.sections.pricing")
 
     @include("landing-page.sections.faq")
