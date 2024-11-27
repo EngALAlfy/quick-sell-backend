@@ -45,22 +45,19 @@
                     </div>
                 </div><!-- End .feature-item -->
 
-                <div class="col-lg-4">
-
-                    <!-- Feature: Multi-Admins -->
-                    <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="500">
-                        <div class="d-flex align-items-center gap-4">
-                            <div class="feature-icon flex-shrink-0">
-                                <i class="bi bi-person-plus"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h3>{{ __('Multi-Admins') }}</h3>
-                                <p>{{ __('Manage multiple admins with different roles and permissions to streamline your operations.') }}</p>
-                            </div>
+                <!-- Feature: Multi-Admins -->
+                <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="500">
+                    <div class="d-flex align-items-center gap-4">
+                        <div class="feature-icon flex-shrink-0">
+                            <i class="bi bi-person-plus"></i>
                         </div>
-                    </div><!-- End .feature-item -->
+                        <div class="feature-content">
+                            <h3>{{ __('Multi-Admins') }}</h3>
+                            <p>{{ __('Manage multiple admins with different roles and permissions to streamline your operations.') }}</p>
+                        </div>
+                    </div>
+                </div><!-- End .feature-item -->
 
-                </div>
             </div>
 
             <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
@@ -110,36 +107,31 @@
                     </div>
                 </div><!-- End .feature-item -->
 
-
-                <div class="col-lg-4">
-
-                    <!-- Feature: Purchase Management -->
-                    <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="500">
-                        <div class="d-flex align-items-center justify-content-end gap-4">
-                            <div class="feature-content">
-                                <h3>{{ __('Purchase Management') }}</h3>
-                                <p>{{ __('Efficiently manage your purchase orders, track suppliers, and maintain control over your procurement process.') }}</p>
-                            </div>
-                            <div class="feature-icon flex-shrink-0">
-                                <i class="bi bi-cart-plus"></i>
-                            </div>
+                <!-- Feature: Purchase Management -->
+                <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="500">
+                    <div class="d-flex align-items-center justify-content-end gap-4">
+                        <div class="feature-content">
+                            <h3>{{ __('Purchase Management') }}</h3>
+                            <p>{{ __('Efficiently manage your purchase orders, track suppliers, and maintain control over your procurement process.') }}</p>
                         </div>
-                    </div><!-- End .feature-item -->
-
-                    <!-- Feature: Backup and Activity Logs -->
-                    <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="600">
-                        <div class="d-flex align-items-center justify-content-end gap-4">
-                            <div class="feature-content">
-                                <h3>{{ __('Backup & Activity Logs') }}</h3>
-                                <p>{{ __('Keep your data safe with automated backups and monitor system activity with detailed logs for security.') }}</p>
-                            </div>
-                            <div class="feature-icon flex-shrink-0">
-                                <i class="bi bi-file-earmark-lock"></i>
-                            </div>
+                        <div class="feature-icon flex-shrink-0">
+                            <i class="bi bi-cart-plus"></i>
                         </div>
-                    </div><!-- End .feature-item -->
+                    </div>
+                </div><!-- End .feature-item -->
 
-                </div>
+                <!-- Feature: Backup and Activity Logs -->
+                <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="600">
+                    <div class="d-flex align-items-center justify-content-end gap-4">
+                        <div class="feature-content">
+                            <h3>{{ __('Backup & Activity Logs') }}</h3>
+                            <p>{{ __('Keep your data safe with automated backups and monitor system activity with detailed logs for security.') }}</p>
+                        </div>
+                        <div class="feature-icon flex-shrink-0">
+                            <i class="bi bi-file-earmark-lock"></i>
+                        </div>
+                    </div>
+                </div><!-- End .feature-item -->
 
             </div>
         </div>
