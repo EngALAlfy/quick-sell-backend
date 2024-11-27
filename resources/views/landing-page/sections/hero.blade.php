@@ -57,22 +57,22 @@
             <div class="col-lg-3 col-md-6">
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="bi bi-people"></i>
+                        <i class="bi bi-box-seam"></i>
                     </div>
                     <div class="stat-content">
-                        <h4>33+ {{ __('Businesses Served') }}</h4>
-                        <p class="mb-0">{{ __('Helping clients streamline sales and purchases.') }}</p>
+                        <h4>Unlimited {{ __('Products & Sales') }}</h4>
+                        <p class="mb-0">{{ __('No limits, grow your business without constraints.') }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="bi bi-graph-up"></i>
+                        <i class="bi bi-bar-chart"></i>
                     </div>
                     <div class="stat-content">
-                        <h4>94K+ {{ __('Transactions Powered') }}</h4>
-                        <p class="mb-0">{{ __('Ensuring seamless operations.') }}</p>
+                        <h4>{{ __('Comprehensive Reports & Charts') }}</h4>
+                        <p class="mb-0">{{ __('Gain insights with detailed analytics.') }}</p>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="stat-content">
                         <h4>99.99% {{ __('Uptime Guaranteed') }}</h4>
-                        <p class="mb-0">{{ __('Reliable and always online.') }}</p>
+                        <p class="mb-0">{{ __('Reliable performance, always available.') }}</p>
                     </div>
                 </div>
             </div>
@@ -93,8 +93,8 @@
                         <i class="bi bi-headset"></i>
                     </div>
                     <div class="stat-content">
-                        <h4>94K+ {{ __('Support Hours Delivered') }}</h4>
-                        <p class="mb-0">{{ __('Dedicated support to meet your needs.') }}</p>
+                        <h4>24/7 {{ __('Support & Assistance') }}</h4>
+                        <p class="mb-0">{{ __('Always here to help when you need us.') }}</p>
                     </div>
                 </div>
             </div>
