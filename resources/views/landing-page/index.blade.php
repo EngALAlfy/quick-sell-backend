@@ -46,9 +46,7 @@
 
     @include("landing-page.sections.call-to-action")
 
-    @include("landing-page.sections.clients")
-
-    @include("landing-page.sections.testimonials")
+{{--    @include("landing-page.sections.testimonials")--}}
 
     @include("landing-page.sections.stats")
 
