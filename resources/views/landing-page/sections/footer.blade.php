@@ -1,7 +1,7 @@
 <footer id="footer" class="footer">
     <div class="container footer-top">
         <div class="row gy-4">
-            <div class="col-lg-8 col-md-8 footer-about">
+            <div class="col-lg-4 col-md-4 footer-about">
                 <a href="{{url("/")}}" class="logo d-flex align-items-center">
                     <span class="sitename">{{ __(config('app.name')) }}</span>
                 </a>
