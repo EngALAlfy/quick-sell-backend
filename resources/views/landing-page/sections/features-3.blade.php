@@ -11,7 +11,7 @@
                     <div class="d-flex align-items-center justify-content-end gap-4">
                         <div class="feature-content">
                             <h3>Unlimited Products</h3>
-                            <p>Effortlessly manage and list an unlimited number of products to grow your business.</p>
+                            <p>Manage and showcase an unlimited number of products, enabling you to scale your business effortlessly.</p>
                         </div>
                         <div class="feature-icon flex-shrink-0">
                             <i class="bi bi-box-seam"></i>
@@ -24,10 +24,10 @@
                     <div class="d-flex align-items-center justify-content-end gap-4">
                         <div class="feature-content">
                             <h3>Client Management</h3>
-                            <p>Track and engage with clients to foster long-term relationships and improve service.</p>
+                            <p>Track and manage all your clients in one place for improved customer relationship management.</p>
                         </div>
                         <div class="feature-icon flex-shrink-0">
-                            <i class="bi bi-people"></i>
+                            <i class="bi bi-person-circle"></i>
                         </div>
                     </div>
                 </div><!-- End .feature-item -->
@@ -36,8 +36,8 @@
                 <div class="feature-item text-end" data-aos="fade-right" data-aos-delay="400">
                     <div class="d-flex align-items-center justify-content-end gap-4">
                         <div class="feature-content">
-                            <h3>Suppliers</h3>
-                            <p>Manage your suppliers and ensure smooth procurement with easy tracking and communication.</p>
+                            <h3>Supplier Management</h3>
+                            <p>Keep track of your suppliers, manage contacts, and streamline procurement processes.</p>
                         </div>
                         <div class="feature-icon flex-shrink-0">
                             <i class="bi bi-truck"></i>
@@ -62,8 +62,8 @@
                             <i class="bi bi-cart-check"></i>
                         </div>
                         <div class="feature-content">
-                            <h3>Sales Tracking</h3>
-                            <p>Track and optimize your sales to drive business growth and increase profitability.</p>
+                            <h3>Sales Management</h3>
+                            <p>Track and manage your sales efficiently, keeping you updated with real-time data and insights.</p>
                         </div>
                     </div>
                 </div><!-- End .feature-item -->
@@ -76,7 +76,7 @@
                         </div>
                         <div class="feature-content">
                             <h3>Stock Management</h3>
-                            <p>Monitor stock levels in real-time, prevent stockouts, and streamline inventory management.</p>
+                            <p>Easily manage stock levels, prevent stockouts, and ensure efficient inventory control.</p>
                         </div>
                     </div>
                 </div><!-- End .feature-item -->
@@ -88,8 +88,8 @@
                             <i class="bi bi-graph-up"></i>
                         </div>
                         <div class="feature-content">
-                            <h3>Detailed Reports</h3>
-                            <p>Gain valuable insights with detailed reports that help you make data-driven decisions.</p>
+                            <h3>Reports & Analytics</h3>
+                            <p>Get detailed reports and visual analytics to make informed decisions and grow your business.</p>
                         </div>
                     </div>
                 </div><!-- End .feature-item -->
