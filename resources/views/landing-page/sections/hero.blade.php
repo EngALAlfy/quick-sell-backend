@@ -57,22 +57,11 @@
             <div class="col-lg-3 col-md-6">
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="bi bi-trophy"></i>
+                        <i class="bi bi-people"></i>
                     </div>
                     <div class="stat-content">
-                        <h4>3x Won Awards</h4>
-                        <p class="mb-0">Vestibulum ante ipsum</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="bi bi-briefcase"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h4>6.5k Faucibus</h4>
-                        <p class="mb-0">Nullam quis ante</p>
+                        <h4>33+ {{ __('Businesses Served') }}</h4>
+                        <p class="mb-0">{{ __('Helping clients streamline sales and purchases.') }}</p>
                     </div>
                 </div>
             </div>
@@ -82,19 +71,30 @@
                         <i class="bi bi-graph-up"></i>
                     </div>
                     <div class="stat-content">
-                        <h4>80k Mauris</h4>
-                        <p class="mb-0">Etiam sit amet orci</p>
+                        <h4>94K+ {{ __('Transactions Powered') }}</h4>
+                        <p class="mb-0">{{ __('Ensuring seamless operations.') }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="bi bi-award"></i>
+                        <i class="bi bi-server"></i>
                     </div>
                     <div class="stat-content">
-                        <h4>6x Phasellus</h4>
-                        <p class="mb-0">Vestibulum ante ipsum</p>
+                        <h4>99.99% {{ __('Uptime Guaranteed') }}</h4>
+                        <p class="mb-0">{{ __('Reliable and always online.') }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="bi bi-headset"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h4>94K+ {{ __('Support Hours Delivered') }}</h4>
+                        <p class="mb-0">{{ __('Dedicated support to meet your needs.') }}</p>
                     </div>
                 </div>
             </div>

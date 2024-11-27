@@ -42,8 +42,6 @@
 
     @include("landing-page.sections.features-2")
 
-    @include("landing-page.sections.features-3")
-
     @include("landing-page.sections.call-to-action")
 
     @include("landing-page.sections.clients")
