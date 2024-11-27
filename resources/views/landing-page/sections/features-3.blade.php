@@ -46,7 +46,7 @@
                 </div><!-- End .feature-item -->
 
                 <!-- Feature: Multi-Admins -->
-                <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="500">
+                <div class="feature-item mb-5" data-aos="fade-right" data-aos-delay="500">
                     <div class="d-flex align-items-center gap-4">
                         <div class="feature-icon flex-shrink-0">
                             <i class="bi bi-person-plus"></i>
@@ -108,7 +108,7 @@
                 </div><!-- End .feature-item -->
 
                 <!-- Feature: Purchase Management -->
-                <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="500">
+                <div class="feature-item text-end mb-5" data-aos="fade-left" data-aos-delay="500">
                     <div class="d-flex align-items-center justify-content-end gap-4">
                         <div class="feature-content">
                             <h3>{{ __('Purchase Management') }}</h3>
@@ -121,7 +121,7 @@
                 </div><!-- End .feature-item -->
 
                 <!-- Feature: Backup and Activity Logs -->
-                <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="600">
+                <div class="feature-item text-end mb-5" data-aos="fade-left" data-aos-delay="600">
                     <div class="d-flex align-items-center justify-content-end gap-4">
                         <div class="feature-content">
                             <h3>{{ __('Backup & Activity Logs') }}</h3>
