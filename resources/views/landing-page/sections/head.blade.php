@@ -1,8 +1,9 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Index - iLanding Bootstrap Template</title>
-<meta name="description" content="">
-<meta name="keywords" content="">
+<title>{{__(config('app.name'))}} - {{__('Simplify Sales, Amplify Success!')}}</title>
+
+<meta name="description" content="QuickSell - A comprehensive POS system designed for pharmacies and grocery stores. Manage sales, stock, purchases, reports, and backups effortlessly with secure, self-hosted, and offline solutions.">
+<meta name="keywords" content="QuickSell, POS system, pharmacy POS, grocery POS, sales management, stock management, purchase tracking, backup and security, offline solutions, self-hosted POS">
 
 <!-- Favicons -->
 <link href="{{ asset('assets/landing-page/img/favicon.ico') }}" rel="icon">
