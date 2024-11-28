@@ -62,9 +62,9 @@
 
             <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
                 <div class="phone-mockup text-center">
-                    <img src="assets/img/phone-app-screen.webp" alt="Phone Mockup" class="img-fluid">
+                    <img src="{{asset('assets/landing-page/img/logo.png')}}" alt="{{__(config('app.name'))}}" class="img-fluid">
                 </div>
-            </div><!-- End Phone Mockup -->
+            </div>
 
             <div class="col-lg-4">
 

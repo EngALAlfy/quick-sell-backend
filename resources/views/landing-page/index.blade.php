@@ -21,7 +21,6 @@
                 <li><a href="#hero" class="active">{{__('Home')}}</a></li>
                 <li><a href="#about">{{__('About')}}</a></li>
                 <li><a href="#features">{{__('Features')}}</a></li>
-                <li><a href="#services">{{__('Services')}}</a></li>
                 <li><a href="#pricing">{{__('Pricing')}}</a></li>
                 <li><a href="#contact">{{__('Contact')}}</a></li>
             </ul>
