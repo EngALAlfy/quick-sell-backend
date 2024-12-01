@@ -13,15 +13,15 @@
                     </div>
 
                     <h1 class="mb-4">
-                        Maecenas Vitae <br>
-                        Consectetur Led <br>
-                        <span class="accent-text">Vestibulum Ante</span>
+                        {{ __('Empower Your Business') }} <br>
+                        {{ __('Streamline Sales with') }} <br>
+                        <span class="accent-text">{{ __('QuickSell') }}</span>
                     </h1>
 
                     <p class="mb-4 mb-md-5">
-                        Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.
-                        Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
+                        {{ __('Revolutionize the way you manage your store. With advanced tools for sales, stock, and transactions, QuickSell is your all-in-one solution to simplify operations and boost efficiency.') }}
                     </p>
+
 
                     <div class="hero-buttons">
                         <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
