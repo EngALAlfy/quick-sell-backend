@@ -21,7 +21,7 @@
                     <div class="faq-item">
                         <h3>{{ __('Do you have a free demo?') }}</h3>
                         <div class="faq-content">
-                            <p>{{ __('Yes, we have a demo available.') }}</p>
+                            <p>{{ __('Yes, we provide a free demo to help you explore the features of our platform. You can test the functionality and ensure it meets your needs before making a decision to subscribe.') }}</p>
                         </div>
                         <i class="faq-toggle bi bi-chevron-right"></i>
                     </div>
@@ -29,15 +29,15 @@
                     <div class="faq-item">
                         <h3>{{ __('Do you have discounts for long-term subscriptions?') }}</h3>
                         <div class="faq-content">
-                            <p>{{ __('Yes, we offer discounts for annual subscriptions.') }}</p>
+                            <p>{{ __('Absolutely! We offer attractive discounts for customers who choose an annual subscription. This is our way of appreciating long-term commitments and providing better value for extended usage of our services.') }}</p>
                         </div>
                         <i class="faq-toggle bi bi-chevron-right"></i>
                     </div>
 
                     <div class="faq-item">
-                        <h3>{{ __('Do I need a web hosting or domain?') }}</h3>
+                        <h3>{{ __('Do I need web hosting or a domain?') }}</h3>
                         <div class="faq-content">
-                            <p>{{ __('No, you don’t need this. We manage everything for you with our servers and backend.') }}</p>
+                            <p>{{ __('No, you don’t need to worry about web hosting or domain management. We handle everything for you, including hosting your data on secure servers and providing a robust backend infrastructure.') }}</p>
                         </div>
                         <i class="faq-toggle bi bi-chevron-right"></i>
                     </div>
@@ -45,7 +45,7 @@
                     <div class="faq-item">
                         <h3>{{ __('Are there any additional fees or taxes?') }}</h3>
                         <div class="faq-content">
-                            <p>{{ __('No.') }}</p>
+                            <p>{{ __('No, there are no hidden fees or additional taxes. The price you see during checkout is the final amount you’ll pay, ensuring transparency and peace of mind.') }}</p>
                         </div>
                         <i class="faq-toggle bi bi-chevron-right"></i>
                     </div>
@@ -53,7 +53,7 @@
                     <div class="faq-item">
                         <h3>{{ __('Are there any limitations on products or sales?') }}</h3>
                         <div class="faq-content">
-                            <p>{{ __('No, but there are some limitations on storage and resources.') }}</p>
+                            <p>{{ __('While there are no limits on the number of products or sales you can have, there may be restrictions on storage space and resource usage, depending on the subscription plan you choose. If you need additional resources, you can easily upgrade your plan.') }}</p>
                         </div>
                         <i class="faq-toggle bi bi-chevron-right"></i>
                     </div>
@@ -61,7 +61,7 @@
                     <div class="faq-item">
                         <h3>{{ __('Can I export lists to Excel, like my clients or products?') }}</h3>
                         <div class="faq-content">
-                            <p>{{ __('Yes, you can export to Excel and other formats.') }}</p>
+                            <p>{{ __('Yes, you can easily export your data, such as client lists or product details, to Excel or other supported formats. This makes it simple to analyze your data or integrate it with other tools you may use.') }}</p>
                         </div>
                         <i class="faq-toggle bi bi-chevron-right"></i>
                     </div>
@@ -69,7 +69,7 @@
                     <div class="faq-item">
                         <h3>{{ __('Can I take a backup of my data?') }}</h3>
                         <div class="faq-content">
-                            <p>{{ __('Yes, you can.') }}</p>
+                            <p>{{ __('Yes, we offer the option to back up your data. This ensures that your important information is always safe and can be restored whenever necessary. Regular backups are an essential part of our service to keep your business secure.') }}</p>
                         </div>
                         <i class="faq-toggle bi bi-chevron-right"></i>
                     </div>

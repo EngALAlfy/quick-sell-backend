@@ -3,127 +3,132 @@
 
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-        <h2>Pricing</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>{{ __('Pricing') }}</h2>
+        <p>{{ __('Choose a plan that suits your business needs with unlimited features and unmatched support.') }}</p>
     </div><!-- End Section Title -->
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row g-4 justify-content-center">
 
-            <!-- Basic Plan -->
+            <!-- One-Month Plan -->
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="pricing-card">
-                    <h3>Basic Plan</h3>
+                    <h3>{{ __('One-Month Plan') }}</h3>
                     <div class="price">
-                        <span class="currency">$</span>
-                        <span class="amount">9.9</span>
-                        <span class="period">/ month</span>
+                        <span class="currency">EGP</span>
+                        <span class="amount">799</span>
+                        <span class="period">{{ __(' / month') }}</span>
                     </div>
-                    <p class="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                        accusantium doloremque laudantium totam.</p>
+                    <p class="description">{{ __('Perfect for businesses looking to try out our platform with full features and support.') }}</p>
 
-                    <h4>Featured Included:</h4>
+                    <h4>{{ __('Features Included:') }}</h4>
                     <ul class="features-list">
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Duis aute irure dolor
+                            {{ __('Unlimited products, sales, clients, and suppliers') }}
                         </li>
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Excepteur sint occaecat
+                            {{ __('1 GB of storage for database and images') }}
                         </li>
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Nemo enim ipsam voluptatem
+                            {{ __('Free subdomain included') }}
+                        </li>
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            {{ __('24/7 support and issue resolution') }}
                         </li>
                     </ul>
 
                     <a href="#" class="btn btn-primary">
-                        Buy Now
+                        {{ __('Buy Now') }}
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- Standard Plan -->
+            <!-- Six-Month Plan -->
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="pricing-card popular">
-                    <div class="popular-badge">Most Popular</div>
-                    <h3>Standard Plan</h3>
+                    <div class="popular-badge">{{ __('Best Value') }}</div>
+                    <h3>{{ __('Six-Month Plan') }}</h3>
                     <div class="price">
-                        <span class="currency">$</span>
-                        <span class="amount">19.9</span>
-                        <span class="period">/ month</span>
+                        <span class="currency">EGP</span>
+                        <span class="amount">4,499</span>
+                        <span class="period">{{ __(' / 6 months') }}</span>
                     </div>
-                    <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                        praesentium voluptatum.</p>
+                    <p class="description">{{ __('Save big with this plan and enjoy more storage with all premium features.') }}</p>
 
-                    <h4>Featured Included:</h4>
+                    <h4>{{ __('Features Included:') }}</h4>
                     <ul class="features-list">
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Lorem ipsum dolor sit amet
+                            {{ __('Unlimited products, sales, clients, and suppliers') }}
                         </li>
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Consectetur adipiscing elit
+                            {{ __('4 GB of storage for database and images') }}
                         </li>
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Sed do eiusmod tempor
+                            {{ __('Free subdomain included') }}
                         </li>
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Ut labore et dolore magna
+                            {{ __('24/7 support and issue resolution') }}
+                        </li>
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            {{ __('Special discount — Save EGP 795!') }}
                         </li>
                     </ul>
 
                     <a href="#" class="btn btn-light">
-                        Buy Now
+                        {{ __('Buy Now') }}
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- Premium Plan -->
+            <!-- One-Year Plan -->
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="pricing-card">
-                    <h3>Premium Plan</h3>
+                    <h3>{{ __('One-Year Plan') }}</h3>
                     <div class="price">
-                        <span class="currency">$</span>
-                        <span class="amount">39.9</span>
-                        <span class="period">/ month</span>
+                        <span class="currency">EGP</span>
+                        <span class="amount">8,499</span>
+                        <span class="period">{{ __(' / year') }}</span>
                     </div>
-                    <p class="description">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
-                        nihil molestiae.</p>
+                    <p class="description">{{ __('The ultimate plan with maximum savings and more storage for your growing business.') }}</p>
 
-                    <h4>Featured Included:</h4>
+                    <h4>{{ __('Features Included:') }}</h4>
                     <ul class="features-list">
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Temporibus autem quibusdam
+                            {{ __('Unlimited products, sales, clients, and suppliers') }}
                         </li>
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Saepe eveniet ut et voluptates
+                            {{ __('9 GB of storage for database and images') }}
                         </li>
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Nam libero tempore soluta
+                            {{ __('Free subdomain included') }}
                         </li>
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Cumque nihil impedit quo
+                            {{ __('24/7 support and issue resolution') }}
                         </li>
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Maxime placeat facere possimus
+                            {{ __('Special discount — Save EGP 1,089!') }}
                         </li>
                     </ul>
 
                     <a href="#" class="btn btn-primary">
-                        Buy Now
+                        {{ __('Buy Now') }}
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>

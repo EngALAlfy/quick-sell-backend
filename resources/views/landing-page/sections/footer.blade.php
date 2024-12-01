@@ -22,7 +22,6 @@
                 <ul>
                     <li><a href="#hero">{{ __('Home') }}</a></li>
                     <li><a href="#about">{{ __('About us') }}</a></li>
-                    <li><a href="#services">{{ __('Services') }}</a></li>
                     <li><a href="#">{{ __('Terms of service') }}</a></li>
                     <li><a href="#">{{ __('Privacy policy') }}</a></li>
                 </ul>
