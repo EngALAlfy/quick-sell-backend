@@ -41,7 +41,7 @@ class SaleDataTable extends DataTable
      */
     public function query(Sale $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->latest()->newQuery();
     }
 
     /**

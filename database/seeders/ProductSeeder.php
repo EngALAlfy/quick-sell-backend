@@ -26,7 +26,7 @@ class ProductSeeder extends Seeder
             "purchase_price" => 8,
             "sell_price" => 10,
             "enable_stock" => true,
-            "stock_quantity" => rand(100 , 1000),
+            "stock_quantity" => rand(1000 , 4000),
             "sku" => 100001,
         ]);
 
@@ -37,7 +37,7 @@ class ProductSeeder extends Seeder
             "purchase_price" => 15,
             "sell_price" => 18,
             "enable_stock" => true,
-            "stock_quantity" => rand(100 , 1000),
+            "stock_quantity" => rand(1000 , 4000),
             "sku" => 100002,
         ]);
 
@@ -48,7 +48,7 @@ class ProductSeeder extends Seeder
             "purchase_price" => 12,
             "sell_price" => 15,
             "enable_stock" => true,
-            "stock_quantity" => rand(100 , 1000),
+            "stock_quantity" => rand(1000 , 4000),
             "sku" => 100003,
         ]);
 
@@ -59,7 +59,7 @@ class ProductSeeder extends Seeder
             "purchase_price" => 6,
             "sell_price" => 8,
             "enable_stock" => true,
-            "stock_quantity" => rand(100 , 1000),
+            "stock_quantity" => rand(1000 , 4000),
             "sku" => 100004,
         ]);
 
@@ -70,7 +70,7 @@ class ProductSeeder extends Seeder
             "purchase_price" => 3,
             "sell_price" => 5,
             "enable_stock" => true,
-            "stock_quantity" => rand(100 , 1000),
+            "stock_quantity" => rand(1000 , 4000),
             "sku" => 100005,
         ]);
 
@@ -81,7 +81,7 @@ class ProductSeeder extends Seeder
             "purchase_price" => 45,
             "sell_price" => 50,
             "enable_stock" => true,
-            "stock_quantity" => rand(100 , 1000),
+            "stock_quantity" => rand(1000 , 4000),
             "sku" => 100006,
         ]);
 
@@ -92,7 +92,7 @@ class ProductSeeder extends Seeder
             "purchase_price" => 20,
             "sell_price" => 25,
             "enable_stock" => true,
-            "stock_quantity" => rand(100 , 1000),
+            "stock_quantity" => rand(1000 , 4000),
             "sku" => 100007,
         ]);
 
@@ -103,7 +103,7 @@ class ProductSeeder extends Seeder
             "purchase_price" => 10,
             "sell_price" => 12,
             "enable_stock" => true,
-            "stock_quantity" => rand(100 , 1000),
+            "stock_quantity" => rand(1000 , 4000),
             "sku" => 100008,
         ]);
 
@@ -114,7 +114,7 @@ class ProductSeeder extends Seeder
             "purchase_price" => 30,
             "sell_price" => 35,
             "enable_stock" => true,
-            "stock_quantity" => rand(100 , 1000),
+            "stock_quantity" => rand(1000 , 4000),
             "sku" => 100009,
         ]);
 

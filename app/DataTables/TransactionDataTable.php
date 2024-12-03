@@ -62,7 +62,7 @@ class TransactionDataTable extends DataTable
      */
     public function query(Transaction $model): QueryBuilder
     {
-        return $model->with("createdByUser")->newQuery();
+        return $model->latest()->with("createdByUser")->newQuery();
     }
 
     /**

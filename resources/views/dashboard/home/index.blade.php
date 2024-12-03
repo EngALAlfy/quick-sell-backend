@@ -61,7 +61,7 @@
                         y: {
                             title: {
                                 display: true,
-                                text: '{{__('Sales ($)')}}'
+                                text: '{{__('Sales (EGP)')}}'
                             },
                             beginAtZero: true
                         }

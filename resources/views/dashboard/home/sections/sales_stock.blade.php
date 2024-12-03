@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     <p class="mb-1">{{ __('Total Sales') }}</p>
-                    <h4 class="card-title mb-3">${{ $totalSales }}</h4>
+                    <h4 class="card-title mb-3">{{ \Illuminate\Support\Number::abbreviate($totalSales) }} {{__('EGP')}}</h4>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <p class="mb-1">{{ __('Total Stock') }}</p>
-                    <h4 class="card-title mb-3">${{ $totalStock }}</h4>
+                    <h4 class="card-title mb-3">{{ \Illuminate\Support\Number::abbreviate($totalStock) }} {{__('EGP')}}</h4>
                 </div>
             </div>
         </div>

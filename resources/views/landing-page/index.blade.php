@@ -27,7 +27,7 @@
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-getstarted" href="#about">{{__('Get Started')}}</a>
+        <a class="btn-getstarted" href="{{route("dashboard.home.index")}}">{{__('Get Started')}}</a>
 
     </div>
 </header>

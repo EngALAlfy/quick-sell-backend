@@ -35,7 +35,7 @@ class RolesDataTable extends DataTable
      */
     public function query(Role $model): QueryBuilder
     {
-        return $model->withCount(["users" , 'permissions'])->newQuery();
+        return $model->latest()->withCount(["users" , 'permissions'])->newQuery();
     }
 
     /**

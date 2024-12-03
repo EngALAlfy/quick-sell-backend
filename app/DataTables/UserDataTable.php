@@ -47,7 +47,7 @@ class UserDataTable extends DataTable
      */
     public function query(User $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->latest()->newQuery();
     }
 
     /**

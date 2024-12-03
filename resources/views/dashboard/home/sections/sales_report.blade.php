@@ -9,11 +9,7 @@
                         <span class="badge bg-label-warning">{{ __('YEAR') }} {{ $currentYear }}</span>
                     </div>
                     <div class="mt-auto">
-                        <span class="text-success text-nowrap fw-medium">
-                            <i class='bx bx-up-arrow-alt'></i>
-                            {{ round(($totalSales / 1000), 2) }}%
-                        </span>
-                        <h4 class="mb-0">${{ number_format($totalSales / 1000, 1) }}k</h4>
+                        <h4 class="mb-0">{{ \Illuminate\Support\Number::abbreviate($totalSales) }} {{__('EGP')}}</h4>
                     </div>
                 </div>
                 <div class="mt-4">

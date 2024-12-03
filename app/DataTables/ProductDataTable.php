@@ -50,7 +50,7 @@ class ProductDataTable extends DataTable
      */
     public function query(Product $model): QueryBuilder
     {
-        return $model->with("category")->newQuery();
+        return $model->latest()->with("category")->newQuery();
     }
 
     /**

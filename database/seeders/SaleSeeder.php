@@ -7,7 +7,9 @@ use App\Enums\TransactionType;
 use App\Models\Client;
 use App\Models\Product;
 use App\Models\Sale;
+use App\Models\SaleItem;
 use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -20,106 +22,112 @@ class SaleSeeder extends Seeder
      */
     public function run(): void
     {
-        // Initialize Faker for realistic data
-        $faker = Faker::create();
+        Schema::disableForeignKeyConstraints();
+        Sale::truncate();
+        Transaction::truncate();
+        SaleItem::truncate();
+        Schema::enableForeignKeyConstraints();
+
+        $days = 160;
+
         $dates = [
-            Carbon::now()->subDays(10),
+            Carbon::now(),
         ];
 
+        for ($k = 1; $k <= $days; $k++) {
+            $dates[] = Carbon::now()->subDays($k);
+        }
+
         foreach ($dates as $date) {
+            $numberOfSales = rand(3, 25);
 
-        }
+            // Fetch all clients and products
+            $clients = Client::all();
+            $products = Product::where(function ($query) {
+                $query->where('enable_stock', true)
+                    ->where('stock_quantity', '>', 0);
+            })->orWhere('enable_stock', false)->get();
 
-        // Fetch all clients and products
-        $clients = Client::all();
-        $products = Product::where(function ($query) {
-            $query->where('enable_stock', true)
-                ->where('stock_quantity', '>', 0);
-        })->orWhere('enable_stock', false)->get();
-
-        if ($clients->isEmpty()) {
-            $this->command->info('No clients found. Please seed clients before running SaleSeeder.');
-            return;
-        }
-
-        if ($products->isEmpty()) {
-            $this->command->info('No products found. Please seed products before running SaleSeeder.');
-            return;
-        }
-
-        // Number of sales to create
-        $numberOfSales = 50; // Adjust as needed
-
-        for ($i = 0; $i < $numberOfSales; $i++) {
-            // Select a random client
-            $client = $clients->random();
-
-            // Select a random payment method
-            $paymentMethod = PaymentMethod::cases()[array_rand(PaymentMethod::cases())]->value;
-
-            // Create a sale
-            $sale = Sale::create([
-                'client_id' => $client->id,
-                'payment_method' => $paymentMethod,
-                'total_amount' => 0, // Will update after adding items
-                'created_at' => $date,
-                'updated_at' => $date,
-            ]);
-
-            // Determine number of items in this sale
-            $itemsCount = rand(1, 5);
-
-            $totalAmount = 0;
-
-            for ($j = 0; $j < $itemsCount; $j++) {
-                // Select a random product
-                $product = $products->random();
-
-                // Determine quantity
-                if ($product->enable_stock) {
-                    $maxQuantity = $product->stock_quantity >= 10 ? 10 : $product->stock_quantity;
-                    $quantity = rand(1, $maxQuantity);
-                } else {
-                    $quantity = rand(1, 20);
-                }
-
-                // Calculate price
-                $price = $product->sell_price;
-
-                // Create sale item
-                $saleItem = $sale->saleItems()->create([
-                    'product_id' => $product->id,
-                    'quantity' => $quantity,
-                    'price' => $price,
-                    'created_at' => $date,
-                    'updated_at' => $date,
-                ]);
-
-                // Update total amount
-                $totalAmount += $price * $quantity;
-
-                // Update product stock if applicable
-                if ($product->enable_stock) {
-                    $product->decrement('stock_quantity', $quantity);
-                }
-
-                // Create transaction
-                Transaction::create([
-                    'product_id' => $product->id,
-                    'quantity' => $quantity,
-                    'amount' => $price * $quantity,
-                    'type' => TransactionType::sell->value,
-                    'transactable_id' => $sale->id,
-                    'transactable_type' => Sale::class,
-                    'created_at' => $date,
-                    'updated_at' => $date,
-                ]);
+            if ($clients->isEmpty()) {
+                $this->command->info('No clients found. Please seed clients before running SaleSeeder.');
+                return;
             }
 
-            // Update the total amount for the sale
-            $sale->update(['total_amount' => $totalAmount, 'updated_at' => $date]);
-        }
+            if ($products->isEmpty()) {
+                $this->command->info('No products found. Please seed products before running SaleSeeder.');
+                return;
+            }
+            for ($i = 0; $i < $numberOfSales; $i++) {
+                // Select a random client
+                $client = $clients->random();
 
-        $this->command->info("Successfully seeded {$numberOfSales} sales with sale items and transactions.");
+                // Select a random payment method
+                $paymentMethod = PaymentMethod::cases()[array_rand(PaymentMethod::cases())]->value;
+
+                // Create a sale
+                $sale = Sale::create([
+                    'client_id' => $client->id,
+                    'payment_method' => $paymentMethod,
+                    'total_amount' => 0, // Will update after adding items
+                    'created_at' => $date,
+                    'updated_at' => $date,
+                ]);
+
+                // Determine number of items in this sale
+                $itemsCount = rand(1, 5);
+
+                $totalAmount = 0;
+
+                for ($j = 0; $j < $itemsCount; $j++) {
+                    // Select a random product
+                    $product = $products->random();
+
+                    // Determine quantity
+                    if ($product->enable_stock) {
+                        $maxQuantity = $product->stock_quantity >= 10 ? 10 : $product->stock_quantity;
+                        $quantity = rand(1, $maxQuantity);
+                    } else {
+                        $quantity = rand(1, 20);
+                    }
+
+                    // Calculate price
+                    $price = $product->sell_price;
+
+                    // Create sale item
+                    $saleItem = $sale->saleItems()->create([
+                        'product_id' => $product->id,
+                        'quantity' => $quantity,
+                        'price' => $price,
+                        'created_at' => $date,
+                        'updated_at' => $date,
+                    ]);
+
+                    // Update total amount
+                    $totalAmount += $price * $quantity;
+
+                    // Update product stock if applicable
+                    if ($product->enable_stock) {
+                        $product->decrement('stock_quantity', $quantity);
+                    }
+
+                    // Create transaction
+                    Transaction::create([
+                        'product_id' => $product->id,
+                        'quantity' => $quantity,
+                        'amount' => $price * $quantity,
+                        'type' => TransactionType::sell->value,
+                        'transactable_id' => $sale->id,
+                        'transactable_type' => Sale::class,
+                        'created_at' => $date,
+                        'updated_at' => $date,
+                    ]);
+                }
+
+                // Update the total amount for the sale
+                $sale->update(['total_amount' => $totalAmount, 'updated_at' => $date]);
+            }
+
+            $this->command->info("Successfully seeded {$numberOfSales} sales with sale items and transactions.");
+        }
     }
 }

@@ -23,9 +23,6 @@ class SupplierDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->editColumn('id', '{{$id}}')
-            ->editColumn('name', function (Supplier $supplier) {
-                return $supplier->name;
-            })
             ->editColumn('created_at', function (Supplier $supplier) {
                 return
                     '<span class="text-truncate d-flex lh-1">' . Carbon::parse($supplier->created_at)->toFormattedDateString() . '</span>
@@ -40,7 +37,7 @@ class SupplierDataTable extends DataTable
      */
     public function query(Supplier $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->latest()->newQuery();
     }
 
     /**

@@ -47,7 +47,7 @@ class StockDataTable extends DataTable
      */
     public function query(Product $model): QueryBuilder
     {
-        return $model->with("transactions")->newQuery();
+        return $model->latest()->with("transactions")->newQuery();
     }
 
     /**

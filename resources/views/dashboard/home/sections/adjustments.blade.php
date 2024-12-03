@@ -9,7 +9,9 @@
                 </div>
             </div>
             <p class="mb-1">{{ __('Total Adjustments') }}</p>
-            <h4 class="card-title mb-3">{{ $totalAdjustments }}</h4>
+            <h4 class="card-title mb-3">
+                {{ \Illuminate\Support\Number::abbreviate($totalAdjustments) }} {{__('EGP')}}
+            </h4>
         </div>
     </div>
 </div>

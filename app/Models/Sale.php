@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Sale extends Model
 {
-    use HasFactory;
     use HasCreatedByTrait;
     /**
      * The attributes that are mass assignable.
@@ -19,6 +18,7 @@ class Sale extends Model
      * @var array
      */
     protected $fillable = [
+        'client_id',
         'total_amount',
         'payment_method',
     ];
@@ -33,6 +33,11 @@ class Sale extends Model
         'total_amount' => 'decimal:2',
         'created_at' => 'datetime',
     ];
+
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
+    }
 
     public function saleItems(): HasMany
     {
