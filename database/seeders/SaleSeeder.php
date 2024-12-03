@@ -62,8 +62,8 @@ class SaleSeeder extends Seeder
                 'client_id' => $client->id,
                 'payment_method' => $paymentMethod,
                 'total_amount' => 0, // Will update after adding items
-                'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
-                'updated_at' => now(),
+                'created_at' => $date,
+                'updated_at' => $date,
             ]);
 
             // Determine number of items in this sale
@@ -91,6 +91,8 @@ class SaleSeeder extends Seeder
                     'product_id' => $product->id,
                     'quantity' => $quantity,
                     'price' => $price,
+                    'created_at' => $date,
+                    'updated_at' => $date,
                 ]);
 
                 // Update total amount
@@ -109,13 +111,13 @@ class SaleSeeder extends Seeder
                     'type' => TransactionType::sell->value,
                     'transactable_id' => $sale->id,
                     'transactable_type' => Sale::class,
-                    'created_at' => $sale->created_at,
-                    'updated_at' => now(),
+                    'created_at' => $date,
+                    'updated_at' => $date,
                 ]);
             }
 
             // Update the total amount for the sale
-            $sale->update(['total_amount' => $totalAmount]);
+            $sale->update(['total_amount' => $totalAmount, 'updated_at' => $date]);
         }
 
         $this->command->info("Successfully seeded {$numberOfSales} sales with sale items and transactions.");
