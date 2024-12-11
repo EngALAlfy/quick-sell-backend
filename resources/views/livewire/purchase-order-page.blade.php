@@ -20,7 +20,7 @@
                     });
 
                     $("#supplier_id").on('change' , function (){
-                        @this.set('supplier_id' , $this.val());
+                        @this.set('supplier_id' , $(this).val());
                     })
                 });
             </script>
