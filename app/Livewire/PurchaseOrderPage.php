@@ -30,13 +30,7 @@ class PurchaseOrderPage extends Component
     public function mount()
     {
         $this->categories = Category::whereHas('products', function (Builder $q) {
-            $q->where(function (Builder $query) {
-                $query->where(function (Builder $subQuery) {
-                    $subQuery->where("enable_stock", true)
-                        ->where("stock_quantity", ">", 0);
-                })->orWhere("enable_stock", false);
-            })
-                ->where("status", ProductStatus::active->value);
+            $q->where("status", ProductStatus::active->value);
         })->get();
 
         $this->clients = Client::query()->pluck("name" , "id");
@@ -49,12 +43,8 @@ class PurchaseOrderPage extends Component
     public function render()
     {
         $products = Product::where(function (Builder $query) {
-            $query->where(function (Builder $subQuery) {
-                $subQuery->where("enable_stock", true)
-                    ->where("stock_quantity", ">", 0);
-            })->orWhere("enable_stock", false);
-        })
-            ->where("status", ProductStatus::active->value);
+            $query->where("status", ProductStatus::active->value);
+        });
 
         if ($this->categoryId > 0) {
             $products->where('category_id', $this->categoryId);
@@ -112,20 +102,9 @@ class PurchaseOrderPage extends Component
         });
 
         if ($existingItemKey !== false) {
-            $quantity = $this->orderItems[$existingItemKey]->quantity;
-            $stock_quantity = $this->orderItems[$existingItemKey]->stock_quantity;
+            $this->orderItems[$existingItemKey]->quantity++;
 
-            if(($quantity + 1) <= $stock_quantity){
-                $this->orderItems[$existingItemKey]->quantity++;
-            }else{
-                $this->dispatch("error", error: __("No stock available"));
-            }
         } else {
-            if($product->stock_quantity < 1){
-                $this->dispatch("error", error: __("No stock available"));
-                return;
-            }
-
             $this->orderItems->push((object)[
                 "product_id" => $product->id,
                 "product_name" => $product->name,
@@ -148,12 +127,7 @@ class PurchaseOrderPage extends Component
     {
         $item = $this->orderItems->firstWhere('product_id', $productId);
         if ($item) {
-            $stock_quantity = $item->stock_quantity;
-            if($quantity <= $stock_quantity){
-                $item->quantity = max(1, min($quantity, $stock_quantity));
-            }else{
-                $this->dispatch("error", error: __("No stock available"));
-            }
+            $item->quantity = $quantity;
         }
     }
 
