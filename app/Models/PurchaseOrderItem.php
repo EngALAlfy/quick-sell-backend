@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class PurchaseOrderItem extends Model
 {
-    use HasFactory;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -19,7 +17,6 @@ class PurchaseOrderItem extends Model
         'product_id',
         'quantity',
         'price',
-        'total',
     ];
 
     /**
@@ -30,6 +27,5 @@ class PurchaseOrderItem extends Model
     protected $casts = [
         'id' => 'integer',
         'price' => 'decimal:2',
-        'total' => 'decimal:2',
     ];
 }

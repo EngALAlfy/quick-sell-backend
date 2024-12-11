@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\TransactionType;
 use App\Traits\HasCreatedByTrait;
+use App\Traits\HasLogsTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,8 +14,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Product extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
+    use InteractsWithMedia;
     use HasCreatedByTrait;
+    use HasLogsTrait;
 
     /**
      * The attributes that are mass assignable.

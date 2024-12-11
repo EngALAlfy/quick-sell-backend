@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasCreatedByTrait;
+use App\Traits\HasLogsTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,8 +11,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class PurchaseOrder extends Model
 {
-    use HasFactory;
     use HasCreatedByTrait;
+    use HasLogsTrait;
     /**
      * The attributes that are mass assignable.
      *
@@ -20,7 +21,7 @@ class PurchaseOrder extends Model
     protected $fillable = [
         'supplier_id',
         'total_amount',
-        'status',
+        'payment_method'
     ];
 
     /**
