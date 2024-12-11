@@ -76,7 +76,7 @@
     </style>
 @endpush
 @section("content")
-    @livewire("pos-page")
+    @livewire("purchase-order-page")
 @endsection
 
 @push('scripts')
