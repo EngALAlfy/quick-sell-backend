@@ -6,9 +6,9 @@ use App\Enums\PaymentMethod;
 use App\Enums\ProductStatus;
 use App\Enums\TransactionType;
 use App\Models\Category;
-use App\Models\Client;
 use App\Models\Product;
 use App\Models\PurchaseOrder;
+use App\Models\Supplier;
 use App\Models\Transaction;
 use App\Services\LogService;
 use Illuminate\Database\Eloquent\Builder;
@@ -22,7 +22,8 @@ class PurchaseOrderPage extends Component
     public $categoryId = 0;
     public $paymentMethod;
     public $categories = [];
-    public $clients = [];
+    public $supplier_id;
+    public $suppliers = [];
     public Collection $orderItems;
     public $searchTerm = '';
     public Collection $searchResults;
@@ -33,7 +34,7 @@ class PurchaseOrderPage extends Component
             $q->where("status", ProductStatus::active->value);
         })->get();
 
-        $this->clients = Client::query()->pluck("name" , "id");
+        $this->suppliers = Supplier::query()->pluck("name" , "id");
 
         $this->orderItems = collect();
         $this->searchResults = collect();
@@ -110,7 +111,7 @@ class PurchaseOrderPage extends Component
                 "product_name" => $product->name,
                 "stock_quantity" => $product->stock_quantity,
                 "quantity" => 1,
-                "price" => $product->sell_price,
+                "price" => $product->purchase_price,
             ]);
         }
 
@@ -148,6 +149,7 @@ class PurchaseOrderPage extends Component
         try {
             DB::beginTransaction();
             $purchaseOrder = PurchaseOrder::create([
+                "supplier_id" => $this->supplier_id,
                 "payment_method" => $this->paymentMethod,
                 "total_amount" => $this->getTotal(),
             ]);
@@ -163,7 +165,7 @@ class PurchaseOrderPage extends Component
                     "product_id" => $item->product_id,
                     "quantity" => $item->quantity,
                     "amount" => $item->price * $item->quantity,
-                    "type" => TransactionType::sell,
+                    "type" => TransactionType::purchase,
                 ]);
 
                 $transaction->transactable()->associate($purchaseOrder);

@@ -68,21 +68,23 @@
         </div>
 
         <!-- Payment Method Section -->
-        @include("dashboard.purchase-orders.sections.payment-method")
+        @include("dashboard.sales.sections.payment-method")
 
-        @include("includes.select",
+        <div wire:ignore>
+            @include("includes.select",
             [
-            "name" => "client_id" ,
-            "title" => __('Client') ,
-            "placeholder" => __('Select permission group') ,
+            "name" => "supplier_id" ,
+            "title" => __('Supplier') ,
+            "placeholder" => __('Select order supplier') ,
             "required" => true,
             "has_new_item" => true,
-            "new_item_route" => route("dashboard.clients.create"),
+            "new_item_route" => route("dashboard.suppliers.create"),
             "floating" => false,
-            "options" => $clients,
+            "options" => $suppliers,
             "col" => "12",
             "classes" => "select2 mb-4 fv-plugins-icon-container",
           ])
+        </div>
         <!-- Place Order Button -->
         <button wire:click.prevent="placeOrder()" class="btn btn-label-dark place-order-btn w-100 mt-4">
             <div wire:loading wire:target="placeOrder" class="spinner-border" role="status">
