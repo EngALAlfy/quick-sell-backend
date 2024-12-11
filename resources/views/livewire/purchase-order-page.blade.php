@@ -7,7 +7,6 @@
         @include("dashboard.purchase-orders.sections.current-order")
     </div>
 
-
     @once
         @push('scripts')
             <script>
@@ -19,6 +18,10 @@
                     Livewire.on('error', (event) => {
                         toastr.error(event.error , `{{__('Error happened')}}`)
                     });
+
+                    $("#supplier_id").on('change' , function (){
+                        @this.set('supplier_id' , $this.val());
+                    })
                 });
             </script>
         @endpush
