@@ -52,7 +52,7 @@
                     <h3>{{ __('Get In Touch') }}</h3>
                     <p>{{ __('Fill out the form below, and we’ll get back to you as soon as possible.') }}</p>
 
-                    <form action="{{route("")}}" method="post" class="php-email-form" data-aos="fade-up"
+                    <form action="{{route("contact")}}" method="post" class="php-email-form" data-aos="fade-up"
                           data-aos-delay="200">
                         <div class="row gy-4">
 

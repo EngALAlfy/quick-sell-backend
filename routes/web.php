@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view("/" , "landing-page.index");
-Route::post("/contact" , [HomeController::class, "contact"]);
+Route::post("/contact" , [HomeController::class, "contact"])->name("contact");
 
 \Livewire\Livewire::setUpdateRoute(function ($handle) {
     return Route::post('/custom/livewire/update', $handle);
