@@ -79,9 +79,7 @@
                             </div>
 
                             <div class="col-12 text-center">
-
                                 @include("flash::message")
-
                                 <button type="submit" class="btn">{{ __('Send Message') }}</button>
                             </div>
 
