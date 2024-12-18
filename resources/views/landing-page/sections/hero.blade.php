@@ -9,7 +9,7 @@
                 <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
                     <div class="company-badge mb-4">
                         <i class="bi bi-gear-fill me-2"></i>
-                        Working for your success
+                        {{__('Working for your success')}}
                     </div>
 
                     <h1 class="mb-4">
@@ -24,11 +24,11 @@
 
 
                     <div class="hero-buttons">
-                        <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
+                        <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">{{__('Get Started')}}</a>
                         <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
                            class="btn btn-link mt-2 mt-sm-0 glightbox">
                             <i class="bi bi-play-circle me-1"></i>
-                            Play Video
+                            {{__('Play Video')}}
                         </a>
                     </div>
                 </div>
@@ -36,19 +36,7 @@
 
             <div class="col-lg-6">
                 <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-                    <img src="assets/img/illustration-1.webp" alt="Hero Image" class="img-fluid">
-
-                    <div class="customers-badge">
-                        <div class="customer-avatars">
-                            <img src="assets/img/avatar-1.webp" alt="Customer 1" class="avatar">
-                            <img src="assets/img/avatar-2.webp" alt="Customer 2" class="avatar">
-                            <img src="assets/img/avatar-3.webp" alt="Customer 3" class="avatar">
-                            <img src="assets/img/avatar-4.webp" alt="Customer 4" class="avatar">
-                            <img src="assets/img/avatar-5.webp" alt="Customer 5" class="avatar">
-                            <span class="avatar more">12+</span>
-                        </div>
-                        <p class="mb-0 mt-2">12,000+ lorem ipsum dolor sit amet consectetur adipiscing elit</p>
-                    </div>
+                    <img src="{{asset('assets/landing-page/img/shots/screen-1.png')}}" alt="Hero Image" class="img-fluid">
                 </div>
             </div>
         </div>
