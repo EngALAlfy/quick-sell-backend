@@ -54,8 +54,9 @@
 
                     <form action="{{route("contact")}}" method="post" class="php-email-form" data-aos="fade-up"
                           data-aos-delay="200">
+                        @csrf
+                        @method('POST')
                         <div class="row gy-4">
-
                             <div class="col-md-6">
                                 <input type="text" name="name" class="form-control" placeholder="{{ __('Your Name') }}"
                                        required="">
