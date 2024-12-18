@@ -52,7 +52,7 @@
                     <h3>{{ __('Get In Touch') }}</h3>
                     <p>{{ __('Fill out the form below, and we’ll get back to you as soon as possible.') }}</p>
 
-                    <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+                    <form action="{{route("")}}" method="post" class="php-email-form" data-aos="fade-up"
                           data-aos-delay="200">
                         <div class="row gy-4">
 
@@ -79,9 +79,8 @@
                             </div>
 
                             <div class="col-12 text-center">
-                                <div class="loading">{{ __('Loading...') }}</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">{{ __('Your message has been sent. Thank you!') }}</div>
+
+                                @include("flash::message")
 
                                 <button type="submit" class="btn">{{ __('Send Message') }}</button>
                             </div>

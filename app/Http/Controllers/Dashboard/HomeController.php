@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Enums\TransactionType;
 use App\Http\Controllers\Controller;
+use App\Integrations\BrevoConnector;
 use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Laracasts\Flash\Flash;
 
 class HomeController extends Controller
 {
@@ -46,7 +49,7 @@ class HomeController extends Controller
             ->get();
 
         // Total stock: sum of open_stock, purchases, and adjustments
-        $totalStock = Transaction::whereIn('type', [TransactionType::open_stock->value ,TransactionType::purchase->value ,TransactionType::adjustment->value , ])->sum('quantity');
+        $totalStock = Transaction::whereIn('type', [TransactionType::open_stock->value, TransactionType::purchase->value, TransactionType::adjustment->value,])->sum('quantity');
 
         // Total sales: sum of all sales transaction amounts
         $totalSales = Transaction::where('type', TransactionType::sell->value)->sum('amount');
@@ -67,7 +70,7 @@ class HomeController extends Controller
             ->orderBy('total_quantity', 'desc')
             ->take(4)
             ->get()
-            ->map(function($item) {
+            ->map(function ($item) {
                 return [
                     'product' => Product::find($item->product_id),
                     'total_quantity' => $item->total_quantity,
@@ -94,5 +97,23 @@ class HomeController extends Controller
         ));
     }
 
+    public function contact(Request $request)
+    {
+        $name = $request->get("name");
+        $email = $request->get("email");
+        $subject = $request->get("subject");
+        $message = $request->get("message");
+
+        $connector = new BrevoConnector();
+        $response = $connector->send($message, $email, "[QuickSell] New message from $name about $subject");
+
+        if ($response->successful()) {
+            Flash::success(__('Your message has been sent. Thank you!'));
+        } else {
+            Flash::error(__('Failed to send your message. Try again'));
+        }
+
+        return redirect()->back();
+    }
 
 }

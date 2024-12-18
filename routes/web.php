@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Shared\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view("/" , "landing-page.index");
+Route::post("/contact" , [HomeController::class, "contact"]);
 
 \Livewire\Livewire::setUpdateRoute(function ($handle) {
     return Route::post('/custom/livewire/update', $handle);
 });
 
-Route::post('/upload', "App\Http\Controllers\Shared\UploadController@store")->name('upload');
+Route::post('/upload', [UploadController::class, "store"])->name('upload');
