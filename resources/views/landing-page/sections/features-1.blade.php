@@ -64,7 +64,7 @@
                         </p>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 text-center">
-                        <img src="assets/img/features-clients.webp" alt="{{ __('Clients Module') }}" class="img-fluid">
+                        <img src="{{asset('assets/landing-page/img/shots/screen-2.png')}}" alt="{{ __('Clients Module') }}" class="img-fluid">
                     </div>
                 </div>
             </div><!-- End Clients Tab -->
@@ -84,7 +84,7 @@
                         </p>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 text-center">
-                        <img src="assets/img/features-suppliers.webp" alt="{{ __('Suppliers Module') }}" class="img-fluid">
+                        <img src="{{asset('assets/landing-page/img/shots/screen-8.png')}}" alt="{{ __('Suppliers Module') }}" class="img-fluid">
                     </div>
                 </div>
             </div><!-- End Suppliers Tab -->
@@ -104,7 +104,7 @@
                         </p>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 text-center">
-                        <img src="assets/img/features-products.webp" alt="{{ __('Products Module') }}" class="img-fluid">
+                        <img src="{{asset('assets/landing-page/img/shots/screen-4.png')}}" alt="{{ __('Products Module') }}" class="img-fluid">
                     </div>
                 </div>
             </div><!-- End Products Tab -->
@@ -124,7 +124,7 @@
                         </p>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 text-center">
-                        <img src="assets/img/features-sales.webp" alt="{{ __('Sales Module') }}" class="img-fluid">
+                        <img src="{{asset('assets/landing-page/img/shots/screen-6.png')}}" alt="{{ __('Sales Module') }}" class="img-fluid">
                     </div>
                 </div>
             </div><!-- End Sales Tab -->
@@ -144,7 +144,7 @@
                         </p>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 text-center">
-                        <img src="assets/img/features-stock.webp" alt="{{ __('Stock Module') }}" class="img-fluid">
+                        <img src="{{asset('assets/landing-page/img/shots/screen-7.png')}}" alt="{{ __('Stock Module') }}" class="img-fluid">
                     </div>
                 </div>
             </div><!-- End Stock Tab -->
