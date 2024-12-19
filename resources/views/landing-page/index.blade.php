@@ -23,6 +23,13 @@
                 <li><a href="#features">{{__('Features')}}</a></li>
                 <li><a href="#pricing">{{__('Pricing')}}</a></li>
                 <li><a href="#contact">{{__('Contact')}}</a></li>
+                @if(app()->getLocale() == "ar")
+                    <li><a href="{{LaravelLocalization::getLocalizedURL("en", null, [], true)}}">English</a>
+                    </li>
+                @else
+                    <li><a href="{{LaravelLocalization::getLocalizedURL("ar", null, [], true)}}">عربي</a>
+                    </li>
+                @endif
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -45,7 +52,7 @@
 
     @include("landing-page.sections.call-to-action")
 
-{{--    @include("landing-page.sections.testimonials")--}}
+    {{--    @include("landing-page.sections.testimonials")--}}
 
     @include("landing-page.sections.stats")
 
