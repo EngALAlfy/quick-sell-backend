@@ -25,15 +25,15 @@
                         </div>
                     </div>
 
-                    <div class="info-item" data-aos="fade-up" data-aos-delay="400">
-                        <div class="icon-box">
-                            <i class="bi bi-telephone"></i>
-                        </div>
-                        <div class="content">
-                            <h4>{{ __('Phone Numbers') }}</h4>
-                            <p>{{ __('+2 011 532 63 994') }}</p>
-                        </div>
-                    </div>
+{{--                    <div class="info-item" data-aos="fade-up" data-aos-delay="400">--}}
+{{--                        <div class="icon-box">--}}
+{{--                            <i class="bi bi-telephone"></i>--}}
+{{--                        </div>--}}
+{{--                        <div class="content">--}}
+{{--                            <h4>{{ __('Phone Numbers') }}</h4>--}}
+{{--                            <p>{{ __('+2 011 532 63 994') }}</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="info-item" data-aos="fade-up" data-aos-delay="500">
                         <div class="icon-box">
@@ -41,7 +41,7 @@
                         </div>
                         <div class="content">
                             <h4>{{ __('Email Addresses') }}</h4>
-                            <p>{{ __('islam@alalfy.com') }}</p>
+                            <p>{{ __('info@quicksell-system.com') }}</p>
                         </div>
                     </div>
                 </div>
