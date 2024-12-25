@@ -27,28 +27,28 @@
                     </div>
                 </div>
 
-                <div class="info-wrapper">
-                    <div class="row gy-4">
-                        <div class="col-lg-5">
-                            <div class="profile d-flex align-items-center gap-3">
-                                <img src="https://alalfy.com/storage/uploads/profile_1.jpeg" alt="{{ __('CEO Profile') }}" class="profile-image">
-                                <div>
-                                    <h4 class="profile-name">{{ __('Islam Alalfy') }}</h4>
-                                    <p class="profile-position">{!!  __('CEO &amp; Founder')  !!}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="contact-info d-flex align-items-center gap-2">
-                                <i class="bi bi-telephone-fill"></i>
-                                <div>
-                                    <p class="contact-label">{{ __('Call us anytime') }}</p>
-                                    <p class="contact-number">+2 011 532 63 994</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="info-wrapper">--}}
+{{--                    <div class="row gy-4">--}}
+{{--                        <div class="col-lg-5">--}}
+{{--                            <div class="profile d-flex align-items-center gap-3">--}}
+{{--                                <img src="https://alalfy.com/storage/uploads/profile_1.jpeg" alt="{{ __('CEO Profile') }}" class="profile-image">--}}
+{{--                                <div>--}}
+{{--                                    <h4 class="profile-name">{{ __('Islam Alalfy') }}</h4>--}}
+{{--                                    <p class="profile-position">{!!  __('CEO &amp; Founder')  !!}</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-7">--}}
+{{--                            <div class="contact-info d-flex align-items-center gap-2">--}}
+{{--                                <i class="bi bi-telephone-fill"></i>--}}
+{{--                                <div>--}}
+{{--                                    <p class="contact-label">{{ __('Call us anytime') }}</p>--}}
+{{--                                    <p class="contact-number">+2 011 532 63 994</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
 
             <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
