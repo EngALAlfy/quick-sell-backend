@@ -8,8 +8,8 @@
                 <div class="footer-contact pt-3">
                     <p>{{ __('New Cairo') }}</p>
                     <p>{{ __('Cairo, Egypt') }}</p>
-                    <p class="mt-3"><strong>{{ __('Phone:') }}</strong> <span>+201153263994</span></p>
-                    <p><strong>{{ __('Email:') }}</strong> <span>islam@alalfy.com</span></p>
+{{--                    <p class="mt-3"><strong>{{ __('Phone:') }}</strong> <span>+201153263994</span></p>--}}
+                    <p><strong>{{ __('Email:') }}</strong> <span>info@quicksell-system.com</span></p>
                 </div>
                 <div class="social-links d-flex mt-4">
                     <a href="https://www.facebook.com/yotech.org"><i class="bi bi-facebook"></i></a>
