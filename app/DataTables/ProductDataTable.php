@@ -36,6 +36,11 @@ class ProductDataTable extends DataTable
             ->editColumn('category', function (Product $product) {
                 return $product->category->name;
             })
+            ->filterColumn('category', function ($query , $keyword) {
+                return $query->whereHas("category" , function ($q) use($keyword){
+                    $q->where("name" , "LIKE" , "%$keyword%");
+                });
+            })
             ->editColumn('created_at', function (Product $product) {
                 return
                     '<span class="text-truncate d-flex lh-1">' . Carbon::parse($product->created_at)->toFormattedDateString() . '</span>
