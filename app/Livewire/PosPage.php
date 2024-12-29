@@ -115,7 +115,7 @@ class PosPage extends Component
                 $this->dispatch("error", error: __("No stock available"));
             }
         } else {
-            if($product->stock_quantity < 1){
+            if($product->stock_quantity < 1 || !$product->enable_stock){
                 $this->dispatch("error", error: __("No stock available"));
                 return;
             }
