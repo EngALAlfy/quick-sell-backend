@@ -8,8 +8,12 @@ use App\Models\Product;
 class ProductSearch extends Component
 {
     public $query = '';
-    public $results = [];
+    public $results;
 
+    function mount()
+    {
+        $this->results = collect();
+    }
     public function fetchProducts(): void
     {
         if (!empty($this->query)) {
