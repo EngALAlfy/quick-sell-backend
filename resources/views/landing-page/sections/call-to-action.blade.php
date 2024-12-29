@@ -7,7 +7,7 @@
             <div class="col-lg-8 mx-auto text-center">
                 <h2 class="display-4 mb-4">{{ __('Ready to Optimize Your Business Operations?') }}</h2>
                 <p class="mb-4">{{ __('Get started with our all-in-one platform for sales, inventory, and customer management. Our system helps you streamline your processes, increase efficiency, and scale your business.') }}</p>
-                <a href="#contact" class="btn btn-cta">{{ __('Contact Us') }}</a>
+                <a href="https://www.facebook.com/quicksell.system/" class="btn btn-cta">{{ __('Contact Us') }}</a>
             </div>
 
             <!-- Abstract Background Elements -->

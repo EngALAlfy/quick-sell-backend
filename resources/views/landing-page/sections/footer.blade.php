@@ -12,8 +12,8 @@
                     <p><strong>{{ __('Email:') }}</strong> <span>info@quicksell-system.com</span></p>
                 </div>
                 <div class="social-links d-flex mt-4">
-                    <a href="https://www.facebook.com/yotech.org"><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.linkedin.com/company/yotechorg"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.facebook.com/quicksell.system/"><i class="bi bi-facebook"></i></a>
+{{--                    <a href="https://www.linkedin.com/company/yotechorg"><i class="bi bi-linkedin"></i></a>--}}
                 </div>
             </div>
 

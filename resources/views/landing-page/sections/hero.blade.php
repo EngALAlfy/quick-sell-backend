@@ -24,7 +24,7 @@
 
 
                     <div class="hero-buttons">
-                        <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">{{__('Get Started')}}</a>
+                        <a href="https://www.facebook.com/quicksell.system/" class="btn btn-primary me-0 me-sm-2 mx-1">{{__('Get Started')}}</a>
                         <a href="{{asset("assets/landing-page/video/QuickSell.mp4")}}"
                            class="btn btn-link mt-2 mt-sm-0 glightbox">
                             <i class="bi bi-play-circle me-1"></i>

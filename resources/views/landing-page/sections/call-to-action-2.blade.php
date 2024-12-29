@@ -7,7 +7,7 @@
                 <div class="text-center">
                     <h3>{{ __('Take the Next Step') }}</h3>
                     <p>{{ __('Ready to transform your business? Reach out to us now and let us help you achieve your goals.') }}</p>
-                    <a class="cta-btn" href="https://wa.me/201153263994">{{ __('Contact Us') }}</a>
+                    <a class="cta-btn" href="https://www.facebook.com/quicksell.system/">{{ __('Contact Us') }}</a>
                 </div>
             </div>
         </div>
