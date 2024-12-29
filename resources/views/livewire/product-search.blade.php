@@ -9,7 +9,7 @@
                 wire:model.lazy="query"
                 wire:keydown="fetchProducts">
 
-        @if(!empty($results))
+        @if($results->isNotEmpty())
             <div class="dropdown-menu show mt-1" style="max-height: 300px; overflow-y: auto;top: 55px">
                 @foreach($results as $result)
                     {!! ajax_button("$result->name (SKU: $result->sku) - $result->sell_price " . __('EGP'), "dropdown-item" , route("dashboard.products.show" , $result) , __("Show search result")) !!}

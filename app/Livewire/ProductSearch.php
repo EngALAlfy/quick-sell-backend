@@ -18,7 +18,7 @@ class ProductSearch extends Component
                 ->limit(10)
                 ->get();
         } else {
-            $this->results = [];
+            $this->results = collect();
         }
     }
 
