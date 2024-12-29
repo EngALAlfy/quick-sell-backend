@@ -48,13 +48,7 @@ class PosPage extends Component
 
     public function render()
     {
-        $products = Product::where(function (Builder $query) {
-            $query->where(function (Builder $subQuery) {
-                $subQuery->where("enable_stock", true)
-                    ->where("stock_quantity", ">", 0);
-            })->orWhere("enable_stock", false);
-        })
-            ->where("status", ProductStatus::active->value);
+        $products = Product::where("status", ProductStatus::active->value);
 
         if ($this->categoryId > 0) {
             $products->where('category_id', $this->categoryId);
