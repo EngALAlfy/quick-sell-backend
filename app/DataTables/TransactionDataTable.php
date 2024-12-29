@@ -42,6 +42,11 @@ class TransactionDataTable extends DataTable
             ->editColumn('created_by_user_id', function (Transaction $transaction) {
                 return $transaction->createdByUser?->name;
             })
+            ->filterColumn('created_by_user_id', function ($query , $keyword) {
+                return $query->whereHas("createdByUser" , function ($q) use($keyword){
+                    $q->where("name" , "LIKE" , "%$keyword%");
+                });
+            })
             ->editColumn('amount', function (Transaction $transaction) {
                 return number_format($transaction->amount, 2);
             })
