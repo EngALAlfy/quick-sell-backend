@@ -69,7 +69,7 @@ class PosPage extends Component
         if (!empty($this->searchTerm)) {
             $this->searchResults = Product::where('sku', 'like', "%{$this->searchTerm}%")
                 ->orWhere('name', 'like', "%{$this->searchTerm}%")
-                ->limit(10) // Limit results to avoid showing too many
+                ->limit(10)
                 ->get();
         } else {
             $this->searchResults = collect([]);
@@ -115,7 +115,7 @@ class PosPage extends Component
             $quantity = $this->orderItems[$existingItemKey]->quantity;
             $stock_quantity = $this->orderItems[$existingItemKey]->stock_quantity;
 
-            if(($quantity + 1) <= $stock_quantity){
+            if(($quantity + 1) <= $stock_quantity || !$product->enable_stock){
                 $this->orderItems[$existingItemKey]->quantity++;
             }else{
                 $this->dispatch("error", error: __("No stock available"));
